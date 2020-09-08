@@ -7,7 +7,7 @@ import './styles.scss';
 import About from '../About';
 import Article from '../../containers/Article';
 import Articles from '../../containers/Articles';
-// import ArticlesByCategory from '../ArticlesByCategory';
+import ArticlesByCategory from '../../containers/ArticlesByCategory';
 import Categories from '../../containers/Categories';
 import Home from '../Home';
 import LegalMentions from '../LegalMentions';
@@ -28,7 +28,7 @@ const App = ({ getCategories }) => {
         <Route exact path="/about" component={About} />
         <Route exact path="/article/:id" component={Article} />
         <Route exact path="/articles" component={Articles} />
-        {/* <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} /> */}
+        <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
         <Route exact path="/categories" component={Categories} />
         <Route exact path="/" component={Home} />
         <Route exact path="/legalmentions" component={LegalMentions} />

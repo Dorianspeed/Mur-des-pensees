@@ -27,3 +27,9 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 };
+
+export const getArticlesByCategoryId = (state, id) => {
+  const articles = state.articles.articles.filter((element) => element.category.id === id);
+
+  return articles;
+};
