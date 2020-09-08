@@ -6,11 +6,11 @@ import { Route, Switch } from 'react-router-dom';
 import './styles.scss';
 import About from '../About';
 // import Article from '../Article';
-// import Articles from '../Articles';
+import Articles from '../../containers/Articles';
 // import ArticlesByCategory from '../ArticlesByCategory';
 import Categories from '../../containers/Categories';
 import Home from '../Home';
-// import LegalMentions from '../LegalMentions';
+import LegalMentions from '../LegalMentions';
 // import Login from '../Login';
 // import MyProfile from '../MyProfile';
 // import SignUp from '../SignUp';
@@ -26,13 +26,13 @@ const App = ({ getCategories }) => {
     <>
       <Switch>
         <Route exact path="/about" component={About} />
-        {/* <Route exact path="/article/:id" component={Article} />
+        {/* <Route exact path="/article/:id" component={Article} /> */}
         <Route exact path="/articles" component={Articles} />
-        <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} /> */}
+        {/* <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} /> */}
         <Route exact path="/categories" component={Categories} />
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/legalmentions" component={LegalMentions} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/legalmentions" component={LegalMentions} />
+        {/* <Route exact path="/login" component={Login} />
         <Route exact path="/myprofile" component={MyProfile} />
         <Route exact path="/signup" component={SignUp} /> */}
       </Switch>

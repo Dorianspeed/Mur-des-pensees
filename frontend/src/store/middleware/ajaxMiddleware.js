@@ -1,8 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 // == Import : npm
 import axios from 'axios';
 
 // == Import : local
-import { GET_CATEGORIES, getCategoriesSuccess, getCategoriesError } from '../actions';
+import {
+  GET_CATEGORIES, getCategoriesSuccess, getCategoriesError, getArticlesSuccess, getArticlesError,
+} from '../actions';
 
 // == Middleware
 const ajaxMiddleware = (store) => (next) => (action) => {
@@ -26,11 +29,14 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     title
                     excerpt
                     created_at
+                    category {
+                      id
+                      name
+                    }
                     user {
                       id
                       firstname
                       lastname
-                      created_at
                     }
                   }
                 }
@@ -39,9 +45,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(getCategoriesError(response.data.errors[0].message));
+            store.dispatch(getArticlesError(response.data.errors[0].message));
           }
           else {
             store.dispatch(getCategoriesSuccess(response.data.data.getCategories));
+            const articles = [];
+
+            for (const category of response.data.data.getCategories) {
+              for (const article of category.articles) {
+                articles.push(article);
+              }
+            }
+
+            store.dispatch(getArticlesSuccess(articles));
           }
         }
 

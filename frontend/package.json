@@ -59,6 +59,7 @@
     "axios": "^0.20.0",
     "ckeditor4-react": "^1.2.0",
     "core-js": "^3.6.5",
+    "html-react-parser": "^0.13.0",
     "prop-types": "*",
     "pure-react-carousel": "^1.27.2",
     "react": "*",
