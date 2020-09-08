@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 // == Import : local
 import './styles.scss';
+import 'semantic-ui-css/semantic.min.css';
 import About from '../About';
 import Article from '../../containers/Article';
 import Articles from '../../containers/Articles';

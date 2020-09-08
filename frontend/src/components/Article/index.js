@@ -24,7 +24,7 @@ const Article = ({ article }) => (
           <Header as="h5">
             <Image src={article.user.avatar_url} avatar />
             <span>
-              Ecrit par {article.user.firstname} le {formattingDate(article.user.created_at)}
+              Ecrit par {article.user.firstname} le {formattingDate(article.created_at)}
             </span>
           </Header>
         </Container>

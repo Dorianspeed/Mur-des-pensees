@@ -29,6 +29,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     title
                     content
                     excerpt
+                    image_url
                     created_at
                     category {
                       id
@@ -38,6 +39,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                       id
                       firstname
                       lastname
+                      avatar_url
                     }
                   }
                 }
