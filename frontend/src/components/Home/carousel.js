@@ -1,12 +1,14 @@
 import React from 'react';
-import { CarouselProvider, Image, Slide, Slider } from 'pure-react-carousel';
+import {
+  CarouselProvider, Image, Slide, Slider,
+} from 'pure-react-carousel';
 
 const ImageCarousel = () => (
   <CarouselProvider
     naturalSlideWidth={1}
     naturalSlideHeight={1}
     totalSlides={17}
-    isPlaying={true}
+    isPlaying
     interval={2500}
   >
     <Slider>
