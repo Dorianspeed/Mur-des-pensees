@@ -16,7 +16,7 @@
     "@babel/plugin-proposal-class-properties": "*",
     "@babel/plugin-proposal-object-rest-spread": "*",
     "@babel/preset-env": "*",
-    "@babel/preset-react": "*",
+    "@babel/preset-react": "^7.10.4",
     "@babel/register": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
@@ -55,11 +55,18 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "@artsy/fresnel": "^1.2.1",
+    "axios": "^0.20.0",
+    "ckeditor4-react": "^1.2.0",
     "prop-types": "*",
+    "pure-react-carousel": "^1.27.2",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^6.0.8",
     "redux": "*",
+    "semantic-ui-react": "^1.2.1",
     "styled-components": "*"
   }
 }
