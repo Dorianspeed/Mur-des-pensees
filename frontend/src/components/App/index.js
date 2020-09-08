@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 // == Import : local
 import './styles.scss';
-// import About from '../About';
+import About from '../About';
 // import Article from '../Article';
 // import Articles from '../Articles';
 // import ArticlesByCategory from '../ArticlesByCategory';
@@ -25,8 +25,8 @@ const App = ({ getCategories }) => {
   return (
     <>
       <Switch>
-        {/* <Route exact path="/about" component={About} />
-        <Route exact path="/article/:id" component={Article} />
+        <Route exact path="/about" component={About} />
+        {/* <Route exact path="/article/:id" component={Article} />
         <Route exact path="/articles" component={Articles} />
         <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} /> */}
         <Route exact path="/categories" component={Categories} />
