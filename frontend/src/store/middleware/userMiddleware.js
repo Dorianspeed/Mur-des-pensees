@@ -2,15 +2,16 @@
 import axios from 'axios';
 
 // == Import : local
-import { LOGIN_SUBMIT, loginSubmitSuccess, loginSubmitError } from '../actions/user';
+import {
+  LOGIN_SUBMIT, loginSubmitSuccess, loginSubmitError, SIGN_UP_SUBMIT, signUpSubmitSuccess,
+  signUpSubmitError,
+} from '../actions/user';
 
 // == Middleware
 const userMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case LOGIN_SUBMIT:
-      // eslint-disable-next-line no-case-declarations
-      const { user } = store.getState();
       (async () => {
         try {
           const response = await axios({
@@ -29,8 +30,8 @@ const userMiddleware = (store) => (next) => (action) => {
                 }
               }`,
               variables: {
-                email: user.email,
-                password: user.password,
+                email: store.getState().user.email,
+                password: store.getState().user.password,
               },
             },
           });
@@ -39,6 +40,48 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(loginSubmitSuccess(response.data.data.checkUser));
+          }
+        }
+
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
+    case SIGN_UP_SUBMIT:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://localhost:3000/graphQL',
+            method: 'post',
+            data: {
+              query: `
+              mutation insertUser($firstname: String!, $lastname: String!, $email: EmailAddress!, $password: String!, $confirmed_password: String!, $avatar_url: String!) {
+                insertUser(firstname: $firstname, lastname: $lastname, email: $email, password: $password, confirmed_password: $confirmed_password, avatar_url: $avatar_url) {
+                  id
+                  firstname
+                  lastname
+                  avatar_url
+                  created_at
+                }
+              }`,
+              variables: {
+                firstname: store.getState().user.firstname,
+                lastname: store.getState().user.lastname,
+                email: store.getState().user.email,
+                password: store.getState().user.password,
+                confirmed_password: store.getState().user.confirmedPassword,
+                avatar_url: store.getState().user.avatarUrl,
+              },
+            },
+          });
+
+          if (response.data.errors) {
+            store.dispatch(signUpSubmitError(response.data.errors[0].message));
+          }
+          else {
+            store.dispatch(signUpSubmitSuccess(response.data.data));
           }
         }
 

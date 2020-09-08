@@ -14,7 +14,7 @@ import Home from '../Home';
 import LegalMentions from '../LegalMentions';
 import Login from '../../containers/Login';
 // import MyProfile from '../MyProfile';
-// import SignUp from '../SignUp';
+import SignUp from '../../containers/SignUp';
 
 // == Composant
 // eslint-disable-next-line react/prop-types
@@ -34,8 +34,8 @@ const App = ({ getCategories }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/legalmentions" component={LegalMentions} />
         <Route exact path="/login" component={Login} />
-        {/* <Route exact path="/myprofile" component={MyProfile} />
-        <Route exact path="/signup" component={SignUp} /> */}
+        {/* <Route exact path="/myprofile" component={MyProfile} /> */}
+        <Route exact path="/signup" component={SignUp} />
       </Switch>
     </>
   );

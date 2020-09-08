@@ -7,9 +7,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 // == Import : local
-// Composants
 import App from './containers/App';
-// Store
 import store from './store';
 
 // == Render

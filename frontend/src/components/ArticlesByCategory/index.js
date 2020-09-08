@@ -11,7 +11,7 @@ import { formattingDate, parsingData } from '../../utils';
 
 // import PropTypes from 'prop-types';
 // eslint-disable-next-line react/prop-types
-const Articles = ({ articles }) => (
+const ArticlesByCategory = ({ articles }) => (
   <>
     <Segment vertical style={{ padding: '4em 0em' }}>
       <Grid container stackable verticalAlign="middle">
@@ -56,4 +56,4 @@ const Articles = ({ articles }) => (
   </>
 );
 
-export default Articles;
+export default ArticlesByCategory;

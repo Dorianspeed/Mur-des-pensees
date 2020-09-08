@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
 // == Import : npm
 import React from 'react';
@@ -40,7 +41,7 @@ const Login = ({
               </Segment>
             </Form>
             <Message>
-              Pas encore inscrit ? <a href="/form">S'inscrire !</a>
+              Pas encore inscrit ? <a href="/signup">S'inscrire !</a>
             </Message>
           </Grid.Column>
         </Grid>
@@ -50,12 +51,10 @@ const Login = ({
 };
 
 Login.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/require-default-props
   email: PropTypes.string,
-  // eslint-disable-next-line react/require-default-props
   password: PropTypes.string,
+  onFormSubmit: PropTypes.func,
+  onInputChange: PropTypes.func,
 };
 
 export default Login;

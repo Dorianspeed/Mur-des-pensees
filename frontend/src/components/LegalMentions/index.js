@@ -8,7 +8,7 @@ import {
 import './styles.scss';
 
 // == Composant
-const LegalMention = () => (
+const LegalMentions = () => (
   <div>
     <Segment vertical style={{ padding: '4em 0em' }}>
       <Grid container verticalAlign="middle">
@@ -419,4 +419,4 @@ const LegalMention = () => (
 );
 
 // == Export
-export default LegalMention;
+export default LegalMentions;
