@@ -23,3 +23,13 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 };
+
+export const getArticleById = (state, id) => {
+  const article = state.articles.articles.find((element) => {
+    const articleId = element.id;
+    const articleIdToFind = id;
+    return articleId === articleIdToFind;
+  });
+
+  return article;
+};

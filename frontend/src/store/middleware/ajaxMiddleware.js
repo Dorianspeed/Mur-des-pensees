@@ -27,6 +27,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                   articles {
                     id
                     title
+                    content
                     excerpt
                     created_at
                     category {
