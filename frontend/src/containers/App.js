@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 import { getCategories } from '../store/actions';
 
-const mapState = null;
+const mapStateToProps = null;
 
-const mapDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   getCategories: () => {
     dispatch(getCategories());
   },
 });
 
 // == Export
-export default connect(mapState, mapDispatch)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

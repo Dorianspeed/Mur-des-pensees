@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 // == Import : local
 import Categories from '../components/Categories';
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   categories: state.categories.categories,
 });
 
-const mapDispatch = null;
+const mapDispatchToProps = null;
 
 // == Export
-export default connect(mapState, mapDispatch)(Categories);
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

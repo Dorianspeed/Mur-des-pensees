@@ -11,7 +11,7 @@ import Articles from '../../containers/Articles';
 import Categories from '../../containers/Categories';
 import Home from '../Home';
 import LegalMentions from '../LegalMentions';
-// import Login from '../Login';
+import Login from '../../containers/Login';
 // import MyProfile from '../MyProfile';
 // import SignUp from '../SignUp';
 
@@ -32,8 +32,8 @@ const App = ({ getCategories }) => {
         <Route exact path="/categories" component={Categories} />
         <Route exact path="/" component={Home} />
         <Route exact path="/legalmentions" component={LegalMentions} />
-        {/* <Route exact path="/login" component={Login} />
-        <Route exact path="/myprofile" component={MyProfile} />
+        <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/myprofile" component={MyProfile} />
         <Route exact path="/signup" component={SignUp} /> */}
       </Switch>
     </>

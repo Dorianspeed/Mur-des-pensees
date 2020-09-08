@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 // == Import : local
 import Articles from '../components/Articles';
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   articles: state.articles.articles,
 });
 
-const mapDispatch = null;
+const mapDispatchToProps = null;
 
 // == Export
-export default connect(mapState, mapDispatch)(Articles);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);
