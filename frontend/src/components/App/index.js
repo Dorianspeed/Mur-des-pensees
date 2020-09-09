@@ -17,6 +17,7 @@ import Home from '../Home';
 import LegalMentions from '../LegalMentions';
 import Login from '../../containers/Login';
 // import MyProfile from '../MyProfile';
+import NotFound from '../NotFound';
 import ResponsiveContainer from '../Header';
 import SignUp from '../../containers/SignUp';
 
@@ -43,6 +44,9 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
               <Route exact path="/login" component={Login} />
               {/* <Route exact path="/myprofile" component={MyProfile} /> */}
               <Route exact path="/signup" component={SignUp} />
+              <Route>
+                <NotFound />
+              </Route>
             </Switch>
           </Container>
           <Footer isLogged={isLogged} handleLogout={handleLogout} />

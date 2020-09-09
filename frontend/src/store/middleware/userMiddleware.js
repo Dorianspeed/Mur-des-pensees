@@ -21,7 +21,6 @@ const userMiddleware = (store) => (next) => (action) => {
               query: `
                 query checkUser($email: EmailAddress!, $password: String!) {
                   checkUser(email: $email, password: $password) {
-                    id
                     firstname
                     lastname
                     email

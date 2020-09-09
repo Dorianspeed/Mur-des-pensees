@@ -174,11 +174,11 @@ const LegalMentions = () => (
         <Header as="h4" attached="top" inverted>Données personnelles que nous collectons</Header>
         <Segment basic>
           <Container>
-            <Header as="h6">Données collectées automatiquement</Header>
+            <Header as="h5">Données collectées automatiquement</Header>
             <p>
               Nous ne collectons aucune donnée automatiquement sur notre site.
             </p>
-            <Header as="h6">Données recueillies de façon non automatique</Header>
+            <Header as="h5">Données recueillies de façon non automatique</Header>
             <p>
               Nous pouvons également collecter les données suivantes lorsque vous effectuez
               certaines fonctions de notre site :
@@ -236,13 +236,13 @@ const LegalMentions = () => (
         <Header as="h4" attached="top" inverted>Avec qui nous partageons les données personnelles</Header>
         <Segment basic>
           <Container>
-            <Header as="h6">Employés</Header>
+            <Header as="h5">Employés</Header>
             <p>
               Nous pouvons divulguer à tout membre de notre organisation les données utilisateur
               dont il a raisonnablement besoin pour réaliser les objectifs énoncés dans la
               présente politique.
             </p>
-            <Header as="h6">Tierces parties</Header>
+            <Header as="h5">Tierces parties</Header>
             <p>
               Nous pouvons partager les données utilisateur avec les tiers suivants :
             </p>
@@ -263,7 +263,7 @@ const LegalMentions = () => (
               Les tiers ne seront pas en mesure d'accéder aux données des utilisateurs au-delà
               de ce qui est raisonnablement nécessaire pour atteindre l'objectif donné.
             </p>
-            <Header as="h6">Autres divulgations</Header>
+            <Header as="h5">Autres divulgations</Header>
             <p>
               Nous nous engageons à ne pas vendre ou partager vos données avec des tiers,
               sauf dans les cas suivants :

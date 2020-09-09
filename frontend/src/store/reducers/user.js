@@ -12,6 +12,7 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   avatar_url: '',
+  created_at: '',
   isLogged: false,
   error: '',
 };
@@ -25,13 +26,10 @@ export default (state = initialState, action = {}) => {
     case LOGIN_SUBMIT_SUCCESS:
       return {
         ...state,
-        email: '',
+        ...action.payload,
         password: '',
         isLogged: true,
         error: '',
-        user: {
-          ...action.payload,
-        },
       };
     case LOGIN_SUBMIT_ERROR:
       return {
@@ -55,7 +53,8 @@ export default (state = initialState, action = {}) => {
         email: '',
         password: '',
         confirmedPassword: '',
-        avatarUrl: '',
+        avatar_url: '',
+        error: '',
       };
     case SIGN_UP_SUBMIT_ERROR:
       return {
@@ -80,8 +79,8 @@ export default (state = initialState, action = {}) => {
         password: '',
         confirmedPassword: '',
         avatar_url: '',
+        created_at: '',
         isLogged: false,
-        user: {},
         error: '',
       };
     case LOGOUT_SUBMIT_ERROR:
