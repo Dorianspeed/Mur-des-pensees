@@ -16,7 +16,7 @@ import Footer from '../Footer';
 import Home from '../Home';
 import LegalMentions from '../LegalMentions';
 import Login from '../../containers/Login';
-// import MyProfile from '../MyProfile';
+import MyProfile from '../../containers/MyProfile';
 import NotFound from '../NotFound';
 import ResponsiveContainer from '../Header';
 import SignUp from '../../containers/SignUp';
@@ -42,7 +42,7 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
               <Route exact path="/" component={Home} />
               <Route exact path="/legalmentions" component={LegalMentions} />
               <Route exact path="/login" component={Login} />
-              {/* <Route exact path="/myprofile" component={MyProfile} /> */}
+              <Route exact path="/myprofile" component={MyProfile} />
               <Route exact path="/signup" component={SignUp} />
               <Route>
                 <NotFound />

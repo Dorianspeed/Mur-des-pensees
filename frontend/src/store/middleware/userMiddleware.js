@@ -5,6 +5,7 @@ import axios from 'axios';
 import {
   LOGIN_SUBMIT, loginSubmitSuccess, loginSubmitError, SIGN_UP_SUBMIT, signUpSubmitSuccess,
   signUpSubmitError, LOGOUT_SUBMIT, logoutSubmitSuccess, logoutSubmitError,
+  UPDATE_USER_SUBMIT, updateUserSubmitSuccess, updateUserSubmitError,
 } from '../actions/user';
 
 // == Middleware
@@ -80,7 +81,7 @@ const userMiddleware = (store) => (next) => (action) => {
             store.dispatch(signUpSubmitError(response.data.errors[0].message));
           }
           else {
-            store.dispatch(signUpSubmitSuccess(response.data.data));
+            store.dispatch(signUpSubmitSuccess(response.data.data.insertUser));
           }
         }
 
@@ -96,6 +97,7 @@ const userMiddleware = (store) => (next) => (action) => {
           const response = await axios({
             url: 'http://localhost:3000/graphQL',
             method: 'post',
+            withCredentials: true,
             data: {
               query: `
               {
@@ -109,6 +111,48 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(logoutSubmitSuccess(response.data.data));
+          }
+        }
+
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
+    case UPDATE_USER_SUBMIT:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://localhost:3000/graphQL',
+            method: 'post',
+            withCredentials: true,
+            data: {
+              query: `
+              mutation updateUser($firstname: String!, $lastname: String!, $email: EmailAddress!, $avatar_url: String!) {
+                updateUser(firstname: $firstname, lastname: $lastname, email: $email, avatar_url: $avatar_url) {
+                  id
+                  firstname
+                  lastname
+                  email
+                  avatar_url
+                  created_at
+                }
+              }`,
+              variables: {
+                firstname: store.getState().firstname,
+                lastname: store.getState().lastname,
+                email: store.getState().email,
+                avatar_url: store.getState().avatar_url,
+              },
+            },
+          });
+
+          if (response.data.errors) {
+            store.dispatch(updateUserSubmitError(response.data.errors[0].message));
+          }
+          else {
+            store.dispatch(updateUserSubmitSuccess(response.data.data.updateUser));
           }
         }
 

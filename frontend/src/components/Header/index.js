@@ -129,7 +129,7 @@ class DesktopContainer extends Component {
                       Rédiger un article
                     </Menu.Item>
                     <Menu.Item position="right">
-                      <Button as={NavLink} to="/myprofil" inverted={!fixed} color={fixed ? 'black' : null}>
+                      <Button as={NavLink} to="/myprofile" inverted={!fixed} color={fixed ? 'black' : null}>
                         Mon profil
                       </Button>
                       <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
