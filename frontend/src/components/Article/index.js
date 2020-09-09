@@ -11,7 +11,7 @@ import { formattingDate, parsingData } from '../../utils';
 
 // == Composant
 const Article = ({ article }) => (
-  <div id="hautdepage">
+  <>
     <Segment vertical style={{ padding: '2.5em 0em' }}>
       <Segment basic padded>
         <Image src={article.image_url} alt="logo-de-larticle" size="massive" centered bordered />
@@ -32,7 +32,7 @@ const Article = ({ article }) => (
       <Segment basic padded>
         <Grid>
           <Grid.Column textAlign="center">
-            <Button color="black" href="#hautdepage" icon labelPosition="right">
+            <Button color="black" href="#root" icon labelPosition="right">
               Retour en haut de la page
               <Icon name="up arrow" />
             </Button>
@@ -40,7 +40,7 @@ const Article = ({ article }) => (
         </Grid>
       </Segment>
     </Segment>
-  </div>
+  </>
 );
 
 export default Article;
