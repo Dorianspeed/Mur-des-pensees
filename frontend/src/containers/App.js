@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // == Import : local
 import App from '../components/App';
 import { getCategories } from '../store/actions';
-// import { logout } from '../store/actions/user';
+import { logoutSubmit } from '../store/actions/user';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleLogout: () => {
-    // dispatch(logout());
+    dispatch(logoutSubmit());
   },
 });
 

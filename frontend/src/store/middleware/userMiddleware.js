@@ -4,7 +4,7 @@ import axios from 'axios';
 // == Import : local
 import {
   LOGIN_SUBMIT, loginSubmitSuccess, loginSubmitError, SIGN_UP_SUBMIT, signUpSubmitSuccess,
-  signUpSubmitError,
+  signUpSubmitError, LOGOUT_SUBMIT, logoutSubmitSuccess, logoutSubmitError,
 } from '../actions/user';
 
 // == Middleware
@@ -82,6 +82,34 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(signUpSubmitSuccess(response.data.data));
+          }
+        }
+
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
+    case LOGOUT_SUBMIT:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://localhost:3000/graphQL',
+            method: 'post',
+            data: {
+              query: `
+              {
+                logoutUser
+              }`,
+            },
+          });
+
+          if (response.data.errors) {
+            store.dispatch(logoutSubmitError(response.data.errors[0].message));
+          }
+          else {
+            store.dispatch(logoutSubmitSuccess(response.data.data));
           }
         }
 
