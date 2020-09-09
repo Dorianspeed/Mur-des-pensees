@@ -16,6 +16,7 @@ import Article from '../../containers/Article';
 import Articles from '../../containers/Articles';
 import ArticlesByCategory from '../../containers/ArticlesByCategory';
 import Categories from '../../containers/Categories';
+import Footer from '../Footer';
 import Home from '../Home';
 import LegalMentions from '../LegalMentions';
 import Login from '../../containers/Login';
@@ -338,6 +339,7 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
               <Route exact path="/signup" component={SignUp} />
             </Switch>
           </Container>
+          <Footer isLogged={isLogged} handleLogout={handleLogout} />
         </div>
       </ResponsiveContainer>
     </>
