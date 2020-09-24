@@ -7,3 +7,4 @@
 20_create_roles 2020-09-24T12:44:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create roles into database
 30_create_functions_article 2020-09-24T12:47:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for article table
 40_create_functions_category 2020-09-24T12:58:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for category table
+50_create_functions_user 2020-09-24T13:00:32Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for user table
