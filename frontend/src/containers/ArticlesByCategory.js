@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import ArticlesByCategory from '../components/ArticlesByCategory';
+import Articles from '../components/Articles';
 import { getArticlesByCategoryId } from '../store/reducers/categories';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,4 +15,4 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = null;
 
 // == Export
-export default connect(mapStateToProps, mapDispatchToProps)(ArticlesByCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);
