@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=murDesPensees
+%uri=http://54.227.218.109/
+
+00_create_tables 2020-09-24T12:42:01Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create tables into database
