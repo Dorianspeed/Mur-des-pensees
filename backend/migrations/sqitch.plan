@@ -5,3 +5,4 @@
 00_create_tables 2020-09-24T12:42:01Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create tables into database
 10_create_schemas 2020-09-24T12:43:27Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create schemas into database
 20_create_roles 2020-09-24T12:44:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create roles into database
+30_create_functions_article 2020-09-24T12:47:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for article table
