@@ -1,0 +1,42 @@
+[
+    {
+        "firstname": "Dorian",
+        "lastname": "Garcia",
+        "email": "dorian.garcia@gmail.com",
+        "password": "dorian",
+        "avatar_url": "/avatar/avatar1.svg",
+        "role": "editor"
+    },
+    {
+        "firstname": "Alexandre",
+        "lastname": "Caffarelli",
+        "email": "alcaff@gmail.com",
+        "password": "alexandre",
+        "avatar_url": "/avatar/avatar2.svg",
+        "role": "editor"
+    },
+    {
+        "firstname": "Marianne",
+        "lastname": "Girard",
+        "email": "marianne.girard@gmail.com",
+        "password": "marianne",
+        "avatar_url": "/avatar/avatar4.svg",
+        "role": "editor"
+    },
+    {
+        "firstname": "Anthony",
+        "lastname": "Gallego",
+        "email": "anthony.gallego@gmail.com",
+        "password": "anthony",
+        "avatar_url": "/avatar/avatar5.svg",
+        "role": "reader"
+    },
+    {
+        "firstname": "James",
+        "lastname": "Bond",
+        "email": "james.bond@gmail.com",
+        "password": "james007",
+        "avatar_url": "/avatar/avatar8.svg",
+        "role": "reader"
+    }
+]

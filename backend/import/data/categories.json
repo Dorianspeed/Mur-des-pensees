@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Art",
+        "image_url": "/images/art.jpg"
+    },
+    {
+        "name": "Culture",
+        "image_url": "/images/culture.jpg"
+    },
+    {
+        "name": "Ecologie",
+        "image_url": "/images/ecology.jpg"
+    },
+    {
+        "name": "Economie",
+        "image_url": "/images/economy.jpg"
+    },
+    {
+        "name": "Faits divers",
+        "image_url": "/images/news.jpg"
+    },
+    {
+        "name": "Gastronomie",
+        "image_url": "/images/food.jpg"
+    },
+    {
+        "name": "Informatique",
+        "image_url": "/images/computer.jpg"
+    },
+    {
+        "name": "Jardinage",
+        "image_url": "/images/gardening.jpg"
+    },
+    {
+        "name": "Jeux",
+        "image_url": "/images/games.jpg"
+    },
+    {
+        "name": "Loisirs",
+        "image_url": "/images/leisure.jpg"
+    },
+    {
+        "name": "Politique",
+        "image_url": "/images/politics.jpg"
+    },
+    {
+        "name": "Santé",
+        "image_url": "/images/health.jpg"
+    },
+    {
+        "name": "Sciences",
+        "image_url": "/images/science.jpg"
+    },
+    {
+        "name": "Sport",
+        "image_url": "/images/sport.jpg"
+    },
+    {
+        "name": "Technologies",
+        "image_url": "/images/technology.jpg"
+    },
+    {
+        "name": "Voyage",
+        "image_url": "/images/travel.jpg"
+    },
+    {
+        "name": "Autre",
+        "image_url": "/images/other.jpg"
+    }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "pg": "^8.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "import": "node import/import.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

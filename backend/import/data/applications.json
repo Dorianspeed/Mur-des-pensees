@@ -1,0 +1,27 @@
+[
+    {
+        "content": "Curabitur ut massa dapibus, feugiat urna eget, gravida lorem. Donec fermentum libero vitae nunc mattis, quis ultricies massa consectetur. Aliquam feugiat, dolor commodo consequat lacinia, urna augue commodo nisi, vel mattis augue ipsum id magna. Aenean nec augue vitae sapien viverra dignissim sit amet id massa. Nunc sit amet urna dapibus, semper dolor vel, porttitor sapien. Nam vitae pretium ipsum. Sed a nulla sed nisl cursus pharetra. Mauris tincidunt accumsan nunc, vitae condimentum metus sollicitudin sit amet. Donec in elit non ligula dignissim pulvinar in porttitor augue. Quisque id tellus pulvinar, elementum mi non, viverra nunc. In id arcu elit. Fusce magna justo, lobortis eget placerat suscipit, facilisis eu sem. Quisque urna urna, congue sit amet varius sit amet, lacinia sit amet ante. Phasellus magna dolor, sollicitudin et tellus non, volutpat sollicitudin lacus. Duis sed elementum erat.",
+        "state": "approved",
+        "user_id": 1
+    },
+    {
+        "content": "Sed vestibulum, orci quis eleifend ornare, turpis nisi commodo augue, lacinia tristique est dolor vitae ante. Curabitur ante nunc, tempor posuere commodo eget, aliquet vitae urna. Mauris malesuada et orci ut condimentum. Morbi in magna eget tortor mattis hendrerit. Proin pulvinar ex ut velit mollis dapibus. Aliquam in suscipit tellus. Vivamus eu consectetur orci, quis varius nibh. Vivamus ante neque, ullamcorper non neque a, porta ultricies magna. Duis maximus nunc in faucibus semper. Maecenas commodo ultricies quam, ut hendrerit ex condimentum nec. Nullam erat felis, bibendum a purus sit amet, mollis posuere augue.",
+        "state": "approved",
+        "user_id": 2
+    },
+    {
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quam velit, imperdiet sit amet enim vel, laoreet convallis ex. Mauris congue mauris in risus tincidunt, et vehicula tellus vestibulum. Ut sagittis dictum convallis. Aliquam dignissim odio mi, vitae eleifend ipsum fringilla nec. In et nulla mi. Fusce egestas diam id nisi aliquet, a accumsan tellus tincidunt. Curabitur molestie enim justo, quis sagittis ligula consectetur sit amet. Nulla placerat ullamcorper egestas. Vestibulum ipsum metus, lobortis vitae rhoncus id, imperdiet at magna. Praesent venenatis varius ex.",
+        "state": "declined",
+        "user_id": 4
+    },
+    {
+        "content": "Curabitur ut massa dapibus, feugiat urna eget, gravida lorem. Donec fermentum libero vitae nunc mattis, quis ultricies massa consectetur. Aliquam feugiat, dolor commodo consequat lacinia, urna augue commodo nisi, vel mattis augue ipsum id magna. Aenean nec augue vitae sapien viverra dignissim sit amet id massa. Nunc sit amet urna dapibus, semper dolor vel, porttitor sapien. Nam vitae pretium ipsum. Sed a nulla sed nisl cursus pharetra. Mauris tincidunt accumsan nunc, vitae condimentum metus sollicitudin sit amet. Donec in elit non ligula dignissim pulvinar in porttitor augue. Quisque id tellus pulvinar, elementum mi non, viverra nunc. In id arcu elit. Fusce magna justo, lobortis eget placerat suscipit, facilisis eu sem. Quisque urna urna, congue sit amet varius sit amet, lacinia sit amet ante. Phasellus magna dolor, sollicitudin et tellus non, volutpat sollicitudin lacus. Duis sed elementum erat.",
+        "state": "approved",
+        "user_id": 3
+    },
+    {
+        "content": "Curabitur ut massa dapibus, feugiat urna eget, gravida lorem. Donec fermentum libero vitae nunc mattis, quis ultricies massa consectetur. Aliquam feugiat, dolor commodo consequat lacinia, urna augue commodo nisi, vel mattis augue ipsum id magna. Aenean nec augue vitae sapien viverra dignissim sit amet id massa. Nunc sit amet urna dapibus, semper dolor vel, porttitor sapien. Nam vitae pretium ipsum. Sed a nulla sed nisl cursus pharetra. Mauris tincidunt accumsan nunc, vitae condimentum metus sollicitudin sit amet. Donec in elit non ligula dignissim pulvinar in porttitor augue. Quisque id tellus pulvinar, elementum mi non, viverra nunc. In id arcu elit. Fusce magna justo, lobortis eget placerat suscipit, facilisis eu sem. Quisque urna urna, congue sit amet varius sit amet, lacinia sit amet ante. Phasellus magna dolor, sollicitudin et tellus non, volutpat sollicitudin lacus. Duis sed elementum erat.",
+        "state": "pending",
+        "user_id": 5
+    }
+]
