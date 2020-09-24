@@ -9,3 +9,4 @@
 40_create_functions_category 2020-09-24T12:58:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for category table
 50_create_functions_user 2020-09-24T13:00:32Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for user table
 31_create_functions_article_bulk 2020-09-24T13:09:31Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create bulk functions for article table
+41_create_function_category_bulk 2020-09-24T13:14:14Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create bulk function for category table
