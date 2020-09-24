@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Segment, Container, Grid, Header, List,
 } from 'semantic-ui-react';
@@ -18,31 +18,34 @@ const Footer = ({ isLogged, handleLogout }) => (
           <Grid.Column width={3}>
             <Header as="h4" inverted>Plan du site</Header>
             <List link inverted>
-              <List.Item as={NavLink} to="/">
+              <List.Item as={Link} to="/">
                 Accueil
               </List.Item>
-              <List.Item as={NavLink} to="/articles">
+              <List.Item as={Link} to="/articles">
                 Articles
               </List.Item>
-              <List.Item as={NavLink} to="/categories">
+              <List.Item as={Link} to="/categories">
                 Catégories
               </List.Item>
               {isLogged && (
                 <>
-                  <List.Item as={NavLink} to="/myprofile">
+                  <List.Item as={Link} to="/articleeditor">
+                    Rédiger un article
+                  </List.Item>
+                  <List.Item as={Link} to="/myprofile">
                     Mon profil
                   </List.Item>
-                  <List.Item as={NavLink} to="/" onClick={handleLogout}>
+                  <List.Item as={Link} to="/" onClick={handleLogout}>
                     Se déconnecter
                   </List.Item>
                 </>
               )}
               {!isLogged && (
                 <>
-                  <List.Item as={NavLink} to="/login">
+                  <List.Item as={Link} to="/login">
                     Se connecter
                   </List.Item>
-                  <List.Item as={NavLink} to="/signup">
+                  <List.Item as={Link} to="/signup">
                     S'inscrire
                   </List.Item>
                 </>
@@ -52,10 +55,10 @@ const Footer = ({ isLogged, handleLogout }) => (
           <Grid.Column width={7}>
             <Header as="h4" inverted>A propos</Header>
             <List link inverted>
-              <List.Item as={NavLink} to="/legalmentions">
+              <List.Item as={Link} to="/legalmentions">
                 Mentions légales
               </List.Item>
-              <List.Item as={NavLink} to="/about">
+              <List.Item as={Link} to="/about">
                 L'équipe
               </List.Item>
             </List>
