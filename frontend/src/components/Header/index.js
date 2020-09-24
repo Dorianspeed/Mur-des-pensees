@@ -124,7 +124,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 {isLogged && (
                   <>
-                    <Menu.Item as={NavLink} to="/ecrirearticle">
+                    <Menu.Item as={NavLink} to="/articleeditor">
                       <Icon name="pencil" />
                       Rédiger un article
                     </Menu.Item>
@@ -237,7 +237,6 @@ class MobileContainer extends Component {
               </>
             )}
           </Sidebar>
-
           <Sidebar.Pusher dimmed={sidebarOpened}>
             <Segment
               inverted

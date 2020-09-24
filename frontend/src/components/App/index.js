@@ -9,6 +9,7 @@ import './styles.scss';
 import 'semantic-ui-css/semantic.min.css';
 import About from '../About';
 import Article from '../../containers/Article';
+import ArticleEditor from '../../containers/ArticleEditor';
 import Articles from '../../containers/Articles';
 import ArticlesByCategory from '../../containers/ArticlesByCategory';
 import Categories from '../../containers/Categories';
@@ -36,6 +37,7 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
             <Switch>
               <Route exact path="/about" component={About} />
               <Route exact path="/article/:id" component={Article} />
+              <Route exact path="/articleeditor" component={ArticleEditor} />
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
               <Route exact path="/categories" component={Categories} />
