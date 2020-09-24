@@ -11,3 +11,4 @@
 31_create_functions_article_bulk 2020-09-24T13:09:31Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create bulk functions for article table
 41_create_function_category_bulk 2020-09-24T13:14:14Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create bulk function for category table
 51_create_function_user_bulk 2020-09-24T13:16:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create bulk function for user table
+60_create_functions_user_likes_article 2020-09-24T13:19:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Create functions for user_likes_article table
