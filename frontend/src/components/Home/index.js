@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Divider, Button, Image, Segment, Container, Header, Grid,
 } from 'semantic-ui-react';
@@ -48,7 +48,7 @@ const Home = () => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Button as={NavLink} to="/categories" color="black" size="large">Voir les catégories</Button>
+            <Button as={Link} to="/categories" color="black" size="large">Voir les catégories</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -86,7 +86,7 @@ const Home = () => (
           nous avons appris à maitriser l'art de ne rien faire afin de laisser
           libre cours à la fantastique imagination de notre communauté.
         </p>
-        <Button as={NavLink} to="/articles" size="large" color="black">
+        <Button as={Link} to="/articles" size="large" color="black">
           En lire plus
         </Button>
 
@@ -108,7 +108,7 @@ const Home = () => (
           rédacteur en chef a une trésorerie infinie et souhaiterait en
           faire profiter les rédacteurs chevronnés ! En faites-vous parti ?
         </p>
-        <Button as={NavLink} to="/form" size="large" color="black">
+        <Button as={Link} to="/signup" size="large" color="black">
           Je suis intéressé
         </Button>
       </Container>
