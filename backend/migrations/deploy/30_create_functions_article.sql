@@ -30,21 +30,4 @@ REVOKE ALL ON FUNCTION "insert_article"(TEXT, TEXT, TEXT, TEXT, INT, INT) FROM P
 GRANT EXECUTE ON FUNCTION "insert_article"(TEXT, TEXT, TEXT, TEXT, INT, INT) TO "editor";
 GRANT EXECUTE ON FUNCTION "insert_article"(TEXT, TEXT, TEXT, TEXT, INT, INT) TO "chief_editor";
 
-  
--- Fonction pour récupérer les articles rédigés un utilisateur via son id
-CREATE FUNCTION "get_articles_by_user"("i_user_id" INT)
-    RETURNS SETOF "app"."article"
-AS
-$$
-    SELECT *
-    FROM "app"."article" a
-    WHERE a.user_id = "i_user_id"; 
-$$
-LANGUAGE SQL STABLE STRICT;
-
--- On donne les accès sur la fonction
-REVOKE ALL ON FUNCTION "get_articles_by_user"(INT) FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION "get_articles_by_user"(INT) TO "editor";
-GRANT EXECUTE ON FUNCTION "get_articles_by_user"(INT) TO "chief_editor";
-
 COMMIT;

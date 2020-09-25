@@ -55,16 +55,4 @@ GRANT EXECUTE ON FUNCTION "check_like"(INT, INT) TO "reader";
 GRANT EXECUTE ON FUNCTION "check_like"(INT, INT) TO "editor";
 GRANT EXECUTE ON FUNCTION "check_like"(INT, INT) TO "chief_editor";
 
-
--- Fonction pour récupérer le nombre de likes pour un article
-CREATE FUNCTION "get_likes_by_article"("i_article_id" INT)
-    RETURNS BIGINT
-AS
-$$
-    SELECT COUNT(*)
-    FROM "app"."user_likes_article" a
-    WHERE a."article_id" = "i_article_id";
-$$
-LANGUAGE SQL STABLE STRICT;
-
 COMMIT;
