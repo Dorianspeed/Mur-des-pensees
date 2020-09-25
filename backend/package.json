@@ -4,13 +4,24 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "apollo-datasource": "^0.7.2",
+    "apollo-server-express": "^2.18.0",
     "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dataloader": "^2.0.0",
     "dotenv": "^8.2.0",
-    "pg": "^8.3.3"
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "graphql-scalars": "^1.2.7",
+    "joi": "^17.2.1",
+    "multer": "^1.4.2",
+    "pg": "^8.3.3",
+    "redis": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "import": "node import/import.js"
+    "import": "node import/import.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
