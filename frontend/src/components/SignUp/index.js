@@ -135,7 +135,7 @@ const SignUp = ({
                 <Form.Input fluid icon="user" iconPosition="left" placeholder="Prénom" type="text" name="firstname" value={firstname} onChange={handleInputChange} required />
                 <Form.Input fluid icon="user" iconPosition="left" placeholder="Nom" type="text" name="lastname" value={lastname} onChange={handleInputChange} required />
                 <Form.Input fluid icon="mail" iconPosition="left" placeholder="Email" type="email" name="email" value={email} onChange={handleInputChange} required />
-                <Form.Input fluid icon="lock" iconPosition="left" placeholder="Mot de passe" type="password" name="password" value={password} onChange={handleInputChange} required />
+                <Form.Input fluid icon="lock" iconPosition="left" placeholder="Mot de passe (8 caractères minimum)" type="password" name="password" value={password} onChange={handleInputChange} required />
                 <Form.Input fluid icon="lock" iconPosition="left" placeholder="Confirmation du mot de passe" type="password" name="confirmed_password" value={confirmedPassword} onChange={handleInputChange} required />
                 <Form.Select fluid placeholder="Choix de l'avatar" options={options} name="avatar_url" value={avatarUrl} onChange={handleInputChange} />
                 <Button color="black" fluid size="large" type="submit">S'inscrire</Button>
