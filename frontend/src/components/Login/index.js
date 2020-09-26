@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Form, Image, Header, Segment, Message, Grid, Button,
@@ -9,7 +9,9 @@ import {
 const Login = ({
   email, password, onFormSubmit, onInputChange, clearSignUpSubmit,
 }) => {
-  clearSignUpSubmit();
+  useEffect(() => {
+    clearSignUpSubmit();
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

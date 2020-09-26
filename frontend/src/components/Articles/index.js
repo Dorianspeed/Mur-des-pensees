@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -12,7 +12,9 @@ import { formattingDate, parsingData } from '../../utils';
 
 // == Composant
 const Articles = ({ articles, clearArticleEditorSubmit }) => {
-  clearArticleEditorSubmit();
+  useEffect(() => {
+    clearArticleEditorSubmit();
+  }, []);
 
   return (
     <>
