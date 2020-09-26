@@ -1,5 +1,6 @@
 // == Import : npm
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // == Import : local
 import {
@@ -41,9 +42,11 @@ const editorMiddleware = (store) => (next) => (action) => {
 
           if (response.data.errors) {
             store.dispatch(articleEditorSubmitError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(articleEditorSubmitSuccess(response.data.data.insertArticle));
+            toast.success('Merci pour votre article');
           }
         }
 

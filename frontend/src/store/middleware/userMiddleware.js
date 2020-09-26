@@ -1,5 +1,6 @@
 // == Import : npm
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // == Import : local
 import {
@@ -37,9 +38,11 @@ const userMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(loginSubmitError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(loginSubmitSuccess(response.data.data.checkUser));
+            toast.success('Authentification réussie');
           }
         }
 
@@ -79,9 +82,11 @@ const userMiddleware = (store) => (next) => (action) => {
 
           if (response.data.errors) {
             store.dispatch(signUpSubmitError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(signUpSubmitSuccess(response.data.data.insertUser));
+            toast.success('Merci pour votre inscription');
           }
         }
 
@@ -108,9 +113,11 @@ const userMiddleware = (store) => (next) => (action) => {
 
           if (response.data.errors) {
             store.dispatch(logoutSubmitError(response.data.errors[0].message));
+            toast.error('Une erreur est survenue');
           }
           else {
             store.dispatch(logoutSubmitSuccess(response.data.data));
+            toast.success('Déconnexion réussie');
           }
         }
 
@@ -150,9 +157,11 @@ const userMiddleware = (store) => (next) => (action) => {
 
           if (response.data.errors) {
             store.dispatch(updateUserSubmitError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(updateUserSubmitSuccess(response.data.data.updateUser));
+            toast.success('Modifications enregistrées');
           }
         }
 

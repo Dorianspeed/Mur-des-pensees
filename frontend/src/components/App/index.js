@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // == Import : local
 import 'semantic-ui-css/semantic.min.css';
@@ -32,6 +34,13 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
     <>
       <ResponsiveContainer isLogged={isLogged} handleLogout={handleLogout}>
         <div style={{ display: 'flex', minHeight: '94vh', flexDirection: 'column' }}>
+          <ToastContainer
+            transition={Zoom}
+            autoClose={3000}
+            closeOnClick
+            draggable
+            pauseOnHover={false}
+          />
           <Container style={{ flex: 1 }}>
             <Switch>
               <Route exact path="/about" component={About} />
