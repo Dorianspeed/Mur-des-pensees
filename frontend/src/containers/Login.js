@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Login from '../components/Login';
-import { loginSubmit, loginInputChange } from '../store/actions/user';
+import { loginSubmit, loginInputChange, clearSignUpSubmitSuccess } from '../store/actions/user';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
@@ -17,6 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onInputChange: (data) => {
     dispatch(loginInputChange(data));
+  },
+
+  clearSignUpSubmit: () => {
+    dispatch(clearSignUpSubmitSuccess());
   },
 });
 

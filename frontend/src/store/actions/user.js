@@ -7,6 +7,7 @@ export const SIGN_UP_SUBMIT = 'SIGN_UP_SUBMIT';
 export const SIGN_UP_SUBMIT_SUCCESS = 'SIGN_UP_SUBMIT_SUCCESS';
 export const SIGN_UP_SUBMIT_ERROR = 'SIGN_UP_SUBMIT_ERROR';
 export const SIGN_UP_INPUT_CHANGE = 'SIGN_UP_INPUT_CHANGE';
+export const CLEAR_SIGN_UP_SUBMIT_SUCCESS = 'CLEAR_SIGN_UP_SUBMIT_SUCCESS';
 
 export const LOGOUT_SUBMIT = 'LOGOUT_SUBMIT';
 export const LOGOUT_SUBMIT_SUCCESS = 'LOGOUT_SUBMIT_SUCCESS';
@@ -55,6 +56,10 @@ export const signUpSubmitError = (payload) => ({
 export const signUpInputChange = (payload) => ({
   type: SIGN_UP_INPUT_CHANGE,
   payload,
+});
+
+export const clearSignUpSubmitSuccess = () => ({
+  type: CLEAR_SIGN_UP_SUBMIT_SUCCESS,
 });
 
 export const logoutSubmit = () => ({

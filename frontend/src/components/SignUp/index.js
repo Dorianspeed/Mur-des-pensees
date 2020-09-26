@@ -1,5 +1,6 @@
 // == Import : npm
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Form, Image, Header, Segment, Message, Grid, Button,
 } from 'semantic-ui-react';
@@ -7,7 +8,8 @@ import PropTypes from 'prop-types';
 
 // == Composant
 const SignUp = ({
-  firstname, lastname, email, password, confirmedPassword, avatarUrl, onFormSubmit, onInputChange,
+  firstname, lastname, email, password, confirmedPassword, avatarUrl, onFormSubmit,
+  onInputChange, signUpSubmitSuccess,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -120,6 +122,7 @@ const SignUp = ({
 
   return (
     <>
+      {signUpSubmitSuccess && <Redirect to="/login" />}
       <Segment basic padded>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -157,6 +160,8 @@ SignUp.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  signUpSubmitSuccess: PropTypes.bool,
 };
 
 // == Export

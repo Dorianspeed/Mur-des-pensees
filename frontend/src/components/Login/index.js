@@ -7,8 +7,10 @@ import {
 
 // == Composant
 const Login = ({
-  email, password, onFormSubmit, onInputChange,
+  email, password, onFormSubmit, onInputChange, clearSignUpSubmit,
 }) => {
+  clearSignUpSubmit();
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     onInputChange({ [name]: value });
@@ -50,6 +52,7 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  clearSignUpSubmit: PropTypes.func.isRequired,
 };
 
 export default Login;

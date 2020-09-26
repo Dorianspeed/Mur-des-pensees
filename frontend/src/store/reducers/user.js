@@ -3,7 +3,7 @@ import {
   LOGIN_SUBMIT, LOGIN_SUBMIT_SUCCESS, LOGIN_SUBMIT_ERROR, LOGIN_INPUT_CHANGE, SIGN_UP_SUBMIT,
   SIGN_UP_SUBMIT_SUCCESS, SIGN_UP_SUBMIT_ERROR, SIGN_UP_INPUT_CHANGE, LOGOUT_SUBMIT,
   LOGOUT_SUBMIT_SUCCESS, LOGOUT_SUBMIT_ERROR, UPDATE_USER_SUBMIT, UPDATE_USER_SUBMIT_SUCCESS,
-  UPDATE_USER_SUBMIT_ERROR, UPDATE_USER_INPUT_CHANGE,
+  UPDATE_USER_SUBMIT_ERROR, UPDATE_USER_INPUT_CHANGE, CLEAR_SIGN_UP_SUBMIT_SUCCESS,
 } from '../actions/user';
 
 const initialState = {
@@ -17,6 +17,7 @@ const initialState = {
   isLogged: false,
   updateUser: {},
   error: '',
+  signUpSubmitSuccess: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -57,9 +58,10 @@ export default (state = initialState, action = {}) => {
         lastname: '',
         email: '',
         password: '',
-        confirmedPassword: '',
+        confirmed_password: '',
         avatar_url: '',
         error: '',
+        signUpSubmitSuccess: true,
       };
     case SIGN_UP_SUBMIT_ERROR:
       return {
@@ -70,6 +72,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case CLEAR_SIGN_UP_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        signUpSubmitSuccess: false,
       };
     case LOGOUT_SUBMIT:
       return {
@@ -82,7 +89,7 @@ export default (state = initialState, action = {}) => {
         lastname: '',
         email: '',
         password: '',
-        confirmedPassword: '',
+        confirmed_password: '',
         avatar_url: '',
         created_at: '',
         isLogged: false,
