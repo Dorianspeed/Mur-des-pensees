@@ -71,8 +71,8 @@ const userMiddleware = (store) => (next) => (action) => {
                 lastname: store.getState().user.lastname,
                 email: store.getState().user.email,
                 password: store.getState().user.password,
-                confirmed_password: store.getState().user.confirmedPassword,
-                avatar_url: store.getState().user.avatarUrl,
+                confirmed_password: store.getState().user.confirmed_password,
+                avatar_url: store.getState().user.avatar_url,
               },
             },
           });
