@@ -12,7 +12,6 @@ const checkArticleSchema = require('./validation/checkArticle');
 const insertUserSchema = require('./validation/insertUser');
 const updateUserSchema = require('./validation/updateUser');
 const checkLikeAndFavoriteSchema = require('./validation/checkLikeAndFavorite');
-const { application } = require('express');
 
 const myResolverMap = {
     Date: DateResolver,
