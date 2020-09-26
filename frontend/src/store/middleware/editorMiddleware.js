@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import {
   ARTICLE_EDITOR_SUBMIT, articleEditorSubmitSuccess, articleEditorSubmitError,
 } from '../actions/editor';
+import { getCategories } from '../actions';
 
 // == Middleware
 const editorMiddleware = (store) => (next) => (action) => {
@@ -46,6 +47,7 @@ const editorMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(articleEditorSubmitSuccess(response.data.data.insertArticle));
+            store.dispatch(getCategories());
             toast.success('Merci pour votre article');
           }
         }
