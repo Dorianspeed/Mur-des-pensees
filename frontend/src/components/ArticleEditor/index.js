@@ -1,6 +1,5 @@
-/* eslint-disable react/require-default-props */
 // == Import : npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CKEditor from 'ckeditor4-react';
 import axios from 'axios';
@@ -13,10 +12,10 @@ import './styles.scss';
 
 // == Composant
 const ArticleEditor = ({
-  // eslint-disable-next-line react/prop-types
   categories, title, content, categoryId, onInputChange, onFormSubmit,
 }) => {
-  // eslint-disable-next-line react/prop-types
+  const [uploadedFile, setUploadedFile] = useState(null);
+
   const options = categories.map((category) => {
     const container = {};
     container.key = category.id;
@@ -30,10 +29,8 @@ const ArticleEditor = ({
     onInputChange({ [name]: value });
   };
 
-  let uploadedFile;
   const handleFileUnputChange = (event) => {
-    // eslint-disable-next-line prefer-destructuring
-    uploadedFile = event.target.files[0];
+    setUploadedFile(event.target.files[0]);
   };
 
   const fileUpload = (file) => {
@@ -115,11 +112,12 @@ const ArticleEditor = ({
 };
 
 ArticleEditor.propTypes = {
-  onInputChange: PropTypes.func,
-  onFormSubmit: PropTypes.func,
-  title: PropTypes.string,
-  content: PropTypes.string,
-  categoryId: PropTypes.number,
+  onInputChange: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  categoryId: PropTypes.number.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 export default ArticleEditor;
