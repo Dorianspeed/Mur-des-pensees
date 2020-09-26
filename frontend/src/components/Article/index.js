@@ -43,7 +43,7 @@ const Article = ({ article }) => (
 );
 
 Article.propTypes = {
-  article: PropTypes.array.isRequired,
+  article: PropTypes.object.isRequired,
 };
 
 // == Export
