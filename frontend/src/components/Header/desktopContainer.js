@@ -7,7 +7,6 @@ import {
 } from 'semantic-ui-react';
 
 // == Import : local
-import './styles.scss';
 import HomepageHeading from './homepageHeading';
 
 // == Composant

@@ -6,9 +6,6 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const SignUp = ({
   firstname, lastname, email, password, confirmedPassword, avatarUrl, onFormSubmit, onInputChange,

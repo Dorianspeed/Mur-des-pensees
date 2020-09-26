@@ -5,9 +5,6 @@ import {
   Button, Grid, Segment, Icon, Header,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const NotFound = () => (
   <Segment vertical style={{ padding: '4em 0em' }}>

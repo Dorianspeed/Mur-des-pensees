@@ -6,7 +6,6 @@ import {
 } from 'semantic-ui-react';
 
 // == Import : local
-import './styles.scss';
 import { formattingDate, parsingData } from '../../utils';
 
 // == Composant

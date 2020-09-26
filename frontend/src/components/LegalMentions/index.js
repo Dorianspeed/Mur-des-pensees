@@ -4,9 +4,6 @@ import {
   Header, List, Segment, Container, Grid,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const LegalMentions = () => (
   <div>

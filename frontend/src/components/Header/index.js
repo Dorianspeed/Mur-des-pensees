@@ -5,7 +5,6 @@ import { createMedia } from '@artsy/fresnel';
 import { Sidebar } from 'semantic-ui-react';
 
 // == Import : local
-import './styles.scss';
 import DesktopContainer from './desktopContainer';
 import MobileContainer from './mobileContainer';
 

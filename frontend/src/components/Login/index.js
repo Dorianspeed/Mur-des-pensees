@@ -6,9 +6,6 @@ import {
   Form, Image, Header, Segment, Message, Grid, Button,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const Login = ({
   email, password, onFormSubmit, onInputChange,

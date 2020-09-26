@@ -6,7 +6,6 @@ import {
 } from 'semantic-ui-react';
 
 // == Import : local
-import './styles.scss';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import ImageCarousel from './carousel';
 

@@ -7,9 +7,6 @@ import {
   Segment, Grid, Form, Label, Input, Select, Button,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const ArticleEditor = ({
   categories, title, content, categoryId, onInputChange, onFormSubmit,

@@ -5,9 +5,6 @@ import {
   Card, Image, Segment, Grid,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 // eslint-disable-next-line react/prop-types
 const Categories = ({ categories }) => (

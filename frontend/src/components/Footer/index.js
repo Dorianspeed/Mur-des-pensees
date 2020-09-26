@@ -5,9 +5,6 @@ import {
   Segment, Container, Grid, Header, List,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 // eslint-disable-next-line react/prop-types
 const Footer = ({ isLogged, handleLogout }) => (

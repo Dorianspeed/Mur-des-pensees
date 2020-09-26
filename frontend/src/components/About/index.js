@@ -4,9 +4,6 @@ import {
   Segment, Container, Grid, Header, Icon, Breadcrumb, List,
 } from 'semantic-ui-react';
 
-// == Import : local
-import './styles.scss';
-
 // == Composant
 const About = () => (
   <Segment vertical style={{ padding: '4em 0em' }}>

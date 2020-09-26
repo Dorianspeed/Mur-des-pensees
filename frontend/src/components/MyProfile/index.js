@@ -7,7 +7,6 @@ import {
 } from 'semantic-ui-react';
 
 // == Import : local
-import './styles.scss';
 import { formattingDate } from '../../utils';
 
 // == Composant
