@@ -1,12 +1,12 @@
 // == Import : npm
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Segment, Container, Grid, Header, List,
 } from 'semantic-ui-react';
 
 // == Composant
-// eslint-disable-next-line react/prop-types
 const Footer = ({ isLogged, handleLogout }) => (
   <Segment className="Footer" inverted vertical style={{ padding: '5em 0em' }}>
     <Container>
@@ -65,6 +65,11 @@ const Footer = ({ isLogged, handleLogout }) => (
     </Container>
   </Segment>
 );
+
+Footer.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};
 
 // == Export
 export default Footer;

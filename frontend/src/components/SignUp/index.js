@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 // == Import : npm
 import React from 'react';
 import {
@@ -150,14 +149,14 @@ const SignUp = ({
 };
 
 SignUp.propTypes = {
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  email: PropTypes.string,
-  password: PropTypes.string,
-  confirmedPassword: PropTypes.string,
-  avatarUrl: PropTypes.string,
-  onFormSubmit: PropTypes.func,
-  onInputChange: PropTypes.func,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  confirmedPassword: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 // == Export

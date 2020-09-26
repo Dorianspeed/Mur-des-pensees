@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 // == Import : npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Header, Image, Container, Button, Icon, Segment, Grid, Label,
 } from 'semantic-ui-react';
@@ -42,4 +42,9 @@ const Article = ({ article }) => (
   </>
 );
 
+Article.propTypes = {
+  article: PropTypes.array.isRequired,
+};
+
+// == Export
 export default Article;

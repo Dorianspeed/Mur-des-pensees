@@ -1,19 +1,18 @@
 // == Import : npm
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Card, Image, Segment, Grid,
 } from 'semantic-ui-react';
 
 // == Composant
-// eslint-disable-next-line react/prop-types
 const Categories = ({ categories }) => (
   <>
     <Segment vertical style={{ padding: '4em 0em' }}>
       <Grid container stackable verticalAlign="middle">
         <Card.Group centered stackable itemsPerRow={3}>
           {
-            // eslint-disable-next-line react/prop-types
             categories.map((category) => (
               <Card as={Link} to={`/articlesbycategory/${category.id}`} key={category.id}>
                 <Image src={category.image_url} />
@@ -35,6 +34,10 @@ const Categories = ({ categories }) => (
     </Segment>
   </>
 );
+
+Categories.propTypes = {
+  categories: PropTypes.array.isRequired,
+};
 
 // == Export
 export default Categories;

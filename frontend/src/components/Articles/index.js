@@ -1,6 +1,7 @@
 // == Import : npm
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Card, Image, Segment, Button, Grid,
 } from 'semantic-ui-react';
@@ -8,15 +9,13 @@ import {
 // == Import : local
 import { formattingDate, parsingData } from '../../utils';
 
-// import PropTypes from 'prop-types';
-// eslint-disable-next-line react/prop-types
+// == Composant
 const Articles = ({ articles }) => (
   <>
     <Segment vertical style={{ padding: '4em 0em' }}>
       <Grid container stackable verticalAlign="middle">
         <Card.Group itemsPerRow={3} stackable>
           {
-            // eslint-disable-next-line react/prop-types
             articles.map((article) => (
               <Card as={Link} to={`/article/${article.id}`} key={article.id}>
                 <Image
@@ -55,4 +54,9 @@ const Articles = ({ articles }) => (
   </>
 );
 
+Articles.propTypes = {
+  articles: PropTypes.array.isRequired,
+};
+
+// == Export
 export default Articles;

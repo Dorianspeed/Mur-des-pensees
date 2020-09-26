@@ -2,6 +2,7 @@
 // == Import : npm
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 
 // == Import : local
@@ -22,7 +23,6 @@ import ResponsiveContainer from '../Header';
 import SignUp from '../../containers/SignUp';
 
 // == Composant
-// eslint-disable-next-line react/prop-types
 const App = ({ getCategories, isLogged, handleLogout }) => {
   useEffect(() => {
     getCategories();
@@ -55,6 +55,12 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
       </ResponsiveContainer>
     </>
   );
+};
+
+App.propTypes = {
+  getCategories: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 // == Export

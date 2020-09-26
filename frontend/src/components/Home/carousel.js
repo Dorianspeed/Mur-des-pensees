@@ -1,8 +1,10 @@
+// == Import : npm
 import React from 'react';
 import {
   CarouselProvider, Image, Slide, Slider,
 } from 'pure-react-carousel';
 
+// == Composant
 const ImageCarousel = () => (
   <CarouselProvider
     naturalSlideWidth={1}

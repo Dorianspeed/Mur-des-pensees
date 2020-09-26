@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -47,10 +46,10 @@ const Login = ({
 };
 
 Login.propTypes = {
-  email: PropTypes.string,
-  password: PropTypes.string,
-  onFormSubmit: PropTypes.func,
-  onInputChange: PropTypes.func,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default Login;

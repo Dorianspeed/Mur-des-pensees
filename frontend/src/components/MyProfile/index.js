@@ -1,6 +1,5 @@
-/* eslint-disable react/require-default-props */
 // == Import : npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Icon, Divider, Header, Table, Image, Grid, Segment, Form, Modal, Button,
@@ -13,7 +12,7 @@ import { formattingDate } from '../../utils';
 const MyProfile = ({
   firstname, lastname, email, avatarUrl, createdAt, updateUser, onFormSubmit, onInputChange,
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -216,12 +215,12 @@ const MyProfile = ({
 export default MyProfile;
 
 MyProfile.propTypes = {
-  onFormSubmit: PropTypes.func,
-  onInputChange: PropTypes.func,
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  email: PropTypes.string,
-  avatarUrl: PropTypes.string,
-  createdAt: PropTypes.string,
-  updateUser: PropTypes.object,
+  onFormSubmit: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  updateUser: PropTypes.object.isRequired,
 };
