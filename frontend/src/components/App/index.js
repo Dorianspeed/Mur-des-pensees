@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 // == Import : npm
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 
@@ -36,15 +36,19 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
             <Switch>
               <Route exact path="/about" component={About} />
               <Route exact path="/article/:id" component={Article} />
-              <Route exact path="/articleeditor" component={ArticleEditor} />
+              {isLogged && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
               <Route exact path="/categories" component={Categories} />
               <Route exact path="/" component={Home} />
               <Route exact path="/legalmentions" component={LegalMentions} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/myprofile" component={MyProfile} />
-              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/login">
+                {isLogged ? <Redirect to="/" /> : <Login />}
+              </Route>
+              {isLogged && (<Route exact path="/myprofile" component={MyProfile} />)}
+              <Route exact path="/signup">
+                {isLogged ? <Redirect to="/" /> : <SignUp />}
+              </Route>
               <Route>
                 <NotFound />
               </Route>
