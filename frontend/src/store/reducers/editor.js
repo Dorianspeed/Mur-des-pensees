@@ -2,6 +2,7 @@
 import {
   ARTICLE_EDITOR_SUBMIT, ARTICLE_EDITOR_SUBMIT_SUCCESS,
   ARTICLE_EDITOR_SUBMIT_ERROR, ARTICLE_EDITOR_INPUT_CHANGE,
+  CLEAR_ARTICLE_EDITOR_SUBMIT_SUCCESS,
 } from '../actions/editor';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   category_id: 0,
   image_url: '',
   error: '',
+  articleEditorSubmitSuccess: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -22,6 +24,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.payload,
+        articleEditorSubmitSuccess: true,
       };
     case ARTICLE_EDITOR_SUBMIT_ERROR:
       return {
@@ -32,6 +35,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case CLEAR_ARTICLE_EDITOR_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        articleEditorSubmitSuccess: false,
       };
     default:
       return state;

@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   title: state.editor.title,
   content: state.editor.content,
   categoryId: state.editor.category_id,
+  articleEditorSubmitSuccess: state.editor.articleEditorSubmitSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({

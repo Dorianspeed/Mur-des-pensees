@@ -1,5 +1,6 @@
 // == Import : npm
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CKEditor from 'ckeditor4-react';
 import axios from 'axios';
@@ -9,7 +10,7 @@ import {
 
 // == Composant
 const ArticleEditor = ({
-  categories, title, content, categoryId, onInputChange, onFormSubmit,
+  categories, title, content, categoryId, onInputChange, onFormSubmit, articleEditorSubmitSuccess,
 }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -62,6 +63,7 @@ const ArticleEditor = ({
 
   return (
     <>
+      {articleEditorSubmitSuccess && <Redirect to="/articles" />}
       <Segment vertical style={{ padding: '4em 0em' }}>
         <Grid container stackable verticalAlign="middle" textAlign="center">
           <Form onSubmit={handleFormSubmit} style={{ width: '95%' }}>
@@ -115,6 +117,8 @@ ArticleEditor.propTypes = {
   content: PropTypes.string.isRequired,
   categoryId: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  articleEditorSubmitSuccess: PropTypes.bool,
 };
 
 export default ArticleEditor;
