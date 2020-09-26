@@ -7,6 +7,7 @@ import {
 } from 'semantic-ui-react';
 
 // == Import : local
+import NoArticleFound from './noArticleFound';
 import { formattingDate, parsingData } from '../../utils';
 
 // == Composant
@@ -16,7 +17,7 @@ const Articles = ({ articles }) => (
       <Grid container stackable verticalAlign="middle">
         <Card.Group itemsPerRow={3} stackable>
           {
-            articles.map((article) => (
+            !articles[0] ? <NoArticleFound /> : articles.map((article) => (
               <Card as={Link} to={`/article/${article.id}`} key={article.id}>
                 <Image
                   src={article.image_url}
