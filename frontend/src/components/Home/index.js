@@ -76,7 +76,7 @@ const Home = () => (
     </Segment>
 
     <Segment style={{ padding: '8em 0em' }} vertical>
-      <Container text>
+      <Container text textAlign="center">
         <Header as="h3" style={{ fontSize: '2em' }}>
           Cassez le mythe de l'auteur, retenez l'attention !
         </Header>
