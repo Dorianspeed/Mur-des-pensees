@@ -9,7 +9,7 @@ AS
 $$
     SELECT * 
     FROM "app"."article" 
-    WHERE "category_id" = ANY("i_ids");
+    WHERE "category_id" = ANY("i_ids") AND "state" = 'approved';
 $$
 LANGUAGE SQL STABLE STRICT;
 
