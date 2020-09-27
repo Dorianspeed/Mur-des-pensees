@@ -13,11 +13,11 @@ const typeDefs = require('./graphQL/schema');
 const resolvers = require('./graphQL/resolver');
 const dataSources = require('./graphQL/dataSources');
 
-const { Pool } = require('pg');
-const clientVisitor = new Pool({ connectionString: process.env.PG_URL_VISITOR });
-const clientReader = new Pool({ connectionString: process.env.PG_URL_READER });
-const clientEditor = new Pool({ connectionString: process.env.PG_URL_EDITOR });
-const clientChiefEditor = new Pool({ connectionString: process.env.PG_URL_CHIEF });
+const { CachedPool } = require('./client/cachedPool');
+const clientVisitor = new CachedPool ({ connectionString: process.env.PG_URL_VISITOR });
+const clientReader = new CachedPool ({ connectionString: process.env.PG_URL_READER });
+const clientEditor = new CachedPool ({ connectionString: process.env.PG_URL_EDITOR });
+const clientChiefEditor = new CachedPool ({ connectionString: process.env.PG_URL_CHIEF });
 
 //! On laisse toutes les requêtes passées dans un premier temps
 app.use(cors());
@@ -39,22 +39,17 @@ app.use((request, _, next) => {
         switch (request.session.user.role) {
             case 'reader': 
                 request.database = clientReader;
-                console.log('Reader');
                 break;
             case 'editor':
                 request.database = clientEditor;
-                console.log('Editor');
                 break;
             case 'chiefEditor':
                 request.database = clientChiefEditor;
-                console.log('Chief Editor');
                 break;
         }
-
         next();
     } else {
         request.database = clientVisitor;
-        console.log('Visitor');
         next();
     }
 });
