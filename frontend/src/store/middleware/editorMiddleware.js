@@ -33,10 +33,10 @@ const editorMiddleware = (store) => (next) => (action) => {
                   }
                 }`,
               variables: {
-                title: store.getState().title,
-                content: store.getState().content,
-                image_url: store.getState().image_url,
-                category_id: store.getState().category_id,
+                title: store.getState().editor.title,
+                content: store.getState().editor.content,
+                image_url: store.getState().editor.image_url,
+                category_id: store.getState().editor.category_id,
               },
             },
           });

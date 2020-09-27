@@ -7,6 +7,7 @@ import storage from 'redux-persist/lib/storage';
 import rootReducer from './reducers';
 import ajaxMiddleware from './middleware/ajaxMiddleware';
 import userMiddleware from './middleware/userMiddleware';
+import editorMiddleware from './middleware/editorMiddleware';
 
 // == Configuration du persist
 const persistConfig = {
@@ -22,6 +23,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     ajaxMiddleware,
     userMiddleware,
+    editorMiddleware,
   ),
 );
 

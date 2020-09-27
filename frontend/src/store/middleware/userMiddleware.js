@@ -147,10 +147,10 @@ const userMiddleware = (store) => (next) => (action) => {
                 }
               }`,
               variables: {
-                firstname: store.getState().firstname,
-                lastname: store.getState().lastname,
-                email: store.getState().email,
-                avatar_url: store.getState().avatar_url,
+                firstname: store.getState().user.updateUser.firstname,
+                lastname: store.getState().user.updateUser.lastname,
+                email: store.getState().user.updateUser.email,
+                avatar_url: store.getState().user.updateUser.avatar_url,
               },
             },
           });
