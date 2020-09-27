@@ -1,7 +1,8 @@
 // == Import : npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
-  Grid, Segment, Icon, Header,
+  Grid, Segment, Icon, Header, Button,
 } from 'semantic-ui-react';
 
 // == Composant
@@ -16,6 +17,11 @@ const NoArticleFound = () => (
             Nos auteurs n'ont pas encore rédigé d'articles appartenant à cette catégorie.
           </Header.Subheader>
         </Header>
+      </Grid.Row>
+      <Grid.Row>
+        <Button as={Link} to="/categories" color="black" size="huge" style={{ marginTop: '4em' }}>
+          Retour aux catégories
+        </Button>
       </Grid.Row>
     </Grid>
   </Segment>

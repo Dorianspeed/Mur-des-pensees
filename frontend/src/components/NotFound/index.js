@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Button, Grid, Segment, Icon, Header,
 } from 'semantic-ui-react';
@@ -19,7 +19,7 @@ const NotFound = () => (
         </Header>
       </Grid.Row>
       <Grid.Row>
-        <Button as={NavLink} to="/" color="black" animated="fade" size="huge" style={{ marginTop: '4em' }}>
+        <Button as={Link} to="/" color="black" animated="fade" size="huge" style={{ marginTop: '4em' }}>
           <Button.Content visible>Retour à l'accueil</Button.Content>
           <Button.Content hidden>
             <Icon name="home" />
