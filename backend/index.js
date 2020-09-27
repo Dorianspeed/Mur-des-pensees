@@ -22,6 +22,9 @@ const clientChiefEditor = new CachedPool ({ connectionString: process.env.PG_URL
 //! On laisse toutes les requêtes passées dans un premier temps
 app.use(cors());
 
+// Mise en place des fichiers statiques
+app.use(express.static(__dirname + '/public'));
+
 // Mise en place de la session
 app.use(session({
     secret: process.env.SESSION_PASSWORD,
@@ -52,6 +55,13 @@ app.use((request, _, next) => {
         request.database = clientVisitor;
         next();
     }
+});
+
+// Création d'une route qui délivre l'index.html de React
+app.get('/*', (_, response) => {
+    response.sendFile('index.html', {
+        root: 'public'
+    });
 });
 
 // Création d'une instance multer
