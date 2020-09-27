@@ -8,7 +8,7 @@ CREATE TABLE "user" (
     "lastname" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "avatar_url" TEXT DEFAULT '/avatar/avatar10.svg',
+    "avatar_url" TEXT DEFAULT '',
     "role" TEXT DEFAULT 'reader',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
@@ -27,7 +27,7 @@ CREATE TABLE "article" (
     "title" TEXT NOT NULL,
     "excerpt" TEXT NOT NULL,
     "content" TEXT NOT NULL,
-    "image_url" TEXT DEFAULT '/images/other.jpg',
+    "image_url" TEXT DEFAULT '',
     "state" TEXT DEFAULT 'pending',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ,
