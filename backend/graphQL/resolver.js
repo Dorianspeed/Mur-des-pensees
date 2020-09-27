@@ -311,6 +311,7 @@ const myResolverMap = {
                 if (validation.error) {
                     return validation.error;
                 } else {
+                    args.content = args.content.replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
                     args.excerpt = args.content.split(' ').slice(0, 15).join(' ') + '...';
 
                     return await dataSources.article.insertArticle(args);
