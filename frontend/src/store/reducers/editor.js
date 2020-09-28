@@ -23,7 +23,11 @@ export default (state = initialState, action = {}) => {
     case ARTICLE_EDITOR_SUBMIT_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        title: '',
+        content: '',
+        category_id: '',
+        image_url: '',
+        error: '',
         articleEditorSubmitSuccess: true,
       };
     case ARTICLE_EDITOR_SUBMIT_ERROR:
