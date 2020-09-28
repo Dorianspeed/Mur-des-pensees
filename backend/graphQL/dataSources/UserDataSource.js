@@ -69,6 +69,8 @@ module.exports = class UserDataSource extends DataSource {
 
             const user = await this.client.query(query);
 
+            this.usersLoader.clearAll();
+
             return user.rows[0];
         }
 

@@ -52,6 +52,8 @@ module.exports = class LikeDataSource extends DataSource {
 
             await this.client.query(query);
 
+            this.likesLoader.clearAll();
+
             return true;
         }
 
@@ -69,6 +71,8 @@ module.exports = class LikeDataSource extends DataSource {
             };
 
             await this.client.query(query);
+
+            this.likesLoader.clearAll();
 
             return true;
         }

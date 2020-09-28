@@ -81,6 +81,9 @@ module.exports = class ArticleDataSource extends DataSource {
             
             const article = await this.client.query(query);
 
+            this.articlesByCategoryLoader.clearAll();
+            this.articlesByUserLoader.clearAll();
+
             return article.rows[0];
         } 
         
@@ -94,6 +97,9 @@ module.exports = class ArticleDataSource extends DataSource {
         try {
             const article = await this.client.query('SELECT * FROM "validate_article"($1)', [articleId]);
 
+            this.articlesByCategoryLoader.clearAll();
+            this.articlesByUserLoader.clearAll();
+
             return article.rows[0];
         }
 
@@ -106,6 +112,9 @@ module.exports = class ArticleDataSource extends DataSource {
     async declineArticle(articleId) {
         try {            
             const article = await this.client.query('SELECT * FROM "decline_article"($1)', [articleId]);
+
+            this.articlesByCategoryLoader.clearAll();
+            this.articlesByUserLoader.clearAll();
 
             return article.rows[0];
         } 
