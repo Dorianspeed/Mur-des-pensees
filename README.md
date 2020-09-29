@@ -11,6 +11,7 @@ Le Mur des pensées est un site regroupant divers articles rédigés par des aut
   - [Origines du projet](#origines-du-projet)
   - [Technologies utilisées](#technologies-utilisées)
   - [Initialisation du projet en local](#initialisation-du-projet-en-local)
+  - [Documentations](#documentations)
 
 ## Origines du projet
 
@@ -77,3 +78,13 @@ L'application se trouve en ligne et est utilisable à ce lien : [Mur des Pensée
 4. Effectuer une recherche dans le fichier `main.05781b590977cb3e3f79.js` qui se trouve dans le dossier `public/js` du `backend` et remplacer tous les `http://54.227.218.109/` par `http://localhost:port` où le port correspond à ce que vous avez indiqué dans votre `.env`
 5. Exécuter la commande `npm run start` pour lancer l'application en vous plaçant dans le dossier `backend`
 6. Lancer un navigateur puis entrer le lien `http://localhost:port`
+
+## Documentations
+
+- Cahier des charges (prochainement...)
+- Wireframes (prochainement...)
+- [Arborescence de l'application](docs/tree_structure.png)
+- [Conception de la base de données](docs/database_conception.md)
+- [MCD](docs/MCD.svg)
+- [Dictionnaire de données](docs/data_dictionary.md)
+- [User stories](docs/user_stories.md)
