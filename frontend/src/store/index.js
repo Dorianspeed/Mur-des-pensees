@@ -13,7 +13,7 @@ import editorMiddleware from './middleware/editorMiddleware';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user'],
+  whitelist: ['user', 'articles'],
 };
 
 // == Enhancers
