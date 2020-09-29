@@ -53,6 +53,7 @@ const users = require('./data/users.json');
     
         // Insertion des data de la table article
         for (let article of articles) {
+            article.excerpt = article.content.split(' ').slice(0, 30).join(' ') + '...';
             const query = {
                 text: `INSERT INTO "app"."article" ("title", "excerpt", "content", "image_url", "state", "category_id", "user_id")
                         VALUES ($1, $2, $3, $4, $5, $6, $7)`,

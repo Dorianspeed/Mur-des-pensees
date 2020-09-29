@@ -312,7 +312,7 @@ const myResolverMap = {
                     return validation.error;
                 } else {
                     args.content = args.content.replace('<script', '&lt;script').replace('</script>', '&lt;/script&gt;');
-                    args.excerpt = args.content.split(' ').slice(0, 15).join(' ') + '...';
+                    args.excerpt = args.content.split(' ').slice(0, 30).join(' ') + '...';
 
                     return await dataSources.article.insertArticle(args);
                 }
