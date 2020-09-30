@@ -37,6 +37,7 @@ Des rôles ont été définis pour chacun des membres de l'équipe :
 - Anthony :
   - Référent des diverses librairies
 - Marianne :
+  - Référente Technique Front
   - Référente des diverses librairies
 
 ## Technologies utilisées
@@ -81,7 +82,7 @@ L'application se trouve en ligne et est utilisable à ce lien : [Mur des Pensée
 
 ## Documentations
 
-- Cahier des charges (prochainement...)
+- [Cahier des charges](docs/specifications.md)
 - Wireframes (prochainement...)
 - [Arborescence de l'application](docs/tree_structure.png)
 - [Conception de la base de données](docs/database_conception.md)
