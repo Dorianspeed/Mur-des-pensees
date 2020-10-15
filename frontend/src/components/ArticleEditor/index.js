@@ -37,7 +37,7 @@ const ArticleEditor = ({
     data.append('file', file);
 
     return axios({
-      url: 'http://54.227.218.109/upload',
+      url: 'http://http://3.89.123.41/upload',
       method: 'post',
       data,
       headers: {

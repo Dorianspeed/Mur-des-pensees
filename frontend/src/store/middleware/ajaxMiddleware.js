@@ -15,7 +15,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://54.227.218.109/graphQL',
+            url: 'http://http://3.89.123.41/graphQL',
             method: 'post',
             data: {
               query: `

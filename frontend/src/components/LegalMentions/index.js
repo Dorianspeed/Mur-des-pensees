@@ -12,7 +12,7 @@ const LegalMentions = () => (
         <Segment basic>
           <Container>
             <Header as="h2" textAlign="center">Politique de confidentialité</Header>
-            <Header as="h4" textAlign="center">http://54.227.218.109/
+            <Header as="h4" textAlign="center">http://http://3.89.123.41/
               <Header.Subheader>Type de site : blog</Header.Subheader>
             </Header>
           </Container>
