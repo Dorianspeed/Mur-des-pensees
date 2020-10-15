@@ -2,7 +2,7 @@
 
 Le Mur des pensées est un site regroupant divers articles rédigés par des auteurs amateurs (type [Medium](https://medium.com/france)).
 
-- Lien vers l'application : [Mur des Pensées](http://http://3.89.123.41/)
+- Lien vers l'application : [Mur des Pensées](http://3.89.123.41/)
 
 ## Sommaire
 
@@ -69,14 +69,14 @@ Outils utilisés en Front :
 
 ## Initialisation du projet en local
 
-L'application se trouve en ligne et est utilisable à ce lien : [Mur des Pensées](http://http://3.89.123.41/). Dans le cas où vous souhaiteriez la tester en local, voici la procédure à suivre :
+L'application se trouve en ligne et est utilisable à ce lien : [Mur des Pensées](http://3.89.123.41/). Dans le cas où vous souhaiteriez la tester en local, voici la procédure à suivre :
 
 1. Créer votre base de données sous PostgreSQL :
    - Créer un rôle avec l'option CREATEROLE : `CREATE ROLE dbrole WITH LOGIN ENCRYPTED 'password' CREATEROLE;`
    - Créer votre database : `CREATE DATABASE db OWNER dbrole;`
 2. Créer votre fichier `.env` en suivant le `.env.example`
 3. Créer votre fichier `sqitch.conf` en suivant le `sqitch.conf.example`
-4. Effectuer une recherche dans le fichier `main.05781b590977cb3e3f79.js` qui se trouve dans le dossier `public/js` du `backend` et remplacer tous les `http://http://3.89.123.41/` par `http://localhost:port` où le port correspond à ce que vous avez indiqué dans votre `.env`
+4. Effectuer une recherche dans le fichier `main.05781b590977cb3e3f79.js` qui se trouve dans le dossier `public/js` du `backend` et remplacer tous les `http://3.89.123.41/` par `http://localhost:port` où le port correspond à ce que vous avez indiqué dans votre `.env`
 5. Exécuter la commande `npm run start` pour lancer l'application en vous plaçant dans le dossier `backend`
 6. Lancer un navigateur puis entrer le lien `http://localhost:port`
 

@@ -18,7 +18,7 @@ const userMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://http://3.89.123.41/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             data: {
               query: `
@@ -57,7 +57,7 @@ const userMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://http://3.89.123.41/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             data: {
               query: `
@@ -101,7 +101,7 @@ const userMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://http://3.89.123.41/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
@@ -132,7 +132,7 @@ const userMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://http://3.89.123.41/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {

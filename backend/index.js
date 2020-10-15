@@ -20,7 +20,7 @@ const clientEditor = new CachedPool ({ connectionString: process.env.PG_URL_EDIT
 const clientChiefEditor = new CachedPool ({ connectionString: process.env.PG_URL_CHIEF });
 
 // On bloque les requêtes venant d'autres domaines
-app.use(cors({origin: 'http://http://3.89.123.41/', credentials: true}));
+app.use(cors({origin: 'http://3.89.123.41/', credentials: true}));
 
 // Mise en place des fichiers statiques
 app.use(express.static(__dirname + '/public'));
