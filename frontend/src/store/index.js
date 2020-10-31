@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 import ajaxMiddleware from './middleware/ajaxMiddleware';
 import userMiddleware from './middleware/userMiddleware';
 import editorMiddleware from './middleware/editorMiddleware';
+import adminMiddleware from './middleware/adminMiddleware';
 
 // == Configuration du persist
 const persistConfig = {
@@ -24,6 +25,7 @@ const enhancers = composeEnhancers(
     ajaxMiddleware,
     userMiddleware,
     editorMiddleware,
+    adminMiddleware,
   ),
 );
 

@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // == Import : local
 import 'semantic-ui-css/semantic.min.css';
 import About from '../About';
+import Admin from '../../containers/Admin';
 import Article from '../../containers/Article';
 import ArticleEditor from '../../containers/ArticleEditor';
 import Articles from '../../containers/Articles';
@@ -44,6 +45,7 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
           <Container style={{ flex: 1 }}>
             <Switch>
               <Route exact path="/about" component={About} />
+              <Route exact path="/admin" component={Admin} />
               <Route exact path="/article/:id" component={Article} />
               {isLogged && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
               <Route exact path="/articles" component={Articles} />
