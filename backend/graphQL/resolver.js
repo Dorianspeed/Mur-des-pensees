@@ -106,13 +106,7 @@ const myResolverMap = {
         // Récupération des candidatures en attente de validation
         async getPendingApplications(_, __, { dataSources }) {
             try {
-                const applications = await dataSources.application.getPendingApplications();
-
-                if(!applications) {
-                    return new ApolloError ('Aucun postulat en attente de validation trouvé', 'NO_PENDING_APPLICATIONS_FOUND');
-                } else {
-                    return applications;
-                }
+                return await dataSources.application.getPendingApplications();
             }
 
             catch (error) {
@@ -134,13 +128,7 @@ const myResolverMap = {
         // Récupération des articles en attente de validation
         async getPendingArticles(_, __, { dataSources }) {
             try {
-                const articles = await dataSources.article.getPendingArticles();
-                
-                if (!articles) {
-                    return new ApolloError('Aucun article en attente de validation trouvé', 'NO_PENDING_ARTICLES_FOUND');
-                } else {
-                    return articles;
-                }
+                return await dataSources.article.getPendingArticles();
             } 
             
             catch (error) {

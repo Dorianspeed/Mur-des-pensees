@@ -58,12 +58,8 @@ module.exports = class ArticleDataSource extends DataSource {
     async getPendingArticles() {
         try {
             const articles = await this.client.query('SELECT * FROM "get_pending_articles"()');
-
-            if (articles.rowCount === 0) {
-                return undefined;
-            } else {
-                return articles.rows;
-            }
+            
+            return articles.rows;
         }
 
         catch (error) {

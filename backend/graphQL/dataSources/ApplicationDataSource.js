@@ -16,11 +16,7 @@ module.exports = class ApplicationDataSource extends DataSource {
         try {
             const applications = await this.client.query('SELECT * FROM "get_pending_applications"()');
 
-            if (applications.rowCount === 0) {
-                return undefined;
-            } else {
-                return applications.rows;
-            }
+            return applications.rows;
         } 
         
         catch(error) {
