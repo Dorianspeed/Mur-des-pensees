@@ -26,14 +26,16 @@ import ResponsiveContainer from '../Header';
 import SignUp from '../../containers/SignUp';
 
 // == Composant
-const App = ({ getCategories, isLogged, handleLogout }) => {
+const App = ({
+  getCategories, isLogged, handleLogout, role,
+}) => {
   useEffect(() => {
     getCategories();
   }, []);
 
   return (
     <>
-      <ResponsiveContainer isLogged={isLogged} handleLogout={handleLogout}>
+      <ResponsiveContainer isLogged={isLogged} handleLogout={handleLogout} role={role}>
         <div style={{ display: 'flex', minHeight: '94vh', flexDirection: 'column' }}>
           <ToastContainer
             transition={Zoom}
@@ -45,9 +47,9 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
           <Container style={{ flex: 1 }}>
             <Switch>
               <Route exact path="/about" component={About} />
-              <Route exact path="/admin" component={Admin} />
+              {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
               <Route exact path="/article/:id" component={Article} />
-              {isLogged && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
+              {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
               <Route exact path="/categories" component={Categories} />
@@ -65,7 +67,7 @@ const App = ({ getCategories, isLogged, handleLogout }) => {
               </Route>
             </Switch>
           </Container>
-          <Footer isLogged={isLogged} handleLogout={handleLogout} />
+          <Footer isLogged={isLogged} handleLogout={handleLogout} role={role} />
         </div>
       </ResponsiveContainer>
     </>
@@ -76,6 +78,7 @@ App.propTypes = {
   getCategories: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 // == Export

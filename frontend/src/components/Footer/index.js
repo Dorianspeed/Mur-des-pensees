@@ -7,7 +7,7 @@ import {
 } from 'semantic-ui-react';
 
 // == Composant
-const Footer = ({ isLogged, handleLogout }) => (
+const Footer = ({ isLogged, handleLogout, role }) => (
   <Segment className="Footer" inverted vertical style={{ padding: '5em 0em' }}>
     <Container>
       <Grid divided inverted stackable>
@@ -24,11 +24,18 @@ const Footer = ({ isLogged, handleLogout }) => (
               <List.Item as={Link} to="/categories">
                 Catégories
               </List.Item>
+              {role.includes('editor') && (
+                <List.Item as={Link} to="/articleeditor">
+                  Rédiger un article
+                </List.Item>
+              )}
+              {role === 'chief_editor' && (
+                <List.Item as={Link} to="/admin">
+                  Panneau d'administration
+                </List.Item>
+              )}
               {isLogged && (
                 <>
-                  <List.Item as={Link} to="/articleeditor">
-                    Rédiger un article
-                  </List.Item>
                   <List.Item as={Link} to="/myprofile">
                     Mon profil
                   </List.Item>
@@ -69,6 +76,7 @@ const Footer = ({ isLogged, handleLogout }) => (
 Footer.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 // == Export

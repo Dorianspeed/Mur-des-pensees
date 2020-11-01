@@ -10,7 +10,9 @@ import {
 import HomepageHeading from './homepageHeading';
 
 // == Composant
-const MobileContainer = ({ children, isLogged, handleLogout }) => {
+const MobileContainer = ({
+  children, isLogged, handleLogout, role,
+}) => {
   const [sidebarOpened, setSidebarOpened] = useState(null);
 
   return (
@@ -40,6 +42,30 @@ const MobileContainer = ({ children, isLogged, handleLogout }) => {
             <Icon name="tag" />
             Catégories
           </Menu.Item>
+          {role.includes('editor') && (
+            <Menu.Item as={NavLink} to="/articleeditor">
+              <Icon name="pencil" />
+              Rédiger un article
+            </Menu.Item>
+          )}
+          {role === 'chief_editor' && (
+            <Menu.Item as={NavLink} to="/admin">
+              <Icon name="computer" />
+              Panneau d'administration
+            </Menu.Item>
+          )}
+          {isLogged && (
+            <>
+              <Menu.Item as={NavLink} to="/myprofile">
+                <Icon name="user circle" />
+                Mon profil
+              </Menu.Item>
+              <Menu.Item as={NavLink} to="/" onClick={handleLogout}>
+                <Icon name="sign-out" />
+                Se déconnecter
+              </Menu.Item>
+            </>
+          )}
           {!isLogged && (
             <>
               <Menu.Item as={NavLink} to="/login">
@@ -49,22 +75,6 @@ const MobileContainer = ({ children, isLogged, handleLogout }) => {
               <Menu.Item as={NavLink} to="/signup">
                 <Icon name="user plus" />
                 S'inscrire
-              </Menu.Item>
-            </>
-          )}
-          {isLogged && (
-            <>
-              <Menu.Item as={NavLink} to="/ecrirearticle">
-                <Icon name="pencil" />
-                Rédiger un article
-              </Menu.Item>
-              <Menu.Item as={NavLink} to="/myprofile">
-                <Icon name="user circle" />
-                Mon profil
-              </Menu.Item>
-              <Menu.Item as={NavLink} to="/" onClick={handleLogout}>
-                <Icon name="sign-out" />
-                Se déconnecter
               </Menu.Item>
             </>
           )}
@@ -119,6 +129,7 @@ MobileContainer.propTypes = {
   children: PropTypes.node.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 // == Export
