@@ -27,6 +27,7 @@ const userMiddleware = (store) => (next) => (action) => {
                     firstname
                     lastname
                     email
+                    role
                     created_at
                     avatar_url
                 }

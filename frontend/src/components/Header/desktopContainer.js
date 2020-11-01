@@ -10,7 +10,9 @@ import {
 import HomepageHeading from './homepageHeading';
 
 // == Composant
-const DesktopContainer = ({ children, isLogged, handleLogout }) => {
+const DesktopContainer = ({
+  children, isLogged, handleLogout, role,
+}) => {
   const [fixed, setFixed] = useState(null);
   return (
     <>
@@ -49,21 +51,27 @@ const DesktopContainer = ({ children, isLogged, handleLogout }) => {
                 <Icon name="tag" />
                 Catégories
               </Menu.Item>
+              {role.includes('editor') && (
+                <Menu.Item as={NavLink} to="/articleeditor">
+                  <Icon name="pencil" />
+                  Rédiger un article
+                </Menu.Item>
+              )}
+              {role === 'chief_editor' && (
+                <Menu.Item as={NavLink} to="/admin">
+                  <Icon name="computer" />
+                  Panneau d'administration
+                </Menu.Item>
+              )}
               {isLogged && (
-                <>
-                  <Menu.Item as={NavLink} to="/articleeditor">
-                    <Icon name="pencil" />
-                    Rédiger un article
-                  </Menu.Item>
-                  <Menu.Item position="right">
-                    <Button as={NavLink} to="/myprofile" inverted={!fixed} color={fixed ? 'black' : null}>
-                      Mon profil
-                    </Button>
-                    <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
-                      Se déconnecter
-                    </Button>
-                  </Menu.Item>
-                </>
+                <Menu.Item position="right">
+                  <Button as={NavLink} to="/myprofile" inverted={!fixed} color={fixed ? 'black' : null}>
+                    Mon profil
+                  </Button>
+                  <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
+                    Se déconnecter
+                  </Button>
+                </Menu.Item>
               )}
               {!isLogged && (
                 <Menu.Item position="right">
@@ -89,6 +97,7 @@ DesktopContainer.propTypes = {
   children: PropTypes.node.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 // == Export
