@@ -1,5 +1,6 @@
 // == Import : npm
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // == Import : local
 import {
@@ -124,9 +125,11 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(validateApplicationError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(validateApplicationSuccess());
+            toast.success('La candidature a bien été validée');
           }
         }
 
@@ -160,9 +163,11 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(declineApplicationError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(declineApplicationSuccess());
+            toast.success('La candidature a bien été refusée');
           }
         }
 
@@ -195,9 +200,11 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(validateArticleError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(validateArticleSuccess());
+            toast.success('L\'article a bien été validé');
           }
         }
 
@@ -230,9 +237,11 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(declineArticleError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(declineArticleSuccess());
+            toast.success('L\'article a bien été refusé');
           }
         }
 
