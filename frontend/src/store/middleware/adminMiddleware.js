@@ -22,7 +22,7 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
@@ -62,7 +62,7 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
@@ -107,18 +107,16 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
               query: `
-              {
                 mutation validateApplication ($application_id: ID!, $user_id: ID!) {
                   validateApplication (application_id: $application_id, user_id: $user_id) {
                     id
                   }
-                }
-              }`,
+                }`,
               variables: {
                 application_id: action.payload.applicationId,
                 user_id: action.payload.userId,
@@ -146,18 +144,16 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
               query: `
-              {
                 mutation declineApplication ($application_id: ID!, $user_id: ID!) {
                   declineApplication (application_id: $application_id, user_id: $user_id) {
                     id
                   }
-                }
-              }`,
+                }`,
               variables: {
                 application_id: action.payload.applicationId,
                 user_id: action.payload.userId,
@@ -185,31 +181,29 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
               query: `
-              {
                 mutation validateArticle ($id: ID!) {
                   validateArticle (id: $id) {
                     id
                   }
-                }
-              }`,
-              variable: {
+                }`,
+              variables: {
                 id: action.payload.articleId,
               },
             },
           });
           if (response.data.errors) {
             store.dispatch(validateArticleError(response.data.errors[0].message));
-            store.dispatch(getPendingArticles());
-            store.dispatch(getCategories());
             toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(validateArticleSuccess());
+            store.dispatch(getPendingArticles());
+            store.dispatch(getCategories());
             toast.success('L\'article a bien été validé');
           }
         }
@@ -224,30 +218,28 @@ const adminMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
               query: `
-              {
                 mutation declineArticle ($id: ID!) {
                   declineArticle (id: $id) {
                     id
                   }
-                }
-              }`,
-              variable: {
+                }`,
+              variables: {
                 id: action.payload.articleId,
               },
             },
           });
           if (response.data.errors) {
             store.dispatch(declineArticleError(response.data.errors[0].message));
-            store.dispatch(getPendingArticles());
             toast.error(response.data.errors[0].message);
           }
           else {
             store.dispatch(declineArticleSuccess());
+            store.dispatch(getPendingArticles());
             toast.success('L\'article a bien été refusé');
           }
         }
