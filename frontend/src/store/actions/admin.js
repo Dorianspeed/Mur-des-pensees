@@ -32,7 +32,7 @@ export const getPendingApplicationsSuccess = (payload) => ({
 });
 
 export const getPendingApplicationsError = (payload) => ({
-  type: GET_PENDING_ARTICLES_ERROR,
+  type: GET_PENDING_APPLICATIONS_ERROR,
   payload,
 });
 
