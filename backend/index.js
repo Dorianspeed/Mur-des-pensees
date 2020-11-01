@@ -46,7 +46,7 @@ app.use((request, _, next) => {
             case 'editor':
                 request.database = clientEditor;
                 break;
-            case 'chiefEditor':
+            case 'chief_editor':
                 request.database = clientChiefEditor;
                 break;
         }
