@@ -10,7 +10,9 @@ import {
   DECLINE_APPLICATION, declineApplicationSuccess, declineApplicationError,
   VALIDATE_ARTICLE, validateArticleSuccess, validateArticleError,
   DECLINE_ARTICLE, declineArticleSuccess, declineArticleError,
+  getPendingArticles, getPendingApplications,
 } from '../actions/admin';
+import { getCategories } from '../actions';
 
 // == Middleware
 const adminMiddleware = (store) => (next) => (action) => {
@@ -129,6 +131,7 @@ const adminMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(validateApplicationSuccess());
+            store.dispatch(getPendingApplications());
             toast.success('La candidature a bien été validée');
           }
         }
@@ -167,6 +170,7 @@ const adminMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(declineApplicationSuccess());
+            store.dispatch(getPendingApplications());
             toast.success('La candidature a bien été refusée');
           }
         }
@@ -200,6 +204,8 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(validateArticleError(response.data.errors[0].message));
+            store.dispatch(getPendingArticles());
+            store.dispatch(getCategories());
             toast.error(response.data.errors[0].message);
           }
           else {
@@ -237,6 +243,7 @@ const adminMiddleware = (store) => (next) => (action) => {
           });
           if (response.data.errors) {
             store.dispatch(declineArticleError(response.data.errors[0].message));
+            store.dispatch(getPendingArticles());
             toast.error(response.data.errors[0].message);
           }
           else {
