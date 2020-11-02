@@ -1,5 +1,5 @@
 // == Import : local
-import { GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR } from '../actions';
+import { GET_ARTICLES, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR } from '../actions';
 
 const initialState = {
   articles: [],
@@ -8,6 +8,10 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_ARTICLES:
+      return {
+        ...state,
+      };
     case GET_ARTICLES_SUCCESS:
       return {
         ...state,

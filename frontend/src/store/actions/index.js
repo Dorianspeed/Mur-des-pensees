@@ -6,9 +6,8 @@ export const GET_ARTICLES = 'GET_ARTICLES';
 export const GET_ARTICLES_SUCCESS = 'GET_ARTICLES_SUCCESS';
 export const GET_ARTICLES_ERROR = 'GET_ARTICLES_ERROR';
 
-export const getCategories = (payload) => ({
+export const getCategories = () => ({
   type: GET_CATEGORIES,
-  payload,
 });
 
 export const getCategoriesSuccess = (payload) => ({
@@ -19,6 +18,10 @@ export const getCategoriesSuccess = (payload) => ({
 export const getCategoriesError = (payload) => ({
   type: GET_CATEGORIES_ERROR,
   payload,
+});
+
+export const getArticles = () => ({
+  type: GET_ARTICLES,
 });
 
 export const getArticlesSuccess = (payload) => ({

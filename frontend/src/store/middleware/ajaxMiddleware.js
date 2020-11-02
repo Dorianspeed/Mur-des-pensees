@@ -1,10 +1,10 @@
-/* eslint-disable no-restricted-syntax */
 // == Import : npm
 import axios from 'axios';
 
 // == Import : local
 import {
-  GET_CATEGORIES, getCategoriesSuccess, getCategoriesError, getArticlesSuccess, getArticlesError,
+  GET_CATEGORIES, getCategoriesSuccess, getCategoriesError,
+  GET_ARTICLES, getArticlesSuccess, getArticlesError,
 } from '../actions';
 
 // == Middleware
@@ -24,43 +24,61 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                   id
                   name
                   image_url
-                  articles {
-                    id
-                    title
-                    content
-                    excerpt
-                    image_url
-                    created_at
-                    category {
-                      id
-                      name
-                    }
-                    user {
-                      id
-                      firstname
-                      lastname
-                      avatar_url
-                    }
-                  }
                 }
               }`,
             },
           });
           if (response.data.errors) {
             store.dispatch(getCategoriesError(response.data.errors[0].message));
-            store.dispatch(getArticlesError(response.data.errors[0].message));
           }
           else {
             store.dispatch(getCategoriesSuccess(response.data.data.getCategories));
-            const articles = [];
+          }
+        }
 
-            for (const category of response.data.data.getCategories) {
-              for (const article of category.articles) {
-                articles.push(article);
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
+    case GET_ARTICLES:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://3.89.123.41/graphQL',
+            method: 'post',
+            data: {
+              query: `
+              {
+                getArticles {
+                  id
+                  title
+                  content
+                  excerpt
+                  image_url
+                  created_at
+                  category {
+                    id
+                    name
+                  }
+                  user {
+                    id
+                    firstname
+                    lastname
+                    avatar_url
+                  }
+                }
               }
-            }
+              `,
+            },
+          });
 
-            store.dispatch(getArticlesSuccess(articles));
+          if (response.data.errors) {
+            store.dispatch(getArticlesError(response.data.errors[0].message));
+          }
+          else {
+            store.dispatch(getArticlesSuccess(response.data.data.getArticles));
           }
         }
 
