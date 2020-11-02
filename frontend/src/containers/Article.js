@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Article from '../components/Article';
-import { getArticleById } from '../store/reducers/articles';
+
+const getArticleById = (state, id) => {
+  const article = state.articles.articles.find((element) => element.id === id);
+
+  return article;
+};
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
