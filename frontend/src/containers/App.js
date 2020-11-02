@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import App from '../components/App';
-import { getCategories } from '../store/actions';
+import { getCategories, getArticles } from '../store/actions';
 import { logoutSubmit } from '../store/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -14,6 +14,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getCategories: () => {
     dispatch(getCategories());
+  },
+
+  getArticles: () => {
+    dispatch(getArticles());
   },
 
   handleLogout: () => {

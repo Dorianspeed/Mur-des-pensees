@@ -28,10 +28,11 @@ import SignUp from '../../containers/SignUp';
 
 // == Composant
 const App = ({
-  getCategories, isLogged, handleLogout, role,
+  getCategories, getArticles, isLogged, handleLogout, role,
 }) => {
   useEffect(() => {
     getCategories();
+    getArticles();
   }, []);
 
   return (
@@ -78,6 +79,7 @@ const App = ({
 
 App.propTypes = {
   getCategories: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
