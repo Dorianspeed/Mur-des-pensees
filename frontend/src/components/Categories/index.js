@@ -10,7 +10,7 @@ import {
 const Categories = ({ getCategories, categories }) => {
   useEffect(() => {
     getCategories();
-  });
+  }, []);
 
   return (
     <>
