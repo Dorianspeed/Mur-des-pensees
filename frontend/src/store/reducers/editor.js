@@ -3,6 +3,10 @@ import {
   ARTICLE_EDITOR_SUBMIT, ARTICLE_EDITOR_SUBMIT_SUCCESS,
   ARTICLE_EDITOR_SUBMIT_ERROR, ARTICLE_EDITOR_INPUT_CHANGE,
   CLEAR_ARTICLE_EDITOR_SUBMIT_SUCCESS,
+  APPLICATION_EDITOR_SUBMIT, APPLICATION_EDITOR_SUBMIT_SUCCESS,
+  APPLICATION_EDITOR_SUBMIT_ERROR,
+  APPLICATION_EDITOR_INPUT_CHANGE,
+  CLEAR_APPLICATION_EDITOR_SUBMIT_SUCCESS,
 } from '../actions/editor';
 
 const initialState = {
@@ -10,8 +14,10 @@ const initialState = {
   content: '',
   category_id: 0,
   image_url: '',
+  applicationContent: '',
   error: '',
   articleEditorSubmitSuccess: false,
+  applicationEditorSubmitSuccess: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -44,6 +50,32 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         articleEditorSubmitSuccess: false,
+      };
+    case APPLICATION_EDITOR_SUBMIT:
+      return {
+        ...state,
+      };
+    case APPLICATION_EDITOR_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        applicationContent: '',
+        error: '',
+        applicationEditorSubmitSuccess: true,
+      };
+    case APPLICATION_EDITOR_SUBMIT_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case APPLICATION_EDITOR_INPUT_CHANGE:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case CLEAR_APPLICATION_EDITOR_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        applicationEditorSubmitSuccess: false,
       };
     default:
       return state;

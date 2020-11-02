@@ -24,6 +24,11 @@ const Footer = ({ isLogged, handleLogout, role }) => (
               <List.Item as={Link} to="/categories">
                 Catégories
               </List.Item>
+              {role === 'reader' && (
+                <List.Item as={Link} to="/applicationeditor">
+                  Postuler au rôle de Rédacteur
+                </List.Item>
+              )}
               {role.includes('editor') && (
                 <List.Item as={Link} to="/articleeditor">
                   Rédiger un article

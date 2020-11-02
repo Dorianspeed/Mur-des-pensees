@@ -42,6 +42,12 @@ const MobileContainer = ({
             <Icon name="tag" />
             Catégories
           </Menu.Item>
+          {role === 'reader' && (
+            <Menu.Item as={NavLink} to="/applicationeditor">
+              <Icon name="pencil" />
+              Postuler au rôle de Rédacteur
+            </Menu.Item>
+          )}
           {role.includes('editor') && (
             <Menu.Item as={NavLink} to="/articleeditor">
               <Icon name="pencil" />

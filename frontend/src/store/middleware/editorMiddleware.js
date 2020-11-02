@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 // == Import : local
 import {
   ARTICLE_EDITOR_SUBMIT, articleEditorSubmitSuccess, articleEditorSubmitError,
+  APPLICATION_EDITOR_SUBMIT, applicationEditorSubmitSuccess, applicationEditorSubmitError,
 } from '../actions/editor';
 import { getCategories } from '../actions';
 
@@ -16,7 +17,7 @@ const editorMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://3.89.123.41/graphQL',
+            url: 'http://localhost:3000/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
@@ -49,6 +50,42 @@ const editorMiddleware = (store) => (next) => (action) => {
             store.dispatch(articleEditorSubmitSuccess(response.data.data.insertArticle));
             store.dispatch(getCategories());
             toast.success('Merci pour votre article');
+          }
+        }
+
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
+    case APPLICATION_EDITOR_SUBMIT:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://localhost:3000/graphQL',
+            method: 'post',
+            withCredentials: true,
+            data: {
+              query: `
+                mutation insertApplication ($content: String!) {
+                  insertApplication (content: $content) {
+                    id
+                  }
+                }`,
+              variables: {
+                content: store.getState().editor.applicationContent,
+              },
+            },
+          });
+
+          if (response.data.errors) {
+            store.dispatch(applicationEditorSubmitError(response.data.errors[0].message));
+            toast.error(response.data.errors[0].message);
+          }
+          else {
+            store.dispatch(applicationEditorSubmitSuccess(response.data.data.insertApplication));
+            toast.success('Merci pour votre candidature');
           }
         }
 

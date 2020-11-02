@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'semantic-ui-css/semantic.min.css';
 import About from '../About';
 import Admin from '../../containers/Admin';
+import ApplicationEditor from '../../containers/ApplicationEditor';
 import Article from '../../containers/Article';
 import ArticleEditor from '../../containers/ArticleEditor';
 import Articles from '../../containers/Articles';
@@ -48,6 +49,7 @@ const App = ({
             <Switch>
               <Route exact path="/about" component={About} />
               {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
+              <Route exact path="/applicationeditor" component={ApplicationEditor} />
               <Route exact path="/article/:id" component={Article} />
               {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
               <Route exact path="/articles" component={Articles} />
