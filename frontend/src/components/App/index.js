@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
@@ -28,58 +28,49 @@ import SignUp from '../../containers/SignUp';
 
 // == Composant
 const App = ({
-  getCategories, getArticles, isLogged, handleLogout, role,
-}) => {
-  useEffect(() => {
-    getCategories();
-    getArticles();
-  }, []);
-
-  return (
-    <>
-      <ResponsiveContainer isLogged={isLogged} handleLogout={handleLogout} role={role}>
-        <div style={{ display: 'flex', minHeight: '94vh', flexDirection: 'column' }}>
-          <ToastContainer
-            transition={Zoom}
-            autoClose={3000}
-            closeOnClick
-            draggable
-            pauseOnHover={false}
-          />
-          <Container style={{ flex: 1 }}>
-            <Switch>
-              <Route exact path="/about" component={About} />
-              {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
-              <Route exact path="/applicationeditor" component={ApplicationEditor} />
-              <Route exact path="/article/:id" component={Article} />
-              {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
-              <Route exact path="/articles" component={Articles} />
-              <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
-              <Route exact path="/categories" component={Categories} />
-              <Route exact path="/" component={Home} />
-              <Route exact path="/legalmentions" component={LegalMentions} />
-              <Route exact path="/login">
-                {isLogged ? <Redirect to="/" /> : <Login />}
-              </Route>
-              {isLogged && (<Route exact path="/myprofile" component={MyProfile} />)}
-              <Route exact path="/signup">
-                {isLogged ? <Redirect to="/" /> : <SignUp />}
-              </Route>
-              <Route>
-                <NotFound />
-              </Route>
-            </Switch>
-          </Container>
-          <Footer isLogged={isLogged} handleLogout={handleLogout} role={role} />
-        </div>
-      </ResponsiveContainer>
-    </>
-  );
-};
+  isLogged, handleLogout, role,
+}) => (
+  <>
+    <ResponsiveContainer isLogged={isLogged} handleLogout={handleLogout} role={role}>
+      <div style={{ display: 'flex', minHeight: '94vh', flexDirection: 'column' }}>
+        <ToastContainer
+          transition={Zoom}
+          autoClose={3000}
+          closeOnClick
+          draggable
+          pauseOnHover={false}
+        />
+        <Container style={{ flex: 1 }}>
+          <Switch>
+            <Route exact path="/about" component={About} />
+            {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
+            <Route exact path="/applicationeditor" component={ApplicationEditor} />
+            <Route exact path="/article/:id" component={Article} />
+            {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
+            <Route exact path="/articles" component={Articles} />
+            <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
+            <Route exact path="/categories" component={Categories} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/legalmentions" component={LegalMentions} />
+            <Route exact path="/login">
+              {isLogged ? <Redirect to="/" /> : <Login />}
+            </Route>
+            {isLogged && (<Route exact path="/myprofile" component={MyProfile} />)}
+            <Route exact path="/signup">
+              {isLogged ? <Redirect to="/" /> : <SignUp />}
+            </Route>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </Container>
+        <Footer isLogged={isLogged} handleLogout={handleLogout} role={role} />
+      </div>
+    </ResponsiveContainer>
+  </>
+);
 
 App.propTypes = {
-  getCategories: PropTypes.func.isRequired,
-  getArticles: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,

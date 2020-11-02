@@ -11,8 +11,11 @@ import NoArticleFound from './noArticleFound';
 import { formattingDate, parsingData } from '../../utils';
 
 // == Composant
-const Articles = ({ articles, clearArticleEditorSubmit, clearApplicationEditorSubmitSuccess }) => {
+const Articles = ({
+  articles, clearArticleEditorSubmit, clearApplicationEditorSubmitSuccess, getArticles,
+}) => {
   useEffect(() => {
+    getArticles();
     clearArticleEditorSubmit();
     clearApplicationEditorSubmitSuccess();
   }, []);
@@ -66,6 +69,7 @@ Articles.propTypes = {
   articles: PropTypes.array.isRequired,
   clearArticleEditorSubmit: PropTypes.func.isRequired,
   clearApplicationEditorSubmitSuccess: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
 };
 
 // == Export

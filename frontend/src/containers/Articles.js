@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import Articles from '../components/Articles';
+import { getArticles } from '../store/actions';
 import { clearArticleEditorSubmitSuccess, clearApplicationEditorSubmitSuccess } from '../store/actions/editor';
 
 const mapStateToProps = (state) => ({
@@ -10,6 +11,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getArticles: () => {
+    dispatch(getArticles());
+  },
+
   clearArticleEditorSubmit: () => {
     dispatch(clearArticleEditorSubmitSuccess());
   },
