@@ -8,6 +8,7 @@ import {
   signUpSubmitError, LOGOUT_SUBMIT, logoutSubmitSuccess, logoutSubmitError,
   UPDATE_USER_SUBMIT, updateUserSubmitSuccess, updateUserSubmitError,
 } from '../actions/user';
+import { getArticles } from '../actions';
 
 // == Middleware
 const userMiddleware = (store) => (next) => (action) => {
@@ -162,6 +163,7 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(updateUserSubmitSuccess(response.data.data.updateUser));
+            store.dispatch(getArticles());
             toast.success('Modifications enregistrées');
           }
         }

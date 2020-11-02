@@ -2,9 +2,8 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Articles from '../components/Articles';
+import ArticlesByCategory from '../components/ArticlesByCategory';
 import { getArticlesByCategoryId } from '../store/reducers/categories';
-import { clearArticleEditorSubmitSuccess } from '../store/actions/editor';
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
@@ -13,11 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  clearArticleEditorSubmit: () => {
-    dispatch(clearArticleEditorSubmitSuccess());
-  },
-});
+const mapDispatchToProps = null;
 
 // == Export
-export default connect(mapStateToProps, mapDispatchToProps)(Articles);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesByCategory);

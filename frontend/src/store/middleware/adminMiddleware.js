@@ -12,6 +12,7 @@ import {
   DECLINE_ARTICLE, declineArticleSuccess, declineArticleError,
   getPendingArticles, getPendingApplications,
 } from '../actions/admin';
+import { getArticles } from '../actions';
 
 // == Middleware
 const adminMiddleware = (store) => (next) => (action) => {
@@ -202,6 +203,7 @@ const adminMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(validateArticleSuccess());
             store.dispatch(getPendingArticles());
+            store.dispatch(getArticles());
             toast.success('L\'article a bien été validé');
           }
         }
