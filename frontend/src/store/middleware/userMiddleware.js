@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // == Import : local
-import { getCategories } from '../actions';
 import {
   LOGIN_SUBMIT, loginSubmitSuccess, loginSubmitError, SIGN_UP_SUBMIT, signUpSubmitSuccess,
   signUpSubmitError, LOGOUT_SUBMIT, logoutSubmitSuccess, logoutSubmitError,
@@ -163,7 +162,6 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(updateUserSubmitSuccess(response.data.data.updateUser));
-            store.dispatch(getCategories());
             toast.success('Modifications enregistrées');
           }
         }

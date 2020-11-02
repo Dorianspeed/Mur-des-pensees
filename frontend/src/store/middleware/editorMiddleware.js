@@ -7,7 +7,6 @@ import {
   ARTICLE_EDITOR_SUBMIT, articleEditorSubmitSuccess, articleEditorSubmitError,
   APPLICATION_EDITOR_SUBMIT, applicationEditorSubmitSuccess, applicationEditorSubmitError,
 } from '../actions/editor';
-import { getCategories } from '../actions';
 
 // == Middleware
 const editorMiddleware = (store) => (next) => (action) => {
@@ -48,8 +47,7 @@ const editorMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(articleEditorSubmitSuccess(response.data.data.insertArticle));
-            store.dispatch(getCategories());
-            toast.success('Merci pour votre article');
+            toast.success('Merci pour votre article, il sera traité dans les plus brefs délais');
           }
         }
 
@@ -85,7 +83,7 @@ const editorMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(applicationEditorSubmitSuccess(response.data.data.insertApplication));
-            toast.success('Merci pour votre candidature');
+            toast.success('Merci pour votre candidature, elle sera traitée dans les plus brefs délais');
           }
         }
 
