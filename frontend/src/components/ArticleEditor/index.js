@@ -1,18 +1,23 @@
 // == Import : npm
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CKEditor from 'ckeditor4-react';
 import axios from 'axios';
 import {
-  Segment, Grid, Form, Label, Input, Select, Button,
+  Segment, Grid, Form, Label, Input, Select, Button, Dimmer, Loader,
 } from 'semantic-ui-react';
 
 // == Composant
 const ArticleEditor = ({
-  categories, title, content, categoryId, onInputChange, onFormSubmit, articleEditorSubmitSuccess,
+  categories, title, content, categoryId, onInputChange, onFormSubmit,
+  getCategories, loading, articleEditorSubmitSuccess,
 }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const options = categories.map((category) => {
     const container = {};
@@ -37,7 +42,7 @@ const ArticleEditor = ({
     data.append('file', file);
 
     return axios({
-      url: 'http://3.89.123.41/upload',
+      url: 'http://localhost:3000/upload',
       method: 'post',
       data,
       headers: {
@@ -64,48 +69,55 @@ const ArticleEditor = ({
   return (
     <>
       {articleEditorSubmitSuccess && <Redirect to="/articles" />}
-      <Segment vertical style={{ padding: '4em 0em' }}>
-        <Grid container stackable verticalAlign="middle" textAlign="center">
-          <Form onSubmit={handleFormSubmit} style={{ width: '95%' }}>
-            <Segment basic>
-              <Form.Field>
-                <Label size="large" color="black" pointing="below">Titre de l'article</Label>
-                <Input placeholder="Titre de l'article" name="title" value={title} className="input-title" onChange={handleInputChange} required />
-              </Form.Field>
-            </Segment>
-            <Segment basic>
-              <Form.Field>
-                <Label size="large" color="black" pointing="below">Choix de la catégorie</Label>
-                <Select placeholder="Choix de la catégorie" search selection options={options} name="category_id" value={categoryId} onChange={handleInputChange} required />
-              </Form.Field>
-            </Segment>
-            <Segment basic>
-              <Form.Field>
-                <Label size="large" color="black" pointing="below">Choix d'une image d'en-tête</Label>
-                <Input type="file" name="image_url" onChange={handleFileUnputChange} accept="image/png, image/jpeg, image/jpg" />
-              </Form.Field>
-            </Segment>
-            <Segment basic>
-              <Label size="large" color="black" pointing="below">Rédiger votre article</Label>
-              <CKEditor
-                data={content}
-                config={{
-                  language: 'fr',
-                  toolbar: [['Format'], ['Bold'], ['Italic'], ['Link'], ['Blockquote'], ['BulletedList'], ['NumberedList'], ['Blocks'], ['Indent'], ['Outdent'], ['Undo'], ['Redo']],
-                  height: 500,
-                }}
-                onChange={(event) => {
-                  const data = event.editor.getData();
-                  handleInputChange(event, { name: 'content', value: data });
-                }}
-              />
-            </Segment>
-            <Segment basic>
-              <Button type="submit" content="Valider votre article" color="green" />
-            </Segment>
-          </Form>
-        </Grid>
-      </Segment>
+      {loading && (
+        <Dimmer active inverted>
+          <Loader size="massive">Soumission de l'article en cours</Loader>
+        </Dimmer>
+      )}
+      {!loading && (
+        <Segment vertical style={{ padding: '4em 0em' }}>
+          <Grid container stackable verticalAlign="middle" textAlign="center">
+            <Form onSubmit={handleFormSubmit} style={{ width: '95%' }}>
+              <Segment basic>
+                <Form.Field>
+                  <Label size="large" color="black" pointing="below">Titre de l'article</Label>
+                  <Input placeholder="Titre de l'article" name="title" value={title} className="input-title" onChange={handleInputChange} required />
+                </Form.Field>
+              </Segment>
+              <Segment basic>
+                <Form.Field>
+                  <Label size="large" color="black" pointing="below">Choix de la catégorie</Label>
+                  <Select placeholder="Choix de la catégorie" search selection options={options} name="category_id" value={categoryId} onChange={handleInputChange} required />
+                </Form.Field>
+              </Segment>
+              <Segment basic>
+                <Form.Field>
+                  <Label size="large" color="black" pointing="below">Choix d'une image d'en-tête</Label>
+                  <Input type="file" name="image_url" onChange={handleFileUnputChange} accept="image/png, image/jpeg, image/jpg" />
+                </Form.Field>
+              </Segment>
+              <Segment basic>
+                <Label size="large" color="black" pointing="below">Rédiger votre article</Label>
+                <CKEditor
+                  data={content}
+                  config={{
+                    language: 'fr',
+                    toolbar: [['Format'], ['Bold'], ['Italic'], ['Link'], ['Blockquote'], ['BulletedList'], ['NumberedList'], ['Blocks'], ['Indent'], ['Outdent'], ['Undo'], ['Redo']],
+                    height: 500,
+                  }}
+                  onChange={(event) => {
+                    const data = event.editor.getData();
+                    handleInputChange(event, { name: 'content', value: data });
+                  }}
+                />
+              </Segment>
+              <Segment basic>
+                <Button type="submit" content="Valider votre article" color="green" />
+              </Segment>
+            </Form>
+          </Grid>
+        </Segment>
+      )}
     </>
   );
 };
@@ -117,8 +129,9 @@ ArticleEditor.propTypes = {
   content: PropTypes.string.isRequired,
   categoryId: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  articleEditorSubmitSuccess: PropTypes.bool,
+  getCategories: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  articleEditorSubmitSuccess: PropTypes.bool.isRequired,
 };
 
 export default ArticleEditor;
