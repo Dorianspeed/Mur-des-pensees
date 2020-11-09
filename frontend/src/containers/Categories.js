@@ -7,6 +7,7 @@ import { getCategories } from '../store/actions';
 
 const mapStateToProps = (state) => ({
   categories: state.categories.categories,
+  loading: state.categories.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
