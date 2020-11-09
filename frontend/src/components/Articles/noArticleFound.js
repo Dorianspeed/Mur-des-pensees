@@ -11,16 +11,19 @@ const NoArticleFound = () => (
     <Grid centered container verticalAlign="middle">
       <Grid.Row>
         <Header as="h2" icon>
-          <Icon loading size="massive" name="circle notch" />
-          Aucun article
+          <Icon loading size="massive" name="frown" />
+          Erreur 404
           <Header.Subheader>
-            Nos auteurs n'ont pas encore rédigé d'articles appartenant à cette catégorie.
+            Problème lors du chargement des ressources, veuillez réessayer plus tard.
           </Header.Subheader>
         </Header>
       </Grid.Row>
       <Grid.Row>
-        <Button as={Link} to="/categories" color="black" size="huge" style={{ marginTop: '4em' }}>
-          Retour aux catégories
+        <Button as={Link} to="/" color="black" animated="fade" size="huge" style={{ marginTop: '4em' }}>
+          <Button.Content visible>Retour à l'accueil</Button.Content>
+          <Button.Content hidden>
+            <Icon name="home" />
+          </Button.Content>
         </Button>
       </Grid.Row>
     </Grid>
