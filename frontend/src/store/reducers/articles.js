@@ -3,6 +3,7 @@ import { GET_ARTICLES, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR } from '../actio
 
 const initialState = {
   articles: [],
+  loading: true,
   error: '',
 };
 
@@ -16,11 +17,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         articles: [...action.payload],
+        loading: false,
         error: '',
       };
     case GET_ARTICLES_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     default:
