@@ -3,21 +3,18 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import ArticlesByCategory from '../components/ArticlesByCategory';
+import { getArticles } from '../store/actions';
 
-const getArticlesByCategoryId = (state, id) => {
-  const articles = state.articles.articles.filter((element) => element.category.id === id);
+const mapStateToProps = (state) => ({
+  articles: state.articles.articles,
+  loading: state.articles.loading,
+});
 
-  return articles;
-};
-
-const mapStateToProps = (state, ownProps) => {
-  const { id } = ownProps.match.params;
-  return {
-    articles: getArticlesByCategoryId(state, id),
-  };
-};
-
-const mapDispatchToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  getArticles: () => {
+    dispatch(getArticles());
+  },
+});
 
 // == Export
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlesByCategory);
