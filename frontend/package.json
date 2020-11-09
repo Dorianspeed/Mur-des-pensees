@@ -50,7 +50,7 @@
     "style-loader": "*",
     "terser-webpack-plugin": "*",
     "webpack": "*",
-    "webpack-cli": "*",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "*",
     "webpack-merge": "*"
   },
