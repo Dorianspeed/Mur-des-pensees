@@ -8,6 +8,7 @@ import { applicationEditorSubmit, applicationEditorInputChange } from '../store/
 const mapStateToProps = (state) => ({
   content: state.editor.applicationContent,
   applicationEditorSubmitSuccess: state.editor.applicationEditorSubmitSuccess,
+  loading: state.editor.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

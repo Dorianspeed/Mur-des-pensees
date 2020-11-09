@@ -58,17 +58,20 @@ export default (state = initialState, action = {}) => {
     case APPLICATION_EDITOR_SUBMIT:
       return {
         ...state,
+        loading: true,
       };
     case APPLICATION_EDITOR_SUBMIT_SUCCESS:
       return {
         ...state,
         applicationContent: '',
+        loading: false,
         error: '',
         applicationEditorSubmitSuccess: true,
       };
     case APPLICATION_EDITOR_SUBMIT_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     case APPLICATION_EDITOR_INPUT_CHANGE:
