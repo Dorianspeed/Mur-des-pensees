@@ -44,7 +44,7 @@ const App = ({
           <Switch>
             <Route exact path="/about" component={About} />
             {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
-            <Route exact path="/applicationeditor" component={ApplicationEditor} />
+            {role === 'reader' && (<Route exact path="/applicationeditor" component={ApplicationEditor} />)}
             <Route exact path="/article/:id" component={Article} />
             {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
             <Route exact path="/articles" component={Articles} />
