@@ -16,7 +16,7 @@ const editorMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
@@ -61,7 +61,7 @@ const editorMiddleware = (store) => (next) => (action) => {
       (async () => {
         try {
           const response = await axios({
-            url: 'http://localhost:3000/graphQL',
+            url: 'http://3.89.123.41/graphQL',
             method: 'post',
             withCredentials: true,
             data: {
