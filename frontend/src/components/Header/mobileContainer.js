@@ -43,13 +43,13 @@ const MobileContainer = ({
             Catégories
           </Menu.Item>
           {role === 'reader' && (
-            <Menu.Item as={NavLink} to="/applicationeditor">
+            <Menu.Item as={NavLink} to="/application-editor">
               <Icon name="pencil" />
               Postuler au rôle de Rédacteur
             </Menu.Item>
           )}
           {role.includes('editor') && (
-            <Menu.Item as={NavLink} to="/articleeditor">
+            <Menu.Item as={NavLink} to="/article-editor">
               <Icon name="pencil" />
               Rédiger un article
             </Menu.Item>
@@ -62,7 +62,7 @@ const MobileContainer = ({
           )}
           {isLogged && (
             <>
-              <Menu.Item as={NavLink} to="/myprofile">
+              <Menu.Item as={NavLink} to="/my-profile">
                 <Icon name="user circle" />
                 Mon profil
               </Menu.Item>
@@ -112,7 +112,7 @@ const MobileContainer = ({
                 )}
                 {isLogged && (
                   <Menu.Item position="right" fitted>
-                    <Button as={NavLink} to="/myprofile" inverted style={{ marginLeft: '-1em', paddingLeft: '1em', paddingRight: '1em' }}>
+                    <Button as={NavLink} to="/my-profile" inverted style={{ marginLeft: '-1em', paddingLeft: '1em', paddingRight: '1em' }}>
                       Mon profil
                     </Button>
                     <Button as={NavLink} to="/" inverted color="red" style={{ marginLeft: '0.5em', paddingLeft: '1em', paddingRight: '1em' }} onClick={handleLogout}>

@@ -52,13 +52,13 @@ const DesktopContainer = ({
                 Catégories
               </Menu.Item>
               {role === 'reader' && (
-                <Menu.Item as={NavLink} to="/applicationeditor">
+                <Menu.Item as={NavLink} to="/application-editor">
                   <Icon name="pencil" />
                   Postuler au rôle de Rédacteur
                 </Menu.Item>
               )}
               {role.includes('editor') && (
-                <Menu.Item as={NavLink} to="/articleeditor">
+                <Menu.Item as={NavLink} to="/article-editor">
                   <Icon name="pencil" />
                   Rédiger un article
                 </Menu.Item>
@@ -71,7 +71,7 @@ const DesktopContainer = ({
               )}
               {isLogged && (
                 <Menu.Item position="right">
-                  <Button as={NavLink} to="/myprofile" inverted={!fixed} color={fixed ? 'black' : null}>
+                  <Button as={NavLink} to="/my-profile" inverted={!fixed} color={fixed ? 'black' : null}>
                     Mon profil
                   </Button>
                   <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>

@@ -43,18 +43,18 @@ const App = ({
           <Switch>
             <Route exact path="/about" component={About} />
             {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
-            {role === 'reader' && (<Route exact path="/applicationeditor" component={ApplicationEditor} />)}
+            {role === 'reader' && (<Route exact path="/application-editor" component={ApplicationEditor} />)}
             <Route exact path="/article/:slug" component={Article} />
-            {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
+            {role.includes('editor') && (<Route exact path="/article-editor" component={ArticleEditor} />)}
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/category/:slug" component={ArticlesByCategory} />
             <Route exact path="/categories" component={Categories} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/legalmentions" component={LegalMentions} />
+            <Route exact path="/legal-mentions" component={LegalMentions} />
             <Route exact path="/login">
               {isLogged ? <Redirect to="/" /> : <Login />}
             </Route>
-            {isLogged && (<Route exact path="/myprofile" component={MyProfile} />)}
+            {isLogged && (<Route exact path="/my-profile" component={MyProfile} />)}
             <Route exact path="/signup">
               {isLogged ? <Redirect to="/" /> : <SignUp />}
             </Route>

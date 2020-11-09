@@ -25,12 +25,12 @@ const Footer = ({ isLogged, handleLogout, role }) => (
                 Catégories
               </List.Item>
               {role === 'reader' && (
-                <List.Item as={Link} to="/applicationeditor">
+                <List.Item as={Link} to="/application-editor">
                   Postuler au rôle de Rédacteur
                 </List.Item>
               )}
               {role.includes('editor') && (
-                <List.Item as={Link} to="/articleeditor">
+                <List.Item as={Link} to="/article-editor">
                   Rédiger un article
                 </List.Item>
               )}
@@ -41,7 +41,7 @@ const Footer = ({ isLogged, handleLogout, role }) => (
               )}
               {isLogged && (
                 <>
-                  <List.Item as={Link} to="/myprofile">
+                  <List.Item as={Link} to="/my-profile">
                     Mon profil
                   </List.Item>
                   <List.Item as={Link} to="/" onClick={handleLogout}>
@@ -64,7 +64,7 @@ const Footer = ({ isLogged, handleLogout, role }) => (
           <Grid.Column width={7}>
             <Header as="h4" inverted>A propos</Header>
             <List link inverted>
-              <List.Item as={Link} to="/legalmentions">
+              <List.Item as={Link} to="/legal-mentions">
                 Mentions légales
               </List.Item>
               <List.Item as={Link} to="/about">
