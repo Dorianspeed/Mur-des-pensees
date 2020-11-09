@@ -8,6 +8,7 @@ import {
 
 // == Import : local
 import NoCategoryFound from './noCategoryFound';
+import { stringSlugify } from '../../utils';
 
 // == Composant
 const Categories = ({ getCategories, categories, loading }) => {
@@ -28,7 +29,7 @@ const Categories = ({ getCategories, categories, loading }) => {
             <Card.Group centered stackable itemsPerRow={3}>
               {
                 !categories[0] ? <NoCategoryFound /> : categories.map((category) => (
-                  <Card as={Link} to={`/articlesbycategory/${category.id}`} key={category.id}>
+                  <Card as={Link} to={`/category/${stringSlugify(category.name)}`} key={category.id}>
                     <Image src={category.image_url} />
                     <Card.Content
                       textAlign="center"

@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader
+  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader,
 } from 'semantic-ui-react';
 
 // == Import : local
-import { formattingDate, parsingData } from '../../utils';
+import { formattingDate, parsingData, stringSlugify } from '../../utils';
 
 // == Composant
 const Article = ({ articles, getArticles, loading }) => {
@@ -15,9 +15,9 @@ const Article = ({ articles, getArticles, loading }) => {
     getArticles();
   }, []);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const article = articles.find((element) => element.id === id);
+  const article = articles.find((element) => stringSlugify(element.title) === slug);
 
   return (
     <>

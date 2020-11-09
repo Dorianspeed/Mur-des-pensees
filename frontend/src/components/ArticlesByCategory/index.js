@@ -8,7 +8,7 @@ import {
 
 // == Import : local
 import NoArticleFound from './noArticlesFound';
-import { formattingDate, parsingData } from '../../utils';
+import { formattingDate, parsingData, stringSlugify } from '../../utils';
 
 // == Composant
 const Articles = ({ articles, getArticles, loading }) => {
@@ -16,9 +16,10 @@ const Articles = ({ articles, getArticles, loading }) => {
     getArticles();
   }, []);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const articlesByCategory = articles.filter((element) => element.category.id === id);
+  // eslint-disable-next-line max-len
+  const articlesByCategory = articles.filter((element) => stringSlugify(element.category.name) === slug);
 
   return (
     <>
@@ -33,7 +34,7 @@ const Articles = ({ articles, getArticles, loading }) => {
             <Card.Group itemsPerRow={3} stackable>
               {
                 !articlesByCategory[0] ? <NoArticleFound /> : articlesByCategory.map((article) => (
-                  <Card as={Link} to={`/article/${article.id}`} key={article.id}>
+                  <Card as={Link} to={`/article/${stringSlugify(article.title)}`} key={article.id}>
                     <Image
                       src={article.image_url}
                       alt="logo-articles"

@@ -8,7 +8,7 @@ import {
 
 // == Import : local
 import NoArticleFound from './noArticleFound';
-import { formattingDate, parsingData } from '../../utils';
+import { formattingDate, parsingData, stringSlugify } from '../../utils';
 
 // == Composant
 const Articles = ({
@@ -33,7 +33,7 @@ const Articles = ({
             <Card.Group itemsPerRow={3} stackable>
               {
                 !articles[0] ? <NoArticleFound /> : articles.map((article) => (
-                  <Card as={Link} to={`/article/${article.id}`} key={article.id}>
+                  <Card as={Link} to={`/article/${stringSlugify(article.title)}`} key={article.id}>
                     <Image
                       src={article.image_url}
                       alt="logo-articles"

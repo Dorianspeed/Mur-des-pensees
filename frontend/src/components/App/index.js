@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 // == Import : npm
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -45,10 +44,10 @@ const App = ({
             <Route exact path="/about" component={About} />
             {role === 'chief_editor' && (<Route exact path="/admin" component={Admin} />)}
             {role === 'reader' && (<Route exact path="/applicationeditor" component={ApplicationEditor} />)}
-            <Route exact path="/article/:id" component={Article} />
+            <Route exact path="/article/:slug" component={Article} />
             {role.includes('editor') && (<Route exact path="/articleeditor" component={ArticleEditor} />)}
             <Route exact path="/articles" component={Articles} />
-            <Route exact path="/articlesbycategory/:id" component={ArticlesByCategory} />
+            <Route exact path="/category/:slug" component={ArticlesByCategory} />
             <Route exact path="/categories" component={Categories} />
             <Route exact path="/" component={Home} />
             <Route exact path="/legalmentions" component={LegalMentions} />
