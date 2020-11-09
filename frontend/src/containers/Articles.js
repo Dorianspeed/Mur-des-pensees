@@ -8,6 +8,7 @@ import { clearArticleEditorSubmitSuccess, clearApplicationEditorSubmitSuccess } 
 
 const mapStateToProps = (state) => ({
   articles: state.articles.articles,
+  loading: state.articles.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
