@@ -14,7 +14,7 @@ import adminMiddleware from './middleware/adminMiddleware';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'articles'],
+  whitelist: ['user'],
 };
 
 // == Enhancers
