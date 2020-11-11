@@ -85,7 +85,7 @@ module.exports = class UserDataSource extends DataSource {
             const users = await this.client.query('SELECT * FROM "get_users_bulk"($1)', [ids]);
 
             if (users.rowCount === 0) {
-                return new ApolloError('Aucun utilisateur trouvé', 'NO_USERS_FOUND');
+                return new ApolloError('Aucun utilisateur trouvé.', 'NO_USERS_FOUND');
             } else {
                 return users.rows;
             }

@@ -31,7 +31,7 @@ module.exports = class CategoryDataSource extends DataSource {
             const categories = await this.client.query('SELECT * FROM "get_categories"()');
 
             if (categories.rowCount === 0) {
-                return new ApolloError('Aucune catégorie trouvée', 'NO_CATEGORIES_FOUND');
+                return new ApolloError('Aucune catégorie trouvée.', 'NO_CATEGORIES_FOUND');
             } else {
                 return categories.rows;
             }  
@@ -48,7 +48,7 @@ module.exports = class CategoryDataSource extends DataSource {
             const categories = await this.client.query('SELECT * FROM "get_categories_bulk"($1)', [ids]);
 
             if (categories.rowCount === 0) {
-                return new ApolloError('Aucune catégorie trouvée', 'NO_CATEGORIES_FOUND');
+                return new ApolloError('Aucune catégorie trouvée.', 'NO_CATEGORIES_FOUND');
             } else {
                 return categories.rows;
             }

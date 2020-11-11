@@ -43,7 +43,7 @@ module.exports = class ArticleDataSource extends DataSource {
             const articles = await this.client.query('SELECT * FROM "get_articles"()');
 
             if (articles.rowCount === 0) {
-                return new ApolloError('Aucun article trouvé', 'NO_ARTICLES_FOUND');
+                return new ApolloError('Aucun article trouvé.', 'NO_ARTICLES_FOUND');
             } else {
                 return articles.rows;
             }
@@ -126,7 +126,7 @@ module.exports = class ArticleDataSource extends DataSource {
             const articles = await this.client.query('SELECT * FROM "get_articles_by_category_bulk"($1)', [ids]);
             
             if (articles.rowCount === 0) {
-                return new ApolloError('Aucun article trouvé', 'NO_ARTICLES_FOUND');
+                return new ApolloError('Aucun article trouvé.', 'NO_ARTICLES_FOUND');
             } else {
                 return articles.rows;
             }
@@ -154,7 +154,7 @@ module.exports = class ArticleDataSource extends DataSource {
             const articles = await this.client.query('SELECT * FROM "get_articles_by_user_bulk"($1)', [ids]);
             
             if (articles.rowCount === 0) {
-                return new ApolloError('Aucun article trouvé', 'NO_ARTICLES_FOUND');
+                return new ApolloError('Aucun article trouvé.', 'NO_ARTICLES_FOUND');
             } else {
                 return articles.rows;
             }

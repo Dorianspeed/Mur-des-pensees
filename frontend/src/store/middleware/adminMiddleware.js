@@ -212,7 +212,7 @@ const adminMiddleware = (store) => (next) => (action) => {
             store.dispatch(validateArticleSuccess());
             store.dispatch(getPendingArticles());
             store.dispatch(getArticles());
-            toast.success('Article validé');
+            toast.success('Article validé.');
           }
         }
 
@@ -250,7 +250,7 @@ const adminMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(declineArticleSuccess());
             store.dispatch(getPendingArticles());
-            toast.success('Article refusé');
+            toast.success('Article refusé.');
           }
         }
 

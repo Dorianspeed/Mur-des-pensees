@@ -158,12 +158,12 @@ const myResolverMap = {
                     const user = await dataSources.user.checkUser(args.email);
 
                     if (!user) {
-                        return new ApolloError('Email et / ou mot de passe incorrect(s)', 'INVALID_DATA_INPUT');
+                        return new ApolloError('Email et / ou mot de passe incorrect(s).', 'INVALID_DATA_INPUT');
                     } else {
                         const validPassword = await bcrypt.compare(args.password, user.password);
 
                         if (!validPassword) {
-                            return new ApolloError('Email et / ou mot de passe incorrect(s)', 'INVALID_DATA_INPUT');
+                            return new ApolloError('Email et / ou mot de passe incorrect(s).', 'INVALID_DATA_INPUT');
                         } else {
                             session.user = {
                                 id: user.id,
@@ -220,7 +220,7 @@ const myResolverMap = {
                     const application = await dataSources.application.checkApplication(args.user_id);
                         
                     if (application) {
-                        return new ApolloError('Une candidature existe déjà', 'PENDING/APPROVED_APPLICATION_ALREADY_EXISTS');
+                        return new ApolloError('Une candidature existe déjà.', 'PENDING/APPROVED_APPLICATION_ALREADY_EXISTS');
                     } else {
                         args.content = args.content.replace('<script', '&lt;script').replace('</script>', '&lt;/script&gt;');
                         return await dataSources.application.insertApplication(args);
@@ -244,14 +244,14 @@ const myResolverMap = {
                     const applications = await dataSources.application.getPendingApplications();
 
                     if (!applications) {
-                        return new ApolloError('Aucune candidature en attente de validation trouvé', 'PENDING_APPLICATION_NOT_FOUND');
+                        return new ApolloError('Aucune candidature en attente de validation trouvé.', 'PENDING_APPLICATION_NOT_FOUND');
                     } else {
                         const foundApplication = applications.find(application => application.user_id == args.user_id && application.id == args.application_id);
                         
                         if (foundApplication) {
                             return await dataSources.application.validateApplication(args);
                         } else {
-                            return new ApolloError('La candidature demandée n\'a pas été trouvée', 'REQUESTED_APPLICATION_NOT_FOUND');
+                            return new ApolloError('La candidature demandée n\'a pas été trouvée.', 'REQUESTED_APPLICATION_NOT_FOUND');
                         }
                     }
                 }
@@ -273,14 +273,14 @@ const myResolverMap = {
                     const applications = await dataSources.application.getPendingApplications();
 
                     if (!applications) {
-                        return new ApolloError('Aucune candidature en attente de validation trouvé', 'PENDING_APPLICATION_NOT_FOUND');
+                        return new ApolloError('Aucune candidature en attente de validation trouvé.', 'PENDING_APPLICATION_NOT_FOUND');
                     } else {
                         const foundApplication = applications.find(application => application.user_id == args.user_id && application.id == args.application_id);
                         
                         if (foundApplication) {
                             return await dataSources.application.declineApplication(args);
                         } else {
-                            return new ApolloError('La candidature demandée n\'a pas été trouvée', 'REQUESTED_APPLICATION_NOT_FOUND');
+                            return new ApolloError('La candidature demandée n\'a pas été trouvée.', 'REQUESTED_APPLICATION_NOT_FOUND');
                         }
                     }
                 }
@@ -323,14 +323,14 @@ const myResolverMap = {
                     const articles = await dataSources.article.getPendingArticles();
 
                     if (!articles) {
-                        return new ApolloError('Aucun article en attente de validation trouvé', 'PENDING_ARTICLE_NOT_FOUND');
+                        return new ApolloError('Aucun article en attente de validation trouvé.', 'PENDING_ARTICLE_NOT_FOUND');
                     } else {
                         const foundArticle = articles.find(article => article.id == args.id);
 
                         if (foundArticle) {
                             return await dataSources.article.validateArticle(args.id)
                         } else {
-                            return new ApolloError('L\'article demandé n\'a pas été trouvé', 'REQUESTED_ARTICLE_NOT_FOUND');
+                            return new ApolloError('L\'article demandé n\'a pas été trouvé.', 'REQUESTED_ARTICLE_NOT_FOUND');
                         }
                     }
                 }
@@ -352,14 +352,14 @@ const myResolverMap = {
                     const articles = await dataSources.article.getPendingArticles();
 
                     if (!articles) {
-                        return new ApolloError('Aucun article en attente de validation trouvé', 'PENDING_ARTICLE_NOT_FOUND');
+                        return new ApolloError('Aucun article en attente de validation trouvé.', 'PENDING_ARTICLE_NOT_FOUND');
                     } else {
                         const foundArticle = articles.find(article => article.id == args.id);
 
                         if (foundArticle) {
                             return await dataSources.article.declineArticle(args.id);
                         } else {
-                            return new ApolloError('L\'article demandé n\'a pas été trouvé', 'REQUESTED_ARTICLE_NOT_FOUND');
+                            return new ApolloError('L\'article demandé n\'a pas été trouvé.', 'REQUESTED_ARTICLE_NOT_FOUND');
                         }
                     }
                 }
@@ -381,7 +381,7 @@ const myResolverMap = {
                     const user = await dataSources.user.checkUser(args.email);
 
                     if (user) {
-                        return new ApolloError('Cet utilisateur existe déjà', 'USER_ALREADY_EXISTS');
+                        return new ApolloError('Cet utilisateur existe déjà.', 'USER_ALREADY_EXISTS');
                     } else {
                         const salt = await bcrypt.genSalt(10);
                         args.password = await bcrypt.hash(args.password, salt);
@@ -426,7 +426,7 @@ const myResolverMap = {
                     const like = await dataSources.like.checkLike(args);
 
                     if (like) {
-                        return new ApolloError('Mention "j\'aime" déjà existante', 'LIKE_ALREADY_EXISTS');
+                        return new ApolloError('Mention "j\'aime" déjà existante.', 'LIKE_ALREADY_EXISTS');
                     } else {
                         return await dataSources.like.insertLike(args);
                     }
@@ -450,7 +450,7 @@ const myResolverMap = {
                     const like = await dataSources.like.checkLike(args);
  
                     if (!like) {
-                        return new ApolloError('Mention "j\'aime" non trouvé', 'LIKE_NOT_FOUND');
+                        return new ApolloError('Mention "j\'aime" non trouvé.', 'LIKE_NOT_FOUND');
                     } else {
                         return await dataSources.like.deleteLike(args);
                     }
@@ -474,7 +474,7 @@ const myResolverMap = {
                     const favorite = await dataSources.favorite.checkFavorite(args);
 
                     if (favorite) {
-                        return new ApolloError('Ce favori existe déjà', 'FAVORITE_ALREADY_EXISTS');
+                        return new ApolloError('Ce favori existe déjà.', 'FAVORITE_ALREADY_EXISTS');
                     } else {
                         return await dataSources.favorite.insertFavorite(args);  
                     }
@@ -498,7 +498,7 @@ const myResolverMap = {
                     const favorite = await dataSources.favorite.checkFavorite(args);
 
                     if (!favorite) {
-                        return new ApolloError('Aucun favori trouvé', 'FAVORITE_NOT_FOUND');
+                        return new ApolloError('Aucun favori trouvé.', 'FAVORITE_NOT_FOUND');
                     } else {
                         return await dataSources.favorite.deleteFavorite(args);
                     }
