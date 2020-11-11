@@ -1,5 +1,6 @@
 // == Import : npm
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // == Import : local
 import {
@@ -29,7 +30,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             },
           });
           if (response.data.errors) {
-            store.dispatch(getCategoriesError(response.data.errors[0].message));
+            throw response.data.errors;
           }
           else {
             store.dispatch(getCategoriesSuccess(response.data.data.getCategories));
@@ -37,6 +38,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         }
 
         catch (error) {
+          store.dispatch(getCategoriesError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -75,7 +78,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           });
 
           if (response.data.errors) {
-            store.dispatch(getArticlesError(response.data.errors[0].message));
+            throw response.data.errors;
           }
           else {
             store.dispatch(getArticlesSuccess(response.data.data.getArticles));
@@ -83,6 +86,8 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         }
 
         catch (error) {
+          store.dispatch(getArticlesError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }

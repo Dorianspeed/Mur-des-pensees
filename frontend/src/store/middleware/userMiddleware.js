@@ -44,11 +44,13 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(loginSubmitSuccess(response.data.data.checkUser));
-            toast.success('Authentification réussie');
+            toast.success('Authentification réussie.');
           }
         }
 
         catch (error) {
+          store.dispatch(loginSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -88,11 +90,13 @@ const userMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(signUpSubmitSuccess(response.data.data.insertUser));
-            toast.success('Merci pour votre inscription');
+            toast.success('Merci pour votre inscription.');
           }
         }
 
         catch (error) {
+          store.dispatch(signUpSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -114,16 +118,17 @@ const userMiddleware = (store) => (next) => (action) => {
           });
 
           if (response.data.errors) {
-            store.dispatch(logoutSubmitError(response.data.errors[0].message));
-            toast.error('Une erreur est survenue');
+            throw response.data.errors;
           }
           else {
             store.dispatch(logoutSubmitSuccess(response.data.data));
-            toast.success('Déconnexion réussie');
+            toast.success('Déconnexion réussie.');
           }
         }
 
         catch (error) {
+          store.dispatch(logoutSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -169,6 +174,8 @@ const userMiddleware = (store) => (next) => (action) => {
         }
 
         catch (error) {
+          store.dispatch(updateUserSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }

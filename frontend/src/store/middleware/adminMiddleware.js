@@ -43,7 +43,7 @@ const adminMiddleware = (store) => (next) => (action) => {
             },
           });
           if (response.data.errors) {
-            store.dispatch(getPendingApplicationsError(response.data.errors[0].message));
+            throw response.data.errors;
           }
           else {
             store.dispatch(
@@ -53,6 +53,8 @@ const adminMiddleware = (store) => (next) => (action) => {
         }
 
         catch (error) {
+          store.dispatch(getPendingApplicationsError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -90,7 +92,7 @@ const adminMiddleware = (store) => (next) => (action) => {
             },
           });
           if (response.data.errors) {
-            store.dispatch(getPendingArticlesError(response.data.errors[0].message));
+            throw response.data.errors;
           }
           else {
             store.dispatch(getPendingArticlesSuccess(response.data.data.getPendingArticles));
@@ -98,6 +100,8 @@ const adminMiddleware = (store) => (next) => (action) => {
         }
 
         catch (error) {
+          store.dispatch(getPendingArticlesError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -130,11 +134,13 @@ const adminMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(validateApplicationSuccess());
             store.dispatch(getPendingApplications());
-            toast.success('La candidature a bien été validée');
+            toast.success('Candidature validée.');
           }
         }
 
         catch (error) {
+          store.dispatch(validateApplicationError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -167,11 +173,13 @@ const adminMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(declineApplicationSuccess());
             store.dispatch(getPendingApplications());
-            toast.success('La candidature a bien été refusée');
+            toast.success('Candidature refusée.');
           }
         }
 
         catch (error) {
+          store.dispatch(declineApplicationError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -204,11 +212,13 @@ const adminMiddleware = (store) => (next) => (action) => {
             store.dispatch(validateArticleSuccess());
             store.dispatch(getPendingArticles());
             store.dispatch(getArticles());
-            toast.success('L\'article a bien été validé');
+            toast.success('Article validé');
           }
         }
 
         catch (error) {
+          store.dispatch(validateApplicationError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -240,11 +250,13 @@ const adminMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(declineArticleSuccess());
             store.dispatch(getPendingArticles());
-            toast.success('L\'article a bien été refusé');
+            toast.success('Article refusé');
           }
         }
 
         catch (error) {
+          store.dispatch(declineArticleError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }

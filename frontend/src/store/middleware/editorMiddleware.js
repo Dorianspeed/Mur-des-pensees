@@ -47,11 +47,13 @@ const editorMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(articleEditorSubmitSuccess(response.data.data.insertArticle));
-            toast.success('Merci pour votre article, il sera traité dans les plus brefs délais');
+            toast.success('Merci pour votre article, il sera traité dans les plus brefs délais par nos Rédacteurs en Chef.');
           }
         }
 
         catch (error) {
+          store.dispatch(articleEditorSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -83,11 +85,13 @@ const editorMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(applicationEditorSubmitSuccess(response.data.data.insertApplication));
-            toast.success('Merci pour votre candidature, elle sera traitée dans les plus brefs délais');
+            toast.success('Merci pour votre candidature, elle sera traitée dans les plus brefs délais par nos Rédacteurs en Chef.');
           }
         }
 
         catch (error) {
+          store.dispatch(applicationEditorSubmitError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
