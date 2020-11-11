@@ -222,6 +222,7 @@ const myResolverMap = {
                     if (application) {
                         return new ApolloError('Une candidature existe déjà', 'PENDING/APPROVED_APPLICATION_ALREADY_EXISTS');
                     } else {
+                        args.content = args.content.replace('<script', '&lt;script').replace('</script>', '&lt;/script&gt;');
                         return await dataSources.application.insertApplication(args);
                     }
                 }
