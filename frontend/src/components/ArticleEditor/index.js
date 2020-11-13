@@ -42,7 +42,7 @@ const ArticleEditor = ({
     data.append('file', file);
 
     return axios({
-      url: 'http://localhost:3000/upload',
+      url: 'http://3.89.123.41/upload',
       method: 'post',
       data,
       headers: {
