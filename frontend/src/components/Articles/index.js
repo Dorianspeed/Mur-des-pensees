@@ -3,12 +3,14 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Card, Image, Segment, Button, Grid, Dimmer, Loader,
+  Card, Image, Segment, Button, Grid, Dimmer, Loader, Icon,
 } from 'semantic-ui-react';
 
 // == Import : local
 import NoArticleFound from './noArticleFound';
-import { formattingDate, parsingData, stringSlugify } from '../../utils';
+import {
+  formattingDate, parsingData, stringSlugify, stringPluralize,
+} from '../../utils';
 
 // == Composant
 const Articles = ({
@@ -46,6 +48,9 @@ const Articles = ({
                     />
                     <Card.Content>
                       <Card.Header>{article.title}</Card.Header>
+                      <Card.Meta>
+                        par {article.user.firstname} le {formattingDate(article.created_at)}
+                      </Card.Meta>
                       <Card.Description>{parsingData(article.excerpt)}</Card.Description>
                       <Grid>
                         <Grid.Column textAlign="center">
@@ -54,13 +59,8 @@ const Articles = ({
                       </Grid>
                     </Card.Content>
                     <Card.Content extra>
-                      <div>
-                        <Image src={article.user.avatar_url} alt="logo-avatar" avatar />
-                        <span>
-                          {/* eslint-disable-next-line max-len */}
-                          Rédigé par {article.user.firstname} le {formattingDate(article.created_at)}
-                        </span>
-                      </div>
+                      <Icon name="heart" />
+                      {article.likes === null ? '0' : article.likes} {stringPluralize('mention', article.likes)} "j'aime"
                     </Card.Content>
                   </Card>
                 ))

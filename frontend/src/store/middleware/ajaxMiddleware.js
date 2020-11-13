@@ -71,6 +71,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
                     lastname
                     avatar_url
                   }
+                  likes
                 }
               }
               `,
