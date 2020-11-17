@@ -60,7 +60,7 @@ const Articles = ({ articles, getArticles, loading }) => {
                       </Grid>
                     </Card.Content>
                     <Card.Content extra>
-                      <Icon name="heart" />
+                      <Icon name="heart" color="red" />
                       {article.likes === null ? '0' : article.likes} {stringPluralize('mention', article.likes)} "j'aime"
                     </Card.Content>
                   </Card>
