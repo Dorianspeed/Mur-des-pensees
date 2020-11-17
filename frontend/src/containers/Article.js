@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import Article from '../components/Article';
 import { getArticles } from '../store/actions';
 import { insertLike, deleteLike } from '../store/actions/userLikesArticle';
+import { getFavorites, insertFavorite, deleteFavorite } from '../store/actions/userAddsToFavorites';
 
 const mapStateToProps = (state) => ({
   articles: state.articles.articles,
   loading: state.articles.loading,
+  favorites: state.userAddsToFavorites.favorites,
   isLogged: state.user.isLogged,
 });
 
@@ -24,6 +26,19 @@ const mapDispatchToProps = (dispatch) => ({
   deleteLike: (id) => {
     dispatch(deleteLike(id));
   },
+
+  getFavorites: () => {
+    dispatch(getFavorites());
+  },
+
+  insertFavorite: (id) => {
+    dispatch(insertFavorite(id));
+  },
+
+  deleteFavorite: (id) => {
+    dispatch(deleteFavorite(id));
+  },
+
 });
 
 // == Export

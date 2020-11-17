@@ -8,6 +8,7 @@ import user from './user';
 import editor from './editor';
 import admin from './admin';
 import userLikesArticle from './userLikesArticle';
+import userAddsToFavorites from './userAddsToFavorites';
 
 export default combineReducers({
   categories,
@@ -16,4 +17,5 @@ export default combineReducers({
   editor,
   admin,
   userLikesArticle,
+  userAddsToFavorites,
 });

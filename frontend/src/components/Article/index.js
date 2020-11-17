@@ -13,15 +13,21 @@ import {
 
 // == Composant
 const Article = ({
-  articles, getArticles, loading, isLogged, insertLike, deleteLike,
+  articles, getArticles, loading, isLogged, insertLike,
+  deleteLike, favorites, getFavorites, insertFavorite, deleteFavorite,
 }) => {
   useEffect(() => {
     getArticles();
+    if (isLogged) {
+      getFavorites();
+    }
   }, []);
 
   const { slug } = useParams();
 
   const article = articles.find((element) => stringSlugify(element.title) === slug);
+
+  const favoriteArticle = favorites.find((element) => element.article_id === article.id);
 
   const handleDeleteLike = () => {
     deleteLike(article.id);
@@ -29,6 +35,14 @@ const Article = ({
 
   const handleInsertLike = () => {
     insertLike(article.id);
+  };
+
+  const handleDeleteFavorite = () => {
+    deleteFavorite(article.id);
+  };
+
+  const handleInsertFavorite = () => {
+    insertFavorite(article.id);
   };
 
   return (
@@ -51,10 +65,38 @@ const Article = ({
                 {parsingData(article.content)}
                 {isLogged && (
                   <Container textAlign="center">
-                    <Icon name="heart" color="grey" />
-                    {article.likes === null ? '0' : article.likes} {stringPluralize('mention', article.likes)} "j'aime"
-                    <Icon name="minus" color="red" link onClick={handleDeleteLike} />
-                    <Icon name="plus" color="green" link onClick={handleInsertLike} />
+                    <Segment.Group horizontal>
+                      <Segment style={{ fontSize: '1em' }}>
+                        <Button icon>
+                          <Icon name="minus" color="red" link onClick={handleDeleteLike} />
+                        </Button>
+                        <Button compact basic color="black">
+                          <Icon name="heart" color="red" />
+                          {article.likes === null ? '0' : article.likes} {stringPluralize('mention', article.likes)} "j'aime"
+                        </Button>
+                        <Button icon>
+                          <Icon name="plus" color="green" link onClick={handleInsertLike} />
+                        </Button>
+                      </Segment>
+                      <Segment style={{ fontSize: '1em' }}>
+                        {!favoriteArticle && (
+                          <>
+                            <Button basic color="black" onClick={handleInsertFavorite}>
+                              <Icon name="star" color="grey" />
+                              Ajouter aux favoris
+                            </Button>
+                          </>
+                        )}
+                        {favoriteArticle && (
+                          <>
+                            <Button basic color="black" onClick={handleDeleteFavorite}>
+                              <Icon name="star" color="yellow" />
+                              Supprimer des favoris
+                            </Button>
+                          </>
+                        )}
+                      </Segment>
+                    </Segment.Group>
                   </Container>
                 )}
                 <Header as="h5">
@@ -87,6 +129,10 @@ Article.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   insertLike: PropTypes.func.isRequired,
   deleteLike: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
+  getFavorites: PropTypes.func.isRequired,
+  insertFavorite: PropTypes.func.isRequired,
+  deleteFavorite: PropTypes.func.isRequired,
 };
 
 // == Export
