@@ -48,7 +48,16 @@ const schema = gql`
         created_at: Date!
         updated_at: Date
         articles: [Article]
-        favorites: [Article]
+    }
+
+    type Like {
+        user_id: ID!
+        article_id: ID!
+    }
+
+    type Favorite {
+        user_id: ID!
+        article_id: ID!
     }
 
     # On définit nos points d'entrée de l'API
@@ -57,6 +66,8 @@ const schema = gql`
         getArticles: [Article]
         getPendingArticles: [Article]
         getCategories: [Category]
+        getLikesByUser: [Like]
+        getFavoritesByUser: [Favorite]
         checkUser(email: EmailAddress!, password: String!): User
         logoutUser: Boolean!
     }
