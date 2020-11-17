@@ -3,5 +3,6 @@
 BEGIN;
 
 DROP FUNCTION "get_likes_by_article_bulk"(INT[]);
+DROP FUNCTION "get_likes_by_user"(INT);
 
 COMMIT;

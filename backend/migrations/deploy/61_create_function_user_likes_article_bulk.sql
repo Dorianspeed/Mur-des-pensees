@@ -14,4 +14,15 @@ $$
 $$
 LANGUAGE SQL STABLE STRICT;
 
+-- Fonction pour récupérer les articles likés par un utilisateur donné
+CREATE FUNCTION "get_likes_by_user"("i_user_id" INT)
+    RETURNS SETOF "app"."user_likes_article"
+AS
+$$
+    SELECT *
+    FROM "app"."user_likes_article"
+    WHERE "user_id" = "i_user_id";
+$$
+LANGUAGE SQL STABLE STRICT;
+
 COMMIT;
