@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 
 // == Import : local
 import {
+  GET_LIKES, getLikesSuccess, getLikesError,
   INSERT_LIKE, insertLikeSuccess, insertLikeError,
   DELETE_LIKE, deleteLikeSuccess, deleteLikeError,
+  getLikes,
 } from '../actions/userLikesArticle';
 import { getArticles } from '../actions';
 
@@ -13,6 +15,41 @@ import { getArticles } from '../actions';
 const userLikesArticleMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
+    case GET_LIKES:
+      (async () => {
+        try {
+          const response = await axios({
+            url: 'http://3.89.123.41/graphQL',
+            method: 'post',
+            withCredentials: 'true',
+            data: {
+              query: `
+                {
+                  getLikesByUser {
+                    user_id
+                    article_id
+                  }
+                }
+              `,
+            },
+          });
+
+          if (response.data.errors) {
+            throw response.data.errors;
+          }
+          else {
+            store.dispatch(getLikesSuccess(response.data.data.getLikesByUser));
+          }
+        }
+
+        catch (error) {
+          store.dispatch(getLikesError(error));
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard');
+          // eslint-disable-next-line no-console
+          console.trace(error);
+        }
+      })();
+      break;
     case INSERT_LIKE:
       (async () => {
         try {
@@ -38,6 +75,7 @@ const userLikesArticleMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(insertLikeSuccess());
             store.dispatch(getArticles());
+            store.dispatch(getLikes());
             toast.success('Mention "j\'aime" ajoutée.');
           }
         }
@@ -75,6 +113,7 @@ const userLikesArticleMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(deleteLikeSuccess());
             store.dispatch(getArticles());
+            store.dispatch(getLikes());
             toast.success('Mention "j\'aime" supprimée.');
           }
         }

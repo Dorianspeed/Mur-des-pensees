@@ -8,25 +8,30 @@ import {
 
 // == Import : local
 import {
-  formattingDate, parsingData, stringSlugify, stringPluralize,
+  formattingDate, parsingData, stringSlugify,
 } from '../../utils';
 
 // == Composant
 const Article = ({
-  articles, getArticles, loading, isLogged, insertLike,
+  articles, getArticles, loading, isLogged, likes, getLikes, insertLike,
   deleteLike, favorites, getFavorites, insertFavorite, deleteFavorite,
 }) => {
   useEffect(() => {
     getArticles();
     if (isLogged) {
+      getLikes();
       getFavorites();
     }
   }, []);
 
+  // Récupération de l'article demandé pour lecture grâce à son slug
   const { slug } = useParams();
-
   const article = articles.find((element) => stringSlugify(element.title) === slug);
 
+  // Vérification que l'article a une mention "j'aime" ou non
+  const likedArticle = likes.find((element) => element.article_id === article.id);
+
+  // Vérification que l'article est déjà en favoris ou non
   const favoriteArticle = favorites.find((element) => element.article_id === article.id);
 
   const handleDeleteLike = () => {
@@ -67,21 +72,37 @@ const Article = ({
                   <Container textAlign="center">
                     <Segment.Group horizontal>
                       <Segment style={{ fontSize: '1em' }}>
-                        <Button icon>
-                          <Icon name="minus" color="red" link onClick={handleDeleteLike} />
-                        </Button>
-                        <Button compact basic color="black">
-                          <Icon name="heart" color="red" />
-                          {article.likes === null ? '0' : article.likes} {stringPluralize('mention', article.likes)} "j'aime"
-                        </Button>
-                        <Button icon>
-                          <Icon name="plus" color="green" link onClick={handleInsertLike} />
-                        </Button>
+                        {!likedArticle && (
+                          <>
+                            <Button as="div" labelPosition="right">
+                              <Button onClick={handleInsertLike}>
+                                <Icon name="heart" />
+                                Ajouter une mention "j'aime"
+                              </Button>
+                              <Label basic pointing="left">
+                                {article.likes}
+                              </Label>
+                            </Button>
+                          </>
+                        )}
+                        {likedArticle && (
+                          <>
+                            <Button as="div" labelPosition="right">
+                              <Button onClick={handleDeleteLike}>
+                                <Icon name="heart" color="red" />
+                                Supprimer la mention "j'aime"
+                              </Button>
+                              <Label basic pointing="left">
+                                {article.likes}
+                              </Label>
+                            </Button>
+                          </>
+                        )}
                       </Segment>
                       <Segment style={{ fontSize: '1em' }}>
                         {!favoriteArticle && (
                           <>
-                            <Button basic color="black" onClick={handleInsertFavorite}>
+                            <Button onClick={handleInsertFavorite}>
                               <Icon name="star" color="grey" />
                               Ajouter aux favoris
                             </Button>
@@ -89,7 +110,7 @@ const Article = ({
                         )}
                         {favoriteArticle && (
                           <>
-                            <Button basic color="black" onClick={handleDeleteFavorite}>
+                            <Button onClick={handleDeleteFavorite}>
                               <Icon name="star" color="yellow" />
                               Supprimer des favoris
                             </Button>
@@ -127,6 +148,8 @@ Article.propTypes = {
   getArticles: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool.isRequired,
+  likes: PropTypes.array.isRequired,
+  getLikes: PropTypes.func.isRequired,
   insertLike: PropTypes.func.isRequired,
   deleteLike: PropTypes.func.isRequired,
   favorites: PropTypes.array.isRequired,
