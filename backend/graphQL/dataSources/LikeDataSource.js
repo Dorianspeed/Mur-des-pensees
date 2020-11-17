@@ -82,6 +82,23 @@ module.exports = class LikeDataSource extends DataSource {
         }
     }
 
+    // Récupération des articles likés par un utilisateur
+    async getLikesByUser(userId) {
+        try {
+            const likes = await this.client.query('SELECT * FROM "get_likes_by_user"($1)', [userId]);
+
+            if (likes.rowCount === 0) {
+                return undefined;
+            } else {
+                return likes.rows;
+            }
+        }
+
+        catch (error) {
+            console.trace(error);
+        }
+    }
+
     // Récupération de toutes les mentions "j'aime" par les id des articles avec le DataLoader
     async getLikesByArticleBulk(ids)  {
         try {

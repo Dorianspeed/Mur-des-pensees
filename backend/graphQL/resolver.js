@@ -88,17 +88,6 @@ const myResolverMap = {
             catch (error) {
                 console.trace(error);
             }
-        },
-
-        // Récupération des favoris d'un utilisateur
-        async favorites(parent, _, { dataSources }) {
-            try {
-                return await dataSources.favorite.getFavoritesByUser(parent.id);
-            } 
-            
-            catch (error) {
-                console.trace(error);
-            }
         }
     },
 
@@ -142,6 +131,28 @@ const myResolverMap = {
                 return await dataSources.category.getCategories();
             } 
             
+            catch (error) {
+                console.trace(error);
+            }
+        },
+
+        // Récupération des articles likés par un utilisateur
+        async getLikesByUser(_, __, { dataSources, session }) {
+            try {
+                return await dataSources.like.getLikesByUser(session.user.id);
+            }
+
+            catch (error) {
+                console.trace(error);
+            }
+        },
+
+        // Récupération des articles mis en favoris d'un utilisateur
+        async getFavoritesByUser(_, __, { dataSources, session }) {
+            try {
+                return await dataSources.favorite.getFavoritesByUser(session.user.id);
+            }
+
             catch (error) {
                 console.trace(error);
             }
