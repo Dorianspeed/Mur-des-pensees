@@ -56,15 +56,14 @@ GRANT EXECUTE ON FUNCTION "check_favorite"(INT, INT) TO "editor";
 GRANT EXECUTE ON FUNCTION "check_favorite"(INT, INT) TO "chief_editor";
 
 
--- Fonction pour récupérer tous les articles mis en favoris
+-- Fonction pour récupérer les articles mis en favoris
 CREATE FUNCTION "get_favorites_by_user"("i_user_id" INT)
-    RETURNS TABLE ("id" INT, "title" TEXT, "excerpt" TEXT, "content" TEXT, "image_url" TEXT, "created_at" TIMESTAMPTZ, "category_id" INT, "user_id" INT)
+    RETURNS SETOF "app"."user_adds_to_favorites_article"
 AS
 $$
-    SELECT a."id", a."title", a."excerpt", a."content", a."image_url", a."created_at", a."category_id", a."user_id"
-    FROM "app"."article" a
-    JOIN "app"."user_adds_to_favorites_article" b ON a."id" = b."article_id"
-    WHERE b."user_id" = "i_user_id"; 
+    SELECT *
+    FROM "app"."user_adds_to_favorites_article"
+    WHERE "user_id" = "i_user_id";
 $$
 LANGUAGE SQL STABLE STRICT;
 
