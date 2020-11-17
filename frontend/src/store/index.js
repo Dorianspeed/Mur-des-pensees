@@ -1,7 +1,7 @@
 // == Import : npm
 import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 
 // == Import : local
 import rootReducer from './reducers';
@@ -10,11 +10,12 @@ import userMiddleware from './middleware/userMiddleware';
 import editorMiddleware from './middleware/editorMiddleware';
 import adminMiddleware from './middleware/adminMiddleware';
 import userLikesArticleMiddleware from './middleware/userLikesArticleMiddleware';
+import userAddsToFavoritesMiddleware from './middleware/userAddsToFavoritesMiddleware';
 
 // == Configuration du persist
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: storageSession,
   whitelist: ['user'],
 };
 
@@ -28,6 +29,7 @@ const enhancers = composeEnhancers(
     editorMiddleware,
     adminMiddleware,
     userLikesArticleMiddleware,
+    userAddsToFavoritesMiddleware,
   ),
 );
 
