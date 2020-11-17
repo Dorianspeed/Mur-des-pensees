@@ -23,7 +23,7 @@ REVOKE INSERT, DELETE ON TABLE "app"."user_adds_to_favorites_article" FROM "edit
 REVOKE USAGE ON SCHEMA "app" FROM "editor";
 
 -- Droits pour un chief_editor
-REVOKE SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA "app" FROM "chief_editor";
+REVOKE SELECT, INSERT, DELETE, UPDATE ON ALL TABLES IN SCHEMA "app" FROM "chief_editor";
 REVOKE USAGE ON SCHEMA "app" FROM "chief_editor";
 
 REVOKE SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA "admin" FROM "chief_editor";
