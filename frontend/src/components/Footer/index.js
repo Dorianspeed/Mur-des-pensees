@@ -24,23 +24,26 @@ const Footer = ({ isLogged, handleLogout, role }) => (
               <List.Item as={Link} to="/categories">
                 Catégories
               </List.Item>
-              {role === 'reader' && (
-                <List.Item as={Link} to="/application-editor">
-                  Postuler au rôle de Rédacteur
-                </List.Item>
-              )}
-              {role.includes('editor') && (
-                <List.Item as={Link} to="/article-editor">
-                  Rédiger un article
-                </List.Item>
-              )}
-              {role === 'chief_editor' && (
-                <List.Item as={Link} to="/admin">
-                  Panneau d'administration
-                </List.Item>
-              )}
               {isLogged && (
                 <>
+                  <List.Item as={Link} to="/my-favorites">
+                    Mes favoris
+                  </List.Item>
+                  {role === 'reader' && (
+                    <List.Item as={Link} to="/application-editor">
+                      Postuler au rôle de Rédacteur
+                    </List.Item>
+                  )}
+                  {role.includes('editor') && (
+                    <List.Item as={Link} to="/article-editor">
+                      Rédiger un article
+                    </List.Item>
+                  )}
+                  {role === 'chief_editor' && (
+                    <List.Item as={Link} to="/admin">
+                      Panneau d'administration
+                    </List.Item>
+                  )}
                   <List.Item as={Link} to="/my-profile">
                     Mon profil
                   </List.Item>

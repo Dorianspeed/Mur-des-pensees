@@ -51,33 +51,38 @@ const DesktopContainer = ({
                 <Icon name="tag" />
                 Catégories
               </Menu.Item>
-              {role === 'reader' && (
-                <Menu.Item as={NavLink} to="/application-editor">
-                  <Icon name="pencil" />
-                  Postuler au rôle de Rédacteur
-                </Menu.Item>
-              )}
-              {role.includes('editor') && (
-                <Menu.Item as={NavLink} to="/article-editor">
-                  <Icon name="pencil" />
-                  Rédiger un article
-                </Menu.Item>
-              )}
-              {role === 'chief_editor' && (
-                <Menu.Item as={NavLink} to="/admin">
-                  <Icon name="computer" />
-                  Panneau d'administration
-                </Menu.Item>
-              )}
               {isLogged && (
-                <Menu.Item position="right">
-                  <Button as={NavLink} to="/my-profile" inverted={!fixed} color={fixed ? 'black' : null}>
-                    Mon profil
-                  </Button>
-                  <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
-                    Se déconnecter
-                  </Button>
-                </Menu.Item>
+                <>
+                  <Menu.Item as={NavLink} to="/my-favorites">
+                    Mes favoris
+                  </Menu.Item>
+                  {role === 'reader' && (
+                    <Menu.Item as={NavLink} to="/application-editor">
+                      <Icon name="pencil" />
+                      Postuler au rôle de Rédacteur
+                    </Menu.Item>
+                  )}
+                  {role.includes('editor') && (
+                    <Menu.Item as={NavLink} to="/article-editor">
+                      <Icon name="pencil" />
+                      Rédiger un article
+                    </Menu.Item>
+                  )}
+                  {role === 'chief_editor' && (
+                    <Menu.Item as={NavLink} to="/admin">
+                      <Icon name="computer" />
+                      Panneau d'administration
+                    </Menu.Item>
+                  )}
+                  <Menu.Item position="right">
+                    <Button as={NavLink} to="/my-profile" inverted={!fixed} color={fixed ? 'black' : null}>
+                      Mon profil
+                    </Button>
+                    <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
+                      Se déconnecter
+                    </Button>
+                  </Menu.Item>
+                </>
               )}
               {!isLogged && (
                 <Menu.Item position="right">

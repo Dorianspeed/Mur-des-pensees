@@ -20,6 +20,7 @@ import Footer from '../Footer';
 import Home from '../Home';
 import LegalMentions from '../LegalMentions';
 import Login from '../../containers/Login';
+import MyFavorites from '../../containers/MyFavorites';
 import MyProfile from '../../containers/MyProfile';
 import NotFound from '../NotFound';
 import ResponsiveContainer from '../Header';
@@ -54,6 +55,7 @@ const App = ({
             <Route exact path="/login">
               {isLogged ? <Redirect to="/" /> : <Login />}
             </Route>
+            {isLogged && (<Route exact path="/my-favorites" component={MyFavorites} />)}
             {isLogged && (<Route exact path="/my-profile" component={MyProfile} />)}
             <Route exact path="/signup">
               {isLogged ? <Redirect to="/" /> : <SignUp />}
