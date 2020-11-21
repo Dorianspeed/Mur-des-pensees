@@ -32,7 +32,7 @@ const DesktopContainer = ({
             inverted={!fixed}
             pointing={!fixed}
             secondary={!fixed}
-            size="large"
+            size="small"
             compact
           >
             <Container>
@@ -54,6 +54,7 @@ const DesktopContainer = ({
               {isLogged && (
                 <>
                   <Menu.Item as={NavLink} to="/my-favorites">
+                    <Icon name="star" />
                     Mes favoris
                   </Menu.Item>
                   {role === 'reader' && (

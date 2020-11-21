@@ -45,6 +45,7 @@ const MobileContainer = ({
           {isLogged && (
             <>
               <Menu.Item as={NavLink} to="/my-favorites">
+                <Icon name="star" />
                 Mes favoris
               </Menu.Item>
               {role === 'reader' && (
