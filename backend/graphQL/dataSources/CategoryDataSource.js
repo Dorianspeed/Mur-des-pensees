@@ -29,12 +29,8 @@ module.exports = class CategoryDataSource extends DataSource {
     async getCategories() {
         try {
             const categories = await this.client.query('SELECT * FROM "get_categories"()');
-
-            if (categories.rowCount === 0) {
-                return new ApolloError('Aucune catégorie trouvée.', 'NO_CATEGORIES_FOUND');
-            } else {
-                return categories.rows;
-            }  
+            
+            return categories.rows;
         } 
         
         catch (error) {

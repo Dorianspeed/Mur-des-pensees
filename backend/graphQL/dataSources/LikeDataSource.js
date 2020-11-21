@@ -20,7 +20,7 @@ module.exports = class LikeDataSource extends DataSource {
             if (counter) {
                 return counter.likes;
             } else {
-                return undefined;
+                return 0;
             }
         });
     });
@@ -87,11 +87,7 @@ module.exports = class LikeDataSource extends DataSource {
         try {
             const likes = await this.client.query('SELECT * FROM "get_likes_by_user"($1)', [userId]);
 
-            if (likes.rowCount === 0) {
-                return undefined;
-            } else {
-                return likes.rows;
-            }
+            return likes.rows;
         }
 
         catch (error) {

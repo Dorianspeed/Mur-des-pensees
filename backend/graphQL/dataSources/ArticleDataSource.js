@@ -42,11 +42,7 @@ module.exports = class ArticleDataSource extends DataSource {
         try {
             const articles = await this.client.query('SELECT * FROM "get_articles"()');
 
-            if (articles.rowCount === 0) {
-                return new ApolloError('Aucun article trouvé.', 'NO_ARTICLES_FOUND');
-            } else {
-                return articles.rows;
-            }
+            return articles.rows;
         } 
         
         catch(error) {

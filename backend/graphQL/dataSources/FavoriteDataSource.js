@@ -68,11 +68,7 @@ module.exports = class FavoriteDataSource extends DataSource {
         try {
             const favorites = await this.client.query('SELECT * FROM "get_favorites_by_user"($1)', [userId]);
 
-            if (favorites.rowCount === 0) {
-                return undefined;
-            } else {
-                return favorites.rows;
-            }
+            return favorites.rows;
         }
         
         catch(error) {
