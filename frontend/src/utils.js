@@ -12,7 +12,7 @@ export const stringSlugify = (string) => slugify(string, {
 
 // fonction permettant de gérer la mise au pluriel d'un mot
 export const stringPluralize = (string, value) => {
-  if (value === null) {
+  if (value === 0) {
     return pluralize.singular(string);
   }
 
