@@ -18,11 +18,14 @@ const Article = ({
 }) => {
   useEffect(() => {
     getArticles();
-    if (isLogged) {
+  }, []);
+
+  useEffect(() => {
+    if (isLogged && !loading) {
       getLikes();
       getFavorites();
     }
-  }, []);
+  }, [isLogged, loading]);
 
   // Récupération de l'article demandé pour lecture grâce à son slug
   const { slug } = useParams();
