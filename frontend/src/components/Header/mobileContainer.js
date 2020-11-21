@@ -55,10 +55,16 @@ const MobileContainer = ({
                 </Menu.Item>
               )}
               {role.includes('editor') && (
-                <Menu.Item as={NavLink} to="/article-editor">
-                  <Icon name="pencil" />
-                  Rédiger un article
-                </Menu.Item>
+                <>
+                  <Menu.Item as={NavLink} to="/article-editor">
+                    <Icon name="pencil" />
+                    Rédiger un article
+                  </Menu.Item>
+                  <Menu.Item as={NavLink} to="/my-articles">
+                    <Icon name="book" />
+                    Mes articles
+                  </Menu.Item>
+                </>
               )}
               {role === 'chief_editor' && (
                 <Menu.Item as={NavLink} to="/admin">

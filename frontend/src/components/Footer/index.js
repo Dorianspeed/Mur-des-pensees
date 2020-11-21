@@ -35,9 +35,14 @@ const Footer = ({ isLogged, handleLogout, role }) => (
                     </List.Item>
                   )}
                   {role.includes('editor') && (
-                    <List.Item as={Link} to="/article-editor">
-                      Rédiger un article
-                    </List.Item>
+                    <>
+                      <List.Item as={Link} to="/article-editor">
+                        Rédiger un article
+                      </List.Item>
+                      <List.Item as={Link} to="/my-articles">
+                        Mes articles
+                      </List.Item>
+                    </>
                   )}
                   {role === 'chief_editor' && (
                     <List.Item as={Link} to="/admin">
