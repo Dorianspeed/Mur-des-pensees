@@ -13,6 +13,10 @@ const mapStateToProps = (state) => ({
   likes: state.userLikesArticle.likes,
   favorites: state.userAddsToFavorites.favorites,
   isLogged: state.user.isLogged,
+  insertLikeLoading: state.userLikesArticle.loading,
+  deleteLikeLoading: state.userLikesArticle.loading,
+  insertFavoriteLoading: state.userAddsToFavorites.loading,
+  deleteFavoriteLoading: state.userAddsToFavorites.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

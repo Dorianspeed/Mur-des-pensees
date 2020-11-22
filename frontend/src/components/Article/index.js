@@ -15,6 +15,7 @@ import {
 const Article = ({
   articles, getArticles, loading, isLogged, likes, getLikes, insertLike,
   deleteLike, favorites, getFavorites, insertFavorite, deleteFavorite,
+  insertLikeLoading, deleteLikeLoading, insertFavoriteLoading, deleteFavoriteLoading,
 }) => {
   useEffect(() => {
     getArticles();
@@ -78,7 +79,7 @@ const Article = ({
                         {!likedArticle && (
                           <>
                             <Button as="div" labelPosition="right">
-                              <Button onClick={handleInsertLike}>
+                              <Button onClick={handleInsertLike} loading={insertLikeLoading}>
                                 <Icon name="heart" />
                                 Ajouter une mention "j'aime"
                               </Button>
@@ -91,7 +92,7 @@ const Article = ({
                         {likedArticle && (
                           <>
                             <Button as="div" labelPosition="right">
-                              <Button onClick={handleDeleteLike}>
+                              <Button onClick={handleDeleteLike} loading={deleteLikeLoading}>
                                 <Icon name="heart" color="red" />
                                 Supprimer la mention "j'aime"
                               </Button>
@@ -105,7 +106,7 @@ const Article = ({
                       <Segment style={{ fontSize: '1em' }}>
                         {!favoriteArticle && (
                           <>
-                            <Button onClick={handleInsertFavorite}>
+                            <Button onClick={handleInsertFavorite} loading={insertFavoriteLoading}>
                               <Icon name="star" color="grey" />
                               Ajouter aux favoris
                             </Button>
@@ -113,7 +114,7 @@ const Article = ({
                         )}
                         {favoriteArticle && (
                           <>
-                            <Button onClick={handleDeleteFavorite}>
+                            <Button onClick={handleDeleteFavorite} loading={deleteFavoriteLoading}>
                               <Icon name="star" color="yellow" />
                               Supprimer des favoris
                             </Button>
@@ -159,6 +160,10 @@ Article.propTypes = {
   getFavorites: PropTypes.func.isRequired,
   insertFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
+  insertLikeLoading: PropTypes.bool.isRequired,
+  deleteLikeLoading: PropTypes.bool.isRequired,
+  insertFavoriteLoading: PropTypes.bool.isRequired,
+  deleteFavoriteLoading: PropTypes.bool.isRequired,
 };
 
 // == Export
