@@ -44,7 +44,7 @@ const userLikesArticleMiddleware = (store) => (next) => (action) => {
 
         catch (error) {
           store.dispatch(getLikesError(error));
-          toast.error('Une erreur est survenue, veuillez réessayer plus tard');
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }

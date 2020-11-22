@@ -43,7 +43,7 @@ const userAddsToFavoritesMiddleware = (store) => (next) => (action) => {
 
         catch (error) {
           store.dispatch(getFavoritesError(error));
-          toast.error('Une erreur est survenue, veuillez réessayer plus tard');
+          toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
           // eslint-disable-next-line no-console
           console.trace(error);
         }
@@ -74,7 +74,7 @@ const userAddsToFavoritesMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(insertFavoriteSuccess());
             store.dispatch(getFavorites());
-            toast.success('Article ajouté aux favoris');
+            toast.success('Article ajouté aux favoris.');
           }
         }
 
@@ -111,7 +111,7 @@ const userAddsToFavoritesMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(deleteFavoriteSuccess());
             store.dispatch(getFavorites());
-            toast.success('Article supprimé des favoris');
+            toast.success('Article supprimé des favoris.');
           }
         }
 

@@ -170,7 +170,7 @@ const userMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(updateUserSubmitSuccess(response.data.data.updateUser));
             store.dispatch(getArticles());
-            toast.success('Modifications enregistrées');
+            toast.success('Modifications enregistrées.');
           }
         }
 
