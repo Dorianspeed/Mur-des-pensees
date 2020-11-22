@@ -52,7 +52,7 @@ const Footer = ({ isLogged, handleLogout, role }) => (
                   <List.Item as={Link} to="/my-profile">
                     Mon profil
                   </List.Item>
-                  <List.Item as={Link} to="/" onClick={handleLogout}>
+                  <List.Item as="a" onClick={handleLogout}>
                     Se déconnecter
                   </List.Item>
                 </>
