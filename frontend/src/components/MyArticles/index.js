@@ -77,7 +77,7 @@ MyArticles.propTypes = {
   articles: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   getArticles: PropTypes.func.isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 // == Export
