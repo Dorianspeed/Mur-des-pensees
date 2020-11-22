@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   password: state.user.password,
   confirmedPassword: state.user.confirmed_password,
   avatarUrl: state.user.avatar_url,
+  loading: state.user.loading,
   signUpSubmitSuccess: state.user.signUpSubmitSuccess,
 });
 

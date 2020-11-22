@@ -7,7 +7,7 @@ import {
 
 // == Composant
 const Login = ({
-  email, password, onFormSubmit, onInputChange, clearSignUpSubmit,
+  email, password, onFormSubmit, onInputChange, clearSignUpSubmit, loading,
 }) => {
   useEffect(() => {
     clearSignUpSubmit();
@@ -36,7 +36,7 @@ const Login = ({
               <Segment stacked>
                 <Form.Input fluid icon="user" iconPosition="left" placeholder="Adresse email" name="email" type="email" value={email} onChange={handleInputChange} required />
                 <Form.Input fluid icon="lock" iconPosition="left" placeholder="Mot de passe" name="password" type="password" value={password} onChange={handleInputChange} required />
-                <Button color="black" fluid size="large" type="submit">Se connecter</Button>
+                <Button color="black" fluid size="large" type="submit" loading={loading}>Se connecter</Button>
               </Segment>
             </Form>
             <Message>
@@ -55,6 +55,7 @@ Login.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   clearSignUpSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Login;

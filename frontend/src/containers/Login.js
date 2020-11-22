@@ -8,6 +8,7 @@ import { loginSubmit, loginInputChange, clearSignUpSubmitSuccess } from '../stor
 const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
+  loading: state.user.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

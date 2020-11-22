@@ -15,6 +15,7 @@ const initialState = {
   role: '',
   avatar_url: '',
   created_at: '',
+  loading: false,
   isLogged: false,
   updateUser: {},
   error: '',
@@ -26,12 +27,14 @@ export default (state = initialState, action = {}) => {
     case LOGIN_SUBMIT:
       return {
         ...state,
+        loading: true,
       };
     case LOGIN_SUBMIT_SUCCESS:
       return {
         ...state,
         ...action.payload,
         password: '',
+        loading: false,
         isLogged: true,
         error: '',
         updateUser: {
@@ -41,6 +44,7 @@ export default (state = initialState, action = {}) => {
     case LOGIN_SUBMIT_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     case LOGIN_INPUT_CHANGE:
@@ -51,6 +55,7 @@ export default (state = initialState, action = {}) => {
     case SIGN_UP_SUBMIT:
       return {
         ...state,
+        loading: true,
       };
     case SIGN_UP_SUBMIT_SUCCESS:
       return {
@@ -61,12 +66,14 @@ export default (state = initialState, action = {}) => {
         password: '',
         confirmed_password: '',
         avatar_url: '',
+        loading: false,
         error: '',
         signUpSubmitSuccess: true,
       };
     case SIGN_UP_SUBMIT_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     case SIGN_UP_INPUT_CHANGE:

@@ -12,7 +12,7 @@ import options from './selectOptions';
 // == Composant
 const SignUp = ({
   firstname, lastname, email, password, confirmedPassword, avatarUrl, onFormSubmit,
-  onInputChange, signUpSubmitSuccess,
+  onInputChange, signUpSubmitSuccess, loading,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -42,7 +42,7 @@ const SignUp = ({
                 <Form.Input fluid icon="lock" iconPosition="left" placeholder="Mot de passe (8 caractères minimum)" type="password" name="password" value={password} onChange={handleInputChange} required />
                 <Form.Input fluid icon="lock" iconPosition="left" placeholder="Confirmation du mot de passe" type="password" name="confirmed_password" value={confirmedPassword} onChange={handleInputChange} required />
                 <Form.Select fluid placeholder="Choix de l'avatar" options={options} name="avatar_url" value={avatarUrl} onChange={handleInputChange} />
-                <Button color="black" fluid size="large" type="submit">S'inscrire</Button>
+                <Button color="black" fluid size="large" type="submit" loading={loading}>S'inscrire</Button>
               </Segment>
             </Form>
             <Message>
@@ -65,6 +65,7 @@ SignUp.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   signUpSubmitSuccess: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export
