@@ -18,6 +18,7 @@ const initialState = {
   created_at: '',
   loading: false,
   logoutLoading: false,
+  updateLoading: false,
   isLogged: false,
   updateUser: {},
   error: '',
@@ -124,6 +125,7 @@ export default (state = initialState, action = {}) => {
     case UPDATE_USER_SUBMIT:
       return {
         ...state,
+        updateLoading: true,
       };
     case UPDATE_USER_SUBMIT_SUCCESS:
       return {
@@ -132,10 +134,13 @@ export default (state = initialState, action = {}) => {
         updateUser: {
           ...action.payload,
         },
+        updateLoading: false,
+        error: '',
       };
     case UPDATE_USER_SUBMIT_ERROR:
       return {
         ...state,
+        updateLoading: false,
         error: action.payload,
       };
     case UPDATE_USER_INPUT_CHANGE:

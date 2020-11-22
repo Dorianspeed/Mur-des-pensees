@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   avatarUrl: state.user.avatar_url,
   createdAt: state.user.created_at,
   updateUser: state.user.updateUser,
+  loading: state.user.updateLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
