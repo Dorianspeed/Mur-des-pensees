@@ -1,6 +1,6 @@
 // == Import : npm
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button, Icon, Image, Segment, Menu, Container, Sidebar,
@@ -27,7 +27,7 @@ const MobileContainer = ({
           visible={sidebarOpened}
           width="thin"
         >
-          <Menu.Item>
+          <Menu.Item as={Link} to="/">
             <Image src="/images/logo-white-text.png" size="tiny" />
           </Menu.Item>
           <Menu.Item as={NavLink} to="/articles">
@@ -103,7 +103,7 @@ const MobileContainer = ({
                 <Menu.Item onClick={() => setSidebarOpened(true)} fitted>
                   <Icon name="sidebar" />
                 </Menu.Item>
-                <Menu.Item>
+                <Menu.Item as={Link} to="/">
                   <Image src="/images/logo-white-text.png" wrapped size="tiny" style={{ marginLeft: '-0.4em' }} />
                 </Menu.Item>
                 {!isLogged && (

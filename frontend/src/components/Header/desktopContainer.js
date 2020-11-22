@@ -1,6 +1,6 @@
 // == Import : npm
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button, Icon, Image, Segment, Menu, Container, Visibility,
@@ -36,7 +36,7 @@ const DesktopContainer = ({
             compact
           >
             <Container>
-              <Menu.Item>
+              <Menu.Item as={Link} to="/">
                 <Image src={!fixed ? '/images/logo-white-text.png' : '/images/logo-black-text.png'} size="tiny" />
               </Menu.Item>
               <Menu.Item as={NavLink} to="/articles">
