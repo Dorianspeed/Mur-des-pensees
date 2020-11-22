@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader, Breadcrumb,
+  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader, Breadcrumb, Divider,
 } from 'semantic-ui-react';
 
 // == Import : local
@@ -84,56 +84,61 @@ const Article = ({
                 <Header as="h1">{article.title}</Header>
                 {parsingData(article.content)}
                 {isLogged && (
-                  <Container textAlign="center">
-                    <Segment.Group horizontal>
-                      <Segment style={{ fontSize: '1em' }}>
-                        {!likedArticle && (
-                          <>
-                            <Button as="div" labelPosition="right">
-                              <Button onClick={handleInsertLike} loading={insertLikeLoading}>
-                                <Icon name="heart" />
-                                Ajouter une mention "j'aime"
+                  <Segment>
+                    <Grid columns={2} stackable textAlign="center">
+                      <Grid.Row>
+                        <Divider vertical />
+                        <Grid.Column>
+                          {!likedArticle && (
+                            <>
+                              <Button as="div" labelPosition="right">
+                                <Button onClick={handleInsertLike} loading={insertLikeLoading}>
+                                  <Icon name="heart" />
+                                  Ajouter une mention "j'aime"
+                                </Button>
+                                <Label basic pointing="left">
+                                  {article.likes}
+                                </Label>
                               </Button>
-                              <Label basic pointing="left">
-                                {article.likes}
-                              </Label>
-                            </Button>
-                          </>
-                        )}
-                        {likedArticle && (
-                          <>
-                            <Button as="div" labelPosition="right">
-                              <Button onClick={handleDeleteLike} loading={deleteLikeLoading}>
-                                <Icon name="heart" color="red" />
-                                Supprimer la mention "j'aime"
+                            </>
+                          )}
+                          {likedArticle && (
+                            <>
+                              <Button as="div" labelPosition="right">
+                                <Button onClick={handleDeleteLike} loading={deleteLikeLoading}>
+                                  <Icon name="heart" color="red" />
+                                  Supprimer la mention "j'aime"
+                                </Button>
+                                <Label basic pointing="left">
+                                  {article.likes}
+                                </Label>
                               </Button>
-                              <Label basic pointing="left">
-                                {article.likes}
-                              </Label>
-                            </Button>
-                          </>
-                        )}
-                      </Segment>
-                      <Segment style={{ fontSize: '1em' }}>
-                        {!favoriteArticle && (
-                          <>
-                            <Button onClick={handleInsertFavorite} loading={insertFavoriteLoading}>
-                              <Icon name="star" color="grey" />
-                              Ajouter aux favoris
-                            </Button>
-                          </>
-                        )}
-                        {favoriteArticle && (
-                          <>
-                            <Button onClick={handleDeleteFavorite} loading={deleteFavoriteLoading}>
-                              <Icon name="star" color="yellow" />
-                              Supprimer des favoris
-                            </Button>
-                          </>
-                        )}
-                      </Segment>
-                    </Segment.Group>
-                  </Container>
+                            </>
+                          )}
+                        </Grid.Column>
+                        <Grid.Column>
+                          {!favoriteArticle && (
+                            <>
+                              {/* eslint-disable-next-line max-len */}
+                              <Button onClick={handleInsertFavorite} loading={insertFavoriteLoading}>
+                                <Icon name="star" color="grey" />
+                                Ajouter aux favoris
+                              </Button>
+                            </>
+                          )}
+                          {favoriteArticle && (
+                            <>
+                              {/* eslint-disable-next-line max-len */}
+                              <Button onClick={handleDeleteFavorite} loading={deleteFavoriteLoading}>
+                                <Icon name="star" color="yellow" />
+                                Supprimer des favoris
+                              </Button>
+                            </>
+                          )}
+                        </Grid.Column>
+                      </Grid.Row>
+                    </Grid>
+                  </Segment>
                 )}
                 <Header as="h5">
                   <Image src={article.user.avatar_url} avatar />
