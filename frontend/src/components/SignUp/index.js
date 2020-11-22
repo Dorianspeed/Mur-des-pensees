@@ -2,7 +2,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import {
-  Form, Image, Header, Segment, Message, Grid, Button,
+  Form, Image, Header, Segment, Message, Grid, Button, Breadcrumb,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -28,6 +28,13 @@ const SignUp = ({
     <>
       {signUpSubmitSuccess && <Redirect to="/login" />}
       <Segment basic padded>
+        <Breadcrumb size="large">
+          <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right angle" />
+          <Breadcrumb.Section active>S'inscrire</Breadcrumb.Section>
+        </Breadcrumb>
+      </Segment>
+      <Segment basic padded style={{ padding: '0em 0em 4em 0em' }}>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" textAlign="center">

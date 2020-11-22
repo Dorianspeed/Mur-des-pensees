@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CKEditor from 'ckeditor4-react';
 import axios from 'axios';
 import {
-  Segment, Grid, Form, Label, Input, Select, Button, Dimmer, Loader,
+  Segment, Grid, Form, Label, Input, Select, Button, Dimmer, Loader, Breadcrumb,
 } from 'semantic-ui-react';
 
 // == Composant
@@ -75,48 +75,57 @@ const ArticleEditor = ({
         </Dimmer>
       )}
       {!loading && (
-        <Segment vertical style={{ padding: '4em 0em' }}>
-          <Grid container stackable verticalAlign="middle" textAlign="center">
-            <Form onSubmit={handleFormSubmit} style={{ width: '95%' }}>
-              <Segment basic>
-                <Form.Field>
-                  <Label size="large" color="black" pointing="below">Titre de l'article</Label>
-                  <Input placeholder="Titre de l'article" name="title" value={title} className="input-title" onChange={handleInputChange} required />
-                </Form.Field>
-              </Segment>
-              <Segment basic>
-                <Form.Field>
-                  <Label size="large" color="black" pointing="below">Choix de la catégorie</Label>
-                  <Select placeholder="Choix de la catégorie" search selection options={options} name="category_id" value={categoryId} onChange={handleInputChange} required />
-                </Form.Field>
-              </Segment>
-              <Segment basic>
-                <Form.Field>
-                  <Label size="large" color="black" pointing="below">Choix d'une image d'en-tête</Label>
-                  <Input type="file" name="image_url" onChange={handleFileUnputChange} accept="image/png, image/jpeg, image/jpg" />
-                </Form.Field>
-              </Segment>
-              <Segment basic>
-                <Label size="large" color="black" pointing="below">Rédiger votre article</Label>
-                <CKEditor
-                  data={content}
-                  config={{
-                    language: 'fr',
-                    toolbar: [['Format'], ['Bold'], ['Italic'], ['Link'], ['Blockquote'], ['BulletedList'], ['NumberedList'], ['Blocks'], ['Indent'], ['Outdent'], ['Undo'], ['Redo']],
-                    height: 500,
-                  }}
-                  onChange={(event) => {
-                    const data = event.editor.getData();
-                    handleInputChange(event, { name: 'content', value: data });
-                  }}
-                />
-              </Segment>
-              <Segment basic>
-                <Button type="submit" content="Valider votre article" color="green" />
-              </Segment>
-            </Form>
-          </Grid>
-        </Segment>
+        <>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>Rédiger un article</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '2em 0em 4em 0em' }}>
+            <Grid container stackable verticalAlign="middle" textAlign="center">
+              <Form onSubmit={handleFormSubmit} style={{ width: '95%' }}>
+                <Segment basic>
+                  <Form.Field>
+                    <Label size="large" color="black" pointing="below">Titre de l'article</Label>
+                    <Input placeholder="Titre de l'article" name="title" value={title} className="input-title" onChange={handleInputChange} required />
+                  </Form.Field>
+                </Segment>
+                <Segment basic>
+                  <Form.Field>
+                    <Label size="large" color="black" pointing="below">Choix de la catégorie</Label>
+                    <Select placeholder="Choix de la catégorie" search selection options={options} name="category_id" value={categoryId} onChange={handleInputChange} required />
+                  </Form.Field>
+                </Segment>
+                <Segment basic>
+                  <Form.Field>
+                    <Label size="large" color="black" pointing="below">Choix d'une image d'en-tête</Label>
+                    <Input type="file" name="image_url" onChange={handleFileUnputChange} accept="image/png, image/jpeg, image/jpg" />
+                  </Form.Field>
+                </Segment>
+                <Segment basic>
+                  <Label size="large" color="black" pointing="below">Rédiger votre article</Label>
+                  <CKEditor
+                    data={content}
+                    config={{
+                      language: 'fr',
+                      toolbar: [['Format'], ['Bold'], ['Italic'], ['Link'], ['Blockquote'], ['BulletedList'], ['NumberedList'], ['Blocks'], ['Indent'], ['Outdent'], ['Undo'], ['Redo']],
+                      height: 500,
+                    }}
+                    onChange={(event) => {
+                      const data = event.editor.getData();
+                      handleInputChange(event, { name: 'content', value: data });
+                    }}
+                  />
+                </Segment>
+                <Segment basic>
+                  <Button type="submit" content="Valider votre article" color="green" />
+                </Segment>
+              </Form>
+            </Grid>
+          </Segment>
+        </>
       )}
     </>
   );

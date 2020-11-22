@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Card, Image, Segment, Grid, Dimmer, Loader,
+  Card, Image, Segment, Grid, Dimmer, Loader, Breadcrumb,
 } from 'semantic-ui-react';
 
 // == Import : local
@@ -24,29 +24,38 @@ const Categories = ({ getCategories, categories, loading }) => {
         </Dimmer>
       )}
       {!loading && (
-        <Segment vertical style={{ padding: '4em 0em' }}>
-          <Grid container stackable verticalAlign="middle">
-            <Card.Group centered stackable itemsPerRow={3}>
-              {
-                !categories[0] ? <NoCategoryFound /> : categories.map((category) => (
-                  <Card as={Link} to={`/category/${stringSlugify(category.name)}`} key={category.id}>
-                    <Image src={category.image_url} />
-                    <Card.Content
-                      textAlign="center"
-                      style={
-                          {
-                            backgroundColor: '#1b1c1d', color: 'white', fontSize: '1.2em', fontWeight: 'bold',
+        <>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>Catégories</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '2em 0em 4em 0em' }}>
+            <Grid container stackable verticalAlign="middle">
+              <Card.Group centered stackable itemsPerRow={3}>
+                {
+                  !categories[0] ? <NoCategoryFound /> : categories.map((category) => (
+                    <Card as={Link} to={`/category/${stringSlugify(category.name)}`} key={category.id}>
+                      <Image src={category.image_url} />
+                      <Card.Content
+                        textAlign="center"
+                        style={
+                            {
+                              backgroundColor: '#1b1c1d', color: 'white', fontSize: '1.2em', fontWeight: 'bold',
+                            }
                           }
-                        }
-                    >
-                      {category.name}
-                    </Card.Content>
-                  </Card>
-                ))
-              }
-            </Card.Group>
-          </Grid>
-        </Segment>
+                      >
+                        {category.name}
+                      </Card.Content>
+                    </Card>
+                  ))
+                }
+              </Card.Group>
+            </Grid>
+          </Segment>
+        </>
       )}
     </>
   );

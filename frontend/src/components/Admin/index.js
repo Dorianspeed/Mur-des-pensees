@@ -1,7 +1,7 @@
 // == Import : npm
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Breadcrumb } from 'semantic-ui-react';
 
 // == Import : local
 import PendingApplications from './PendingApplications';
@@ -37,32 +37,41 @@ const Admin = ({
   }, []);
 
   return (
-    <Segment vertical style={{ padding: '4em 0em' }}>
-      {(visibleApplications || visibleArticles) ? null : (
-        <AdminPanel
-          pendingApplications={pendingApplications}
-          pendingArticles={pendingArticles}
-          handleVisibleApplications={handleVisibleApplications}
-          handleVisibleArticles={handleVisibleArticles}
-        />
-      )}
-      {visibleApplications && (
-        <PendingApplications
-          pendingApplications={pendingApplications}
-          resetVisible={resetVisible}
-          validateApplication={validateApplication}
-          declineApplication={declineApplication}
-        />
-      )}
-      {visibleArticles && (
-        <PendingArticles
-          pendingArticles={pendingArticles}
-          resetVisible={resetVisible}
-          validateArticle={validateArticle}
-          declineArticle={declineArticle}
-        />
-      )}
-    </Segment>
+    <>
+      <Segment basic padded>
+        <Breadcrumb size="large">
+          <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right angle" />
+          <Breadcrumb.Section active>Panneau d'administration</Breadcrumb.Section>
+        </Breadcrumb>
+      </Segment>
+      <Segment vertical style={{ padding: '4em 0em' }}>
+        {(visibleApplications || visibleArticles) ? null : (
+          <AdminPanel
+            pendingApplications={pendingApplications}
+            pendingArticles={pendingArticles}
+            handleVisibleApplications={handleVisibleApplications}
+            handleVisibleArticles={handleVisibleArticles}
+          />
+        )}
+        {visibleApplications && (
+          <PendingApplications
+            pendingApplications={pendingApplications}
+            resetVisible={resetVisible}
+            validateApplication={validateApplication}
+            declineApplication={declineApplication}
+          />
+        )}
+        {visibleArticles && (
+          <PendingArticles
+            pendingArticles={pendingArticles}
+            resetVisible={resetVisible}
+            validateArticle={validateArticle}
+            declineArticle={declineArticle}
+          />
+        )}
+      </Segment>
+    </>
   );
 };
 

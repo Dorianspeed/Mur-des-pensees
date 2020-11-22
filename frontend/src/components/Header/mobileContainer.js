@@ -30,10 +30,6 @@ const MobileContainer = ({
           <Menu.Item>
             <Image src="/images/logo-white-text.png" size="tiny" />
           </Menu.Item>
-          <Menu.Item as={NavLink} to="/" exact>
-            <Icon name="home" />
-            Accueil
-          </Menu.Item>
           <Menu.Item as={NavLink} to="/articles">
             <Icon name="list" />
             Articles

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Form, Image, Header, Segment, Message, Grid, Button,
+  Form, Image, Header, Segment, Message, Grid, Button, Breadcrumb,
 } from 'semantic-ui-react';
 
 // == Composant
@@ -25,6 +25,13 @@ const Login = ({
 
   return (
     <>
+      <Segment basic padded>
+        <Breadcrumb size="large">
+          <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right angle" />
+          <Breadcrumb.Section active>Se connecter</Breadcrumb.Section>
+        </Breadcrumb>
+      </Segment>
       <Segment basic padded>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>

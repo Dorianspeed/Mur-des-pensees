@@ -1,13 +1,20 @@
 // == Import : npm
 import React from 'react';
 import {
-  Header, List, Segment, Container, Grid,
+  Header, List, Segment, Container, Grid, Breadcrumb,
 } from 'semantic-ui-react';
 
 // == Composant
 const LegalMentions = () => (
-  <div>
-    <Segment vertical style={{ padding: '4em 0em' }}>
+  <>
+    <Segment basic padded>
+      <Breadcrumb size="large">
+        <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+        <Breadcrumb.Divider icon="right angle" />
+        <Breadcrumb.Section active>Mentions légales</Breadcrumb.Section>
+      </Breadcrumb>
+    </Segment>
+    <Segment vertical style={{ padding: '2em 0em 4em 0em' }}>
       <Grid container verticalAlign="middle">
         <Segment basic>
           <Container>
@@ -412,7 +419,7 @@ const LegalMentions = () => (
         </Segment>
       </Grid>
     </Segment>
-  </div>
+  </>
 );
 
 // == Export

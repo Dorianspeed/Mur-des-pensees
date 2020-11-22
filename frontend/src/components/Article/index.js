@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader,
+  Header, Image, Container, Button, Icon, Segment, Grid, Label, Dimmer, Loader, Breadcrumb,
 } from 'semantic-ui-react';
 
 // == Import : local
@@ -63,7 +63,18 @@ const Article = ({
       )}
       {!loading && (
         <>
-          <Segment vertical style={{ padding: '2.5em 0em' }}>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section href="/categories">Catégories</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section href={`/category/${stringSlugify(article.category.name)}`}>{article.category.name}</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>{article.title}</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '0.5em 0em 2.5em 0em' }}>
             <Segment basic padded>
               <Image src={article.image_url} alt="logo-de-larticle" size="massive" centered bordered />
             </Segment>

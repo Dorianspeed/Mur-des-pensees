@@ -39,10 +39,6 @@ const DesktopContainer = ({
               <Menu.Item>
                 <Image src={!fixed ? '/images/logo-white-text.png' : '/images/logo-black-text.png'} size="tiny" />
               </Menu.Item>
-              <Menu.Item as={NavLink} to="/" exact>
-                <Icon name="home" />
-                Accueil
-              </Menu.Item>
               <Menu.Item as={NavLink} to="/articles">
                 <Icon name="list" />
                 Articles
