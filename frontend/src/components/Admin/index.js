@@ -38,39 +38,71 @@ const Admin = ({
 
   return (
     <>
-      <Segment basic padded>
-        <Breadcrumb size="large">
-          <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
-          <Breadcrumb.Divider icon="right angle" />
-          <Breadcrumb.Section active>Panneau d'administration</Breadcrumb.Section>
-        </Breadcrumb>
-      </Segment>
-      <Segment vertical style={{ padding: '4em 0em' }}>
-        {(visibleApplications || visibleArticles) ? null : (
-          <AdminPanel
-            pendingApplications={pendingApplications}
-            pendingArticles={pendingArticles}
-            handleVisibleApplications={handleVisibleApplications}
-            handleVisibleArticles={handleVisibleArticles}
-          />
-        )}
-        {visibleApplications && (
-          <PendingApplications
-            pendingApplications={pendingApplications}
-            resetVisible={resetVisible}
-            validateApplication={validateApplication}
-            declineApplication={declineApplication}
-          />
-        )}
-        {visibleArticles && (
-          <PendingArticles
-            pendingArticles={pendingArticles}
-            resetVisible={resetVisible}
-            validateArticle={validateArticle}
-            declineArticle={declineArticle}
-          />
-        )}
-      </Segment>
+      {(visibleApplications || visibleArticles) ? null : (
+        <>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>Panneau d'administration</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '0em 0em 4em 0em' }}>
+            <AdminPanel
+              pendingApplications={pendingApplications}
+              pendingArticles={pendingArticles}
+              handleVisibleApplications={handleVisibleApplications}
+              handleVisibleArticles={handleVisibleArticles}
+            />
+          </Segment>
+        </>
+      )}
+      {visibleApplications && (
+        <>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section onClick={resetVisible}>
+                Panneau d'administration
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>Candidatures en attente de validation</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '0em 0em 4em 0em' }}>
+            <PendingApplications
+              pendingApplications={pendingApplications}
+              resetVisible={resetVisible}
+              validateApplication={validateApplication}
+              declineApplication={declineApplication}
+            />
+          </Segment>
+        </>
+      )}
+      {visibleArticles && (
+        <>
+          <Segment basic padded>
+            <Breadcrumb size="large">
+              <Breadcrumb.Section href="/">Accueil</Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section onClick={resetVisible}>
+                Panneau d'administration
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right angle" />
+              <Breadcrumb.Section active>Articles en attente de validation</Breadcrumb.Section>
+            </Breadcrumb>
+          </Segment>
+          <Segment vertical style={{ padding: '0em 0em 4em 0em' }}>
+            <PendingArticles
+              pendingArticles={pendingArticles}
+              resetVisible={resetVisible}
+              validateArticle={validateArticle}
+              declineArticle={declineArticle}
+            />
+          </Segment>
+        </>
+      )}
     </>
   );
 };
