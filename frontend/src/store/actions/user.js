@@ -12,6 +12,7 @@ export const CLEAR_SIGN_UP_SUBMIT_SUCCESS = 'CLEAR_SIGN_UP_SUBMIT_SUCCESS';
 export const LOGOUT_SUBMIT = 'LOGOUT_SUBMIT';
 export const LOGOUT_SUBMIT_SUCCESS = 'LOGOUT_SUBMIT_SUCCESS';
 export const LOGOUT_SUBMIT_ERROR = 'LOGOUT_SUBMIT_ERROR';
+export const CLEAR_LOGOUT_SUBMIT_SUCCESS = 'CLEAR_LOGOUT_SUBMIT_SUCCESS';
 
 export const UPDATE_USER_SUBMIT = 'UPDATE_USER_SUBMIT';
 export const UPDATE_USER_SUBMIT_SUCCESS = 'UPDATE_USER_SUBMIT_SUCCESS';
@@ -73,6 +74,10 @@ export const logoutSubmitSuccess = () => ({
 export const logoutSubmitError = (payload) => ({
   type: LOGOUT_SUBMIT_ERROR,
   payload,
+});
+
+export const clearLogoutSubmitSuccess = () => ({
+  type: CLEAR_LOGOUT_SUBMIT_SUCCESS,
 });
 
 export const updateUserSubmit = (payload) => ({

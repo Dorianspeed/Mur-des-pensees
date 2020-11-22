@@ -18,15 +18,17 @@ const { MediaContextProvider, Media } = createMedia({
 });
 
 const ResponsiveContainer = ({
-  children, isLogged, handleLogout, role,
+  children, isLogged, handleLogout, role, loading,
 }) => (
   <MediaContextProvider>
     <Media greaterThan="mobile">
-      <DesktopContainer isLogged={isLogged} handleLogout={handleLogout} role={role}>{children}
+      {/* eslint-disable-next-line max-len */}
+      <DesktopContainer isLogged={isLogged} handleLogout={handleLogout} role={role} loading={loading}>{children}
       </DesktopContainer>
     </Media>
     <Media as={Sidebar.Pushable} at="mobile">
-      <MobileContainer isLogged={isLogged} handleLogout={handleLogout} role={role}>{children}
+      {/* eslint-disable-next-line max-len */}
+      <MobileContainer isLogged={isLogged} handleLogout={handleLogout} role={role} loading={loading}>{children}
       </MobileContainer>
     </Media>
   </MediaContextProvider>
@@ -37,6 +39,7 @@ ResponsiveContainer.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

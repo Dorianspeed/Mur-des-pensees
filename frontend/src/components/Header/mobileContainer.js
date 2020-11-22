@@ -11,7 +11,7 @@ import HomepageHeading from './homepageHeading';
 
 // == Composant
 const MobileContainer = ({
-  children, isLogged, handleLogout, role,
+  children, isLogged, handleLogout, role, loading,
 }) => {
   const [sidebarOpened, setSidebarOpened] = useState(null);
 
@@ -76,7 +76,7 @@ const MobileContainer = ({
                 <Icon name="user circle" />
                 Mon profil
               </Menu.Item>
-              <Menu.Item as={NavLink} to="/" onClick={handleLogout}>
+              <Menu.Item onClick={handleLogout}>
                 <Icon name="sign-out" />
                 Se déconnecter
               </Menu.Item>
@@ -125,7 +125,7 @@ const MobileContainer = ({
                     <Button as={NavLink} to="/my-profile" inverted style={{ marginLeft: '-1em', paddingLeft: '1em', paddingRight: '1em' }}>
                       Mon profil
                     </Button>
-                    <Button as={NavLink} to="/" inverted color="red" style={{ marginLeft: '0.5em', paddingLeft: '1em', paddingRight: '1em' }} onClick={handleLogout}>
+                    <Button inverted color="red" style={{ marginLeft: '0.5em', paddingLeft: '1em', paddingRight: '1em' }} onClick={handleLogout} loading={loading}>
                       Se déconnecter
                     </Button>
                   </Menu.Item>
@@ -146,6 +146,7 @@ MobileContainer.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

@@ -11,7 +11,7 @@ import HomepageHeading from './homepageHeading';
 
 // == Composant
 const DesktopContainer = ({
-  children, isLogged, handleLogout, role,
+  children, isLogged, handleLogout, role, loading,
 }) => {
   const [fixed, setFixed] = useState(null);
   return (
@@ -85,7 +85,7 @@ const DesktopContainer = ({
                     <Button as={NavLink} to="/my-profile" inverted={!fixed} color={fixed ? 'black' : null}>
                       Mon profil
                     </Button>
-                    <Button as={NavLink} to="/" inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout}>
+                    <Button inverted={!fixed} color="red" style={{ marginLeft: '0.5em' }} onClick={handleLogout} loading={loading}>
                       Se déconnecter
                     </Button>
                   </Menu.Item>
@@ -116,6 +116,7 @@ DesktopContainer.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

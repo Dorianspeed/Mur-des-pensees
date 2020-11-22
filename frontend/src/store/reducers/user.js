@@ -4,6 +4,7 @@ import {
   SIGN_UP_SUBMIT_SUCCESS, SIGN_UP_SUBMIT_ERROR, SIGN_UP_INPUT_CHANGE, LOGOUT_SUBMIT,
   LOGOUT_SUBMIT_SUCCESS, LOGOUT_SUBMIT_ERROR, UPDATE_USER_SUBMIT, UPDATE_USER_SUBMIT_SUCCESS,
   UPDATE_USER_SUBMIT_ERROR, UPDATE_USER_INPUT_CHANGE, CLEAR_SIGN_UP_SUBMIT_SUCCESS,
+  CLEAR_LOGOUT_SUBMIT_SUCCESS,
 } from '../actions/user';
 
 const initialState = {
@@ -16,10 +17,12 @@ const initialState = {
   avatar_url: '',
   created_at: '',
   loading: false,
+  logoutLoading: false,
   isLogged: false,
   updateUser: {},
   error: '',
   signUpSubmitSuccess: false,
+  logoutSubmitSuccess: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -89,6 +92,7 @@ export default (state = initialState, action = {}) => {
     case LOGOUT_SUBMIT:
       return {
         ...state,
+        logoutLoading: true,
       };
     case LOGOUT_SUBMIT_SUCCESS:
       return {
@@ -101,13 +105,21 @@ export default (state = initialState, action = {}) => {
         role: '',
         avatar_url: '',
         created_at: '',
+        logoutLoading: false,
         isLogged: false,
         error: '',
+        logoutSubmitSuccess: true,
       };
     case LOGOUT_SUBMIT_ERROR:
       return {
         ...state,
+        logoutLoading: false,
         error: action.payload,
+      };
+    case CLEAR_LOGOUT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        logoutSubmitSuccess: false,
       };
     case UPDATE_USER_SUBMIT:
       return {
