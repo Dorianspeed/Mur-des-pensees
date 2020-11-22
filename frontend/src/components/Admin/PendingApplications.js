@@ -26,7 +26,7 @@ const PendingApplications = ({
           <Segment vertical>
             <Card.Group itemsPerRow={3} stackable>
               {pendingApplications.map((application) => (
-                <Card key={application.id} centered>
+                <Card link key={application.id} centered>
                   <Card.Content>
                     <Card.Description>
                       {application.content.split(' ').slice(0, 50).join(' ')}...

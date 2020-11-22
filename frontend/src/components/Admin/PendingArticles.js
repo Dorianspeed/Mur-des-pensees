@@ -26,7 +26,7 @@ const PendingArticles = ({
           <Segment vertical>
             <Card.Group itemsPerRow={3} stackable>
               {pendingArticles.map((article) => (
-                <Card key={article.id} centered>
+                <Card link key={article.id} centered>
                   <Image
                     src={article.image_url}
                     alt="logo-articles"
