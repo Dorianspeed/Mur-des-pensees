@@ -10,6 +10,16 @@ export const stringSlugify = (string) => slugify(string, {
   locale: 'fr',
 });
 
+// fonction permettant de mettre en majuscule la première lettre du slug
+export const capitalizeSlugFirstLetter = (slug) => {
+  if (slug === 'faits-divers') {
+    const cleanedSlug = slug.replace('-', ' ');
+    return cleanedSlug.charAt(0).toUpperCase() + cleanedSlug.slice(1);
+  }
+
+  return slug.charAt(0).toUpperCase() + slug.slice(1);
+};
+
 // fonction permettant de gérer la mise au pluriel d'un mot
 export const stringPluralize = (string, value) => {
   if (value === 0) {
