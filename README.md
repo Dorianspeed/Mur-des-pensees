@@ -76,7 +76,7 @@ L'application se trouve en ligne et est utilisable à ce lien : [Mur des Pensée
    - Créer votre database : `CREATE DATABASE db OWNER dbrole;`
 2. Créer votre fichier `.env` en suivant le `.env.example`
 3. Créer votre fichier `sqitch.conf` en suivant le `sqitch.conf.example`
-4. Effectuer une recherche dans le fichier `main.d6d417449eb93502d60a.js` qui se trouve dans le dossier `public/js` du `backend` et remplacer tous les `http://3.89.123.41/` par `http://localhost:port` où le port correspond à ce que vous avez indiqué dans votre `.env`
+4. Effectuer une recherche dans le fichier `main.ef046c04b7d9bb3a2ec0.js` qui se trouve dans le dossier `public/js` du `backend` et remplacer tous les `http://3.89.123.41/` par `http://localhost:port` où le port correspond à ce que vous avez indiqué dans votre `.env`
 5. Exécuter la commande `npm run start` pour lancer l'application en vous plaçant dans le dossier `backend`
 6. Lancer un navigateur puis entrer le lien `http://localhost:port`
 
