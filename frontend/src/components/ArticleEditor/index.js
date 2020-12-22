@@ -7,6 +7,7 @@ import axios from 'axios';
 import {
   Segment, Grid, Form, Label, Input, Select, Button, Dimmer, Loader, Breadcrumb,
 } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 
 // == Composant
 const ArticleEditor = ({
@@ -14,6 +15,7 @@ const ArticleEditor = ({
   getCategories, loading, articleEditorSubmitSuccess,
 }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [fileUploadLoading, setFileUploadLoading] = useState(false);
 
   useEffect(() => {
     getCategories();
@@ -53,16 +55,20 @@ const ArticleEditor = ({
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    setFileUploadLoading(true);
 
     fileUpload(uploadedFile)
       .then((result) => {
         const filePath = result.data.path.replace('public', '');
         onInputChange({ image_url: filePath });
+        setFileUploadLoading(false);
         onFormSubmit();
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.trace(error);
+        setFileUploadLoading(false);
+        toast.error('Une erreur est survenue, veuillez réessayer plus tard.');
       });
   };
 
@@ -120,7 +126,7 @@ const ArticleEditor = ({
                   />
                 </Segment>
                 <Segment basic>
-                  <Button type="submit" content="Valider votre article" color="green" />
+                  <Button type="submit" content="Valider votre article" color="green" loading={fileUploadLoading} />
                 </Segment>
               </Form>
             </Grid>
