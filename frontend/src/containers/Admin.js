@@ -11,6 +11,9 @@ import {
 const mapStateToProps = (state) => ({
   pendingApplications: state.admin.pendingApplications,
   pendingArticles: state.admin.pendingArticles,
+  loadingApplications: state.admin.loadingApplications,
+  loadingArticles: state.admin.loadingArticles,
+  loading: state.admin.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
